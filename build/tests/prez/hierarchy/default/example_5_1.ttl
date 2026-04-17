@@ -1,95 +1,62 @@
 @prefix dcat: <http://www.w3.org/ns/dcat#> .
 @prefix dcterms: <http://purl.org/dc/terms/> .
-@prefix ex: <https://example.org/> .
 @prefix skos: <http://www.w3.org/2004/02/skos/core#> .
 
-ex:climate a dcat:Catalog ;
-    dcterms:hasPart <https://example.org/climate/era5>,
-        <https://example.org/climate/gcos-spec>,
-        <https://example.org/climate/surface-vars>,
-        <https://example.org/climate/variables> ;
-    skos:prefLabel "Climate Observations"@en,
-        "Observations Climatiques"@fr .
+<https://example.org/env> a dcat:Catalog ;
+    dcterms:hasPart <https://example.org/env/habitats>,
+        <https://example.org/env/protected> ;
+    skos:prefLabel "Environmental Data"@en,
+        "Datos Ambientales"@es .
 
-ex:hydrology a dcat:Catalog ;
-    dcterms:hasPart <https://example.org/hydrology/features>,
-        <https://example.org/hydrology/gsim>,
-        <https://example.org/hydrology/hydrosheds>,
-        <https://example.org/hydrology/surface-water>,
-        <https://example.org/hydrology/wmo-guide> ;
-    skos:prefLabel "Hydrological Data" .
+<https://example.org/species> a dcat:Catalog ;
+    dcterms:hasPart <https://example.org/species/mammals> ;
+    skos:prefLabel "Species Registry" .
 
-<https://example.org/climate/era5> a dcat:Dataset ;
-    skos:definition "ECMWF global climate reanalysis dataset from 1940 to present." ;
-    skos:prefLabel "ERA5 Reanalysis" .
+<https://example.org/env/habitats/marine> a skos:Concept ;
+    skos:inScheme <https://example.org/env/habitats> ;
+    skos:prefLabel "Marine"@en,
+        "Marino"@es ;
+    skos:topConceptOf <https://example.org/env/habitats> .
 
-<https://example.org/climate/gcos-spec> a dcat:Resource ;
-    skos:definition "Official GCOS specification for essential climate variables." ;
-    skos:prefLabel "GCOS Essential Climate Variables" .
+<https://example.org/env/protected> a skos:Collection ;
+    skos:member <https://example.org/env/habitats/forest>,
+        <https://example.org/env/habitats/wetland> ;
+    skos:prefLabel "Protected Habitats"@en,
+        "Hábitats Protegidos"@es .
 
-<https://example.org/climate/surface-vars> a skos:Collection ;
-    skos:definition "Climate variables measured at surface level." ;
-    skos:member <https://example.org/climate/variables/precipitation>,
-        <https://example.org/climate/variables/temperature> ;
-    skos:prefLabel "Surface Variables" .
+<https://example.org/species/mammals/bear> a skos:Concept ;
+    skos:inScheme <https://example.org/species/mammals> ;
+    skos:prefLabel "Bear" ;
+    skos:topConceptOf <https://example.org/species/mammals> .
 
-<https://example.org/climate/variables/humidity> a skos:Concept ;
-    skos:inScheme <https://example.org/climate/variables> ;
-    skos:prefLabel "Relative Humidity" ;
-    skos:topConceptOf <https://example.org/climate/variables> .
+<https://example.org/species/mammals/wolf> a skos:Concept ;
+    skos:inScheme <https://example.org/species/mammals> ;
+    skos:prefLabel "Wolf" ;
+    skos:topConceptOf <https://example.org/species/mammals> .
 
-<https://example.org/hydrology/features/aquifer> a skos:Concept ;
-    skos:inScheme <https://example.org/hydrology/features> ;
-    skos:prefLabel "Aquifer" ;
-    skos:topConceptOf <https://example.org/hydrology/features> .
+<https://example.org/env/habitats/forest> a skos:Concept ;
+    skos:inScheme <https://example.org/env/habitats> ;
+    skos:prefLabel "Forest"@en,
+        "Bosque"@es ;
+    skos:topConceptOf <https://example.org/env/habitats> .
 
-<https://example.org/hydrology/gsim> a dcat:Dataset ;
-    skos:definition "Global Streamflow Indices and Metadata archive." ;
-    skos:prefLabel "GSIM Streamflow Dataset" .
+<https://example.org/env/habitats/wetland> a skos:Concept ;
+    skos:inScheme <https://example.org/env/habitats> ;
+    skos:prefLabel "Wetland"@en,
+        "Humedal"@es ;
+    skos:topConceptOf <https://example.org/env/habitats> .
 
-<https://example.org/hydrology/hydrosheds> a dcat:Dataset ;
-    skos:definition "Hydrographic data derived from SRTM elevation data at multiple scales." ;
-    skos:prefLabel "HydroSHEDS" .
+<https://example.org/species/mammals> a skos:ConceptScheme ;
+    skos:definition "Registry of mammal species." ;
+    skos:hasTopConcept <https://example.org/species/mammals/bear>,
+        <https://example.org/species/mammals/wolf> ;
+    skos:prefLabel "Mammals" .
 
-<https://example.org/hydrology/surface-water> a skos:Collection ;
-    skos:member <https://example.org/hydrology/features/lake>,
-        <https://example.org/hydrology/features/river> ;
-    skos:prefLabel "Surface Water Bodies" .
-
-<https://example.org/hydrology/wmo-guide> a dcat:Resource ;
-    skos:definition "WMO reference guide for hydrological observation and data management." ;
-    skos:prefLabel "WMO Hydrological Practices Guide" .
-
-<https://example.org/climate/variables/precipitation> a skos:Concept ;
-    skos:inScheme <https://example.org/climate/variables> ;
-    skos:prefLabel "Precipitation" ;
-    skos:topConceptOf <https://example.org/climate/variables> .
-
-<https://example.org/climate/variables/temperature> a skos:Concept ;
-    skos:inScheme <https://example.org/climate/variables> ;
-    skos:prefLabel "Air Temperature" ;
-    skos:topConceptOf <https://example.org/climate/variables> .
-
-<https://example.org/hydrology/features/lake> a skos:Concept ;
-    skos:inScheme <https://example.org/hydrology/features> ;
-    skos:prefLabel "Lake" ;
-    skos:topConceptOf <https://example.org/hydrology/features> .
-
-<https://example.org/hydrology/features/river> a skos:Concept ;
-    skos:inScheme <https://example.org/hydrology/features> ;
-    skos:prefLabel "River" ;
-    skos:topConceptOf <https://example.org/hydrology/features> .
-
-<https://example.org/climate/variables> a skos:ConceptScheme ;
-    skos:definition "Essential climate variables as defined by GCOS." ;
-    skos:hasTopConcept <https://example.org/climate/variables/humidity>,
-        <https://example.org/climate/variables/precipitation>,
-        <https://example.org/climate/variables/temperature> ;
-    skos:prefLabel "Climate Variables" .
-
-<https://example.org/hydrology/features> a skos:ConceptScheme ;
-    skos:hasTopConcept <https://example.org/hydrology/features/aquifer>,
-        <https://example.org/hydrology/features/lake>,
-        <https://example.org/hydrology/features/river> ;
-    skos:prefLabel "Hydrological Features" .
+<https://example.org/env/habitats> a skos:ConceptScheme ;
+    skos:definition "Classification of natural habitats." ;
+    skos:hasTopConcept <https://example.org/env/habitats/forest>,
+        <https://example.org/env/habitats/marine>,
+        <https://example.org/env/habitats/wetland> ;
+    skos:prefLabel "Habitat Types"@en,
+        "Tipos de Hábitat"@es .
 

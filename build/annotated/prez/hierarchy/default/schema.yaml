@@ -94,21 +94,9 @@ anyOf:
 - type: array
   items:
     $ref: '#/$defs/Catalog'
-- type: object
-  required:
-  - catalogs
-  properties:
-    base:
-      type: string
-      format: uri
-      x-jsonld-id: '@base'
-    catalogs:
-      type: array
-      items:
-        $ref: '#/$defs/Catalog'
-      x-jsonld-id: '@nest'
 x-jsonld-extra-terms:
   id: '@id'
+  catalogs: '@nest'
   name:
     x-jsonld-id: http://www.w3.org/2004/02/skos/core#prefLabel
     x-jsonld-container: '@language'

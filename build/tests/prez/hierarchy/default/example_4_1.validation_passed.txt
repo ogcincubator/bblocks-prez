@@ -1,7 +1,7 @@
 Validation report for ogc.prez.hierarchy.default - Prez default hierarchy
-Generated 2026-04-17T11:53:44.516424+00:00
+Generated 2026-04-17T13:08:22.231566+00:00
 === Files ===
-Using examples/mixed-catalog.json from examples
+Using examples/mixed-multi-catalog.json from examples
 JSON-LD context is present - uplifting
 Output JSON-LD example_4_1.jsonld created
 Output Turtle example_4_1.ttl created
@@ -17,12 +17,12 @@ Validation result for _sources/hierarchy/default/shapes.shacl:
   Conforms: True
   
 Focus nodes for _sources/hierarchy/default/shapes.shacl:
- - Shape prez:TopLevelItemShape: <https://example.org/land-cover/lccs-spec>,<https://example.org/land-cover/urban-types>,<https://example.org/land-cover/global-2020>,<https://example.org/land-cover/types>
- - Shape prez:InSchemeShape: <https://example.org/land-cover/types/cropland>,<https://example.org/land-cover/types/forest>,<https://example.org/land-cover/types/water>,<https://example.org/land-cover/types/urban>
- - Shape prez:ConceptAnchorShape: <https://example.org/land-cover/types/cropland>,<https://example.org/land-cover/types/forest>,<https://example.org/land-cover/types/water>,<https://example.org/land-cover/types/urban>
- - Shape prez:HasPartSubjectShape: ex:land-cover
- - Shape prez:PrefLabelShape: <https://example.org/land-cover/types/cropland>,<https://example.org/land-cover/global-2020>,<https://example.org/land-cover/types>,<https://example.org/land-cover/lccs-spec>,<https://example.org/land-cover/types/urban>,<https://example.org/land-cover/types/forest>,<https://example.org/land-cover/urban-types>,<https://example.org/land-cover/types/water>
- - Shape prez:AtLeastOneCatalogShape: _:n41d3a3b94127472f888530184406da26b1
+ - Shape prez:TopLevelItemShape: <https://example.org/climate/era5>,<https://example.org/hydrology/wmo-guide>,<https://example.org/hydrology/gsim>,<https://example.org/climate/gcos-spec>,<https://example.org/hydrology/surface-water>,<https://example.org/hydrology/hydrosheds>,<https://example.org/climate/surface-vars>,<https://example.org/climate/variables>,<https://example.org/hydrology/features>
+ - Shape prez:ConceptAnchorShape: <https://example.org/climate/variables/temperature>,<https://example.org/hydrology/features/lake>,<https://example.org/hydrology/features/river>,<https://example.org/hydrology/features/aquifer>,<https://example.org/climate/variables/humidity>,<https://example.org/climate/variables/precipitation>
+ - Shape prez:HasPartSubjectShape: <https://example.org/climate>,<https://example.org/hydrology>
+ - Shape prez:InSchemeShape: <https://example.org/climate/variables/temperature>,<https://example.org/hydrology/features/lake>,<https://example.org/hydrology/features/river>,<https://example.org/hydrology/features/aquifer>,<https://example.org/climate/variables/humidity>,<https://example.org/climate/variables/precipitation>
+ - Shape prez:AtLeastOneCatalogShape: _:nff58e0d0ae6949bc9ce6d7614d40a417b1
+ - Shape prez:PrefLabelShape: <https://example.org/climate/era5>,<https://example.org/climate/variables/temperature>,<https://example.org/hydrology/wmo-guide>,<https://example.org/hydrology/features/lake>,<https://example.org/hydrology/features/river>,<https://example.org/hydrology/gsim>,<https://example.org/climate/gcos-spec>,<https://example.org/climate/variables/humidity>,<https://example.org/hydrology/surface-water>,<https://example.org/hydrology/hydrosheds>,<https://example.org/climate/surface-vars>,<https://example.org/climate/variables>,<https://example.org/hydrology/features/aquifer>,<https://example.org/hydrology/features>,<https://example.org/climate/variables/precipitation>
 
 === End SHACL ===
 

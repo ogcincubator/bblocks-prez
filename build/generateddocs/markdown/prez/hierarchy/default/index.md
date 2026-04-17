@@ -81,12 +81,7 @@ Type annotations are omitted; they will be inferred during semantic uplift.
 #### jsonld
 ```jsonld
 {
-  "@context": [
-    {
-      "ex": "https://example.org/"
-    },
-    "https://ogcincubator.github.io/bblocks-prez/build/annotated/prez/hierarchy/default/context.jsonld"
-  ],
+  "@context": "https://ogcincubator.github.io/bblocks-prez/build/annotated/prez/hierarchy/default/context.jsonld",
   "id": "https://example.org/my-catalog",
   "name": "My Catalog",
   "items": [
@@ -116,129 +111,25 @@ Type annotations are omitted; they will be inferred during semantic uplift.
 ```ttl
 @prefix dcat: <http://www.w3.org/ns/dcat#> .
 @prefix dcterms: <http://purl.org/dc/terms/> .
-@prefix ex: <https://example.org/> .
 @prefix skos: <http://www.w3.org/2004/02/skos/core#> .
 
-ex:my-catalog a dcat:Catalog ;
-    dcterms:hasPart ex:my-scheme ;
+<https://example.org/my-catalog> a dcat:Catalog ;
+    dcterms:hasPart <https://example.org/my-scheme> ;
     skos:prefLabel "My Catalog" .
 
-ex:concept-a a skos:Concept ;
-    skos:inScheme ex:my-scheme ;
+<https://example.org/concept-a> a skos:Concept ;
+    skos:inScheme <https://example.org/my-scheme> ;
     skos:prefLabel "Concept A" ;
-    skos:topConceptOf ex:my-scheme .
+    skos:topConceptOf <https://example.org/my-scheme> .
 
-ex:concept-b a skos:Concept ;
-    skos:inScheme ex:my-scheme ;
+<https://example.org/concept-b> a skos:Concept ;
+    skos:inScheme <https://example.org/my-scheme> ;
     skos:prefLabel "Concept B" ;
-    skos:topConceptOf ex:my-scheme .
+    skos:topConceptOf <https://example.org/my-scheme> .
 
-ex:my-scheme a skos:ConceptScheme ;
-    skos:hasTopConcept ex:concept-a,
-        ex:concept-b ;
-    skos:prefLabel "My Concept Scheme" .
-
-
-```
-
-
-### Minimal catalog with base URL
-Same minimal structure as above, but wrapped in the envelope form that provides
-a `base` URL. IDs are relative to that base, keeping them short.
-
-#### json
-```json
-{
-  "base": "https://example.org/",
-  "catalogs": [
-    {
-      "id": "my-catalog",
-      "name": "My Catalog",
-      "items": [
-        {
-          "id": "my-scheme",
-          "name": "My Concept Scheme",
-          "concepts": [
-            {
-              "id": "concept-a",
-              "name": "Concept A"
-            },
-            {
-              "id": "concept-b",
-              "name": "Concept B"
-            }
-          ]
-        }
-      ]
-    }
-  ]
-}
-
-```
-
-#### jsonld
-```jsonld
-{
-  "@context": [
-    {
-      "ex": "https://example.org/"
-    },
-    "https://ogcincubator.github.io/bblocks-prez/build/annotated/prez/hierarchy/default/context.jsonld"
-  ],
-  "base": "https://example.org/",
-  "catalogs": [
-    {
-      "id": "my-catalog",
-      "name": "My Catalog",
-      "items": [
-        {
-          "id": "my-scheme",
-          "name": "My Concept Scheme",
-          "concepts": [
-            {
-              "id": "concept-a",
-              "name": "Concept A",
-              "type": "Concept"
-            },
-            {
-              "id": "concept-b",
-              "name": "Concept B",
-              "type": "Concept"
-            }
-          ],
-          "type": "ConceptScheme"
-        }
-      ],
-      "type": "Catalog"
-    }
-  ]
-}
-```
-
-#### ttl
-```ttl
-@prefix dcat: <http://www.w3.org/ns/dcat#> .
-@prefix dcterms: <http://purl.org/dc/terms/> .
-@prefix ex: <https://example.org/> .
-@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
-
-ex:my-catalog a dcat:Catalog ;
-    dcterms:hasPart ex:my-scheme ;
-    skos:prefLabel "My Catalog" .
-
-ex:concept-a a skos:Concept ;
-    skos:inScheme ex:my-scheme ;
-    skos:prefLabel "Concept A" ;
-    skos:topConceptOf ex:my-scheme .
-
-ex:concept-b a skos:Concept ;
-    skos:inScheme ex:my-scheme ;
-    skos:prefLabel "Concept B" ;
-    skos:topConceptOf ex:my-scheme .
-
-ex:my-scheme a skos:ConceptScheme ;
-    skos:hasTopConcept ex:concept-a,
-        ex:concept-b ;
+<https://example.org/my-scheme> a skos:ConceptScheme ;
+    skos:hasTopConcept <https://example.org/concept-a>,
+        <https://example.org/concept-b> ;
     skos:prefLabel "My Concept Scheme" .
 
 
@@ -297,12 +188,7 @@ A catalog containing a concept scheme (all animal species) and a collection
 #### jsonld
 ```jsonld
 {
-  "@context": [
-    {
-      "ex": "https://example.org/"
-    },
-    "https://ogcincubator.github.io/bblocks-prez/build/annotated/prez/hierarchy/default/context.jsonld"
-  ],
+  "@context": "https://ogcincubator.github.io/bblocks-prez/build/annotated/prez/hierarchy/default/context.jsonld",
   "id": "https://example.org/animals",
   "name": "Animal Taxonomy",
   "items": [
@@ -355,10 +241,9 @@ A catalog containing a concept scheme (all animal species) and a collection
 ```ttl
 @prefix dcat: <http://www.w3.org/ns/dcat#> .
 @prefix dcterms: <http://purl.org/dc/terms/> .
-@prefix ex: <https://example.org/> .
 @prefix skos: <http://www.w3.org/2004/02/skos/core#> .
 
-ex:animals a dcat:Catalog ;
+<https://example.org/animals> a dcat:Catalog ;
     dcterms:hasPart <https://example.org/animals/pets>,
         <https://example.org/animals/scheme> ;
     skos:prefLabel "Animal Taxonomy" .
@@ -459,12 +344,7 @@ A land cover catalog combining a concept scheme (LCCS-based types), a collection
 #### jsonld
 ```jsonld
 {
-  "@context": [
-    {
-      "ex": "https://example.org/"
-    },
-    "https://ogcincubator.github.io/bblocks-prez/build/annotated/prez/hierarchy/default/context.jsonld"
-  ],
+  "@context": "https://ogcincubator.github.io/bblocks-prez/build/annotated/prez/hierarchy/default/context.jsonld",
   "id": "https://example.org/land-cover",
   "name": "Land Cover Catalog",
   "items": [
@@ -530,10 +410,9 @@ A land cover catalog combining a concept scheme (LCCS-based types), a collection
 ```ttl
 @prefix dcat: <http://www.w3.org/ns/dcat#> .
 @prefix dcterms: <http://purl.org/dc/terms/> .
-@prefix ex: <https://example.org/> .
 @prefix skos: <http://www.w3.org/2004/02/skos/core#> .
 
-ex:land-cover a dcat:Catalog ;
+<https://example.org/land-cover> a dcat:Catalog ;
     dcterms:hasPart <https://example.org/land-cover/global-2020>,
         <https://example.org/land-cover/lccs-spec>,
         <https://example.org/land-cover/types>,
@@ -710,12 +589,7 @@ coexist within and across catalogs.
 #### jsonld
 ```jsonld
 {
-  "@context": [
-    {
-      "ex": "https://example.org/"
-    },
-    "https://ogcincubator.github.io/bblocks-prez/build/annotated/prez/hierarchy/default/context.jsonld"
-  ],
+  "@context": "https://ogcincubator.github.io/bblocks-prez/build/annotated/prez/hierarchy/default/context.jsonld",
   "@graph": [
     {
       "id": "https://example.org/climate",
@@ -852,10 +726,9 @@ coexist within and across catalogs.
 ```ttl
 @prefix dcat: <http://www.w3.org/ns/dcat#> .
 @prefix dcterms: <http://purl.org/dc/terms/> .
-@prefix ex: <https://example.org/> .
 @prefix skos: <http://www.w3.org/2004/02/skos/core#> .
 
-ex:climate a dcat:Catalog ;
+<https://example.org/climate> a dcat:Catalog ;
     dcterms:hasPart <https://example.org/climate/era5>,
         <https://example.org/climate/gcos-spec>,
         <https://example.org/climate/surface-vars>,
@@ -863,7 +736,7 @@ ex:climate a dcat:Catalog ;
     skos:prefLabel "Climate Observations"@en,
         "Observations Climatiques"@fr .
 
-ex:hydrology a dcat:Catalog ;
+<https://example.org/hydrology> a dcat:Catalog ;
     dcterms:hasPart <https://example.org/hydrology/features>,
         <https://example.org/hydrology/gsim>,
         <https://example.org/hydrology/hydrosheds>,
@@ -1025,12 +898,7 @@ scheme. The second is a simpler species registry.
 #### jsonld
 ```jsonld
 {
-  "@context": [
-    {
-      "ex": "https://example.org/"
-    },
-    "https://ogcincubator.github.io/bblocks-prez/build/annotated/prez/hierarchy/default/context.jsonld"
-  ],
+  "@context": "https://ogcincubator.github.io/bblocks-prez/build/annotated/prez/hierarchy/default/context.jsonld",
   "@graph": [
     {
       "id": "https://example.org/env",
@@ -1136,16 +1004,15 @@ scheme. The second is a simpler species registry.
 ```ttl
 @prefix dcat: <http://www.w3.org/ns/dcat#> .
 @prefix dcterms: <http://purl.org/dc/terms/> .
-@prefix ex: <https://example.org/> .
 @prefix skos: <http://www.w3.org/2004/02/skos/core#> .
 
-ex:env a dcat:Catalog ;
+<https://example.org/env> a dcat:Catalog ;
     dcterms:hasPart <https://example.org/env/habitats>,
         <https://example.org/env/protected> ;
     skos:prefLabel "Environmental Data"@en,
         "Datos Ambientales"@es .
 
-ex:species a dcat:Catalog ;
+<https://example.org/species> a dcat:Catalog ;
     dcterms:hasPart <https://example.org/species/mammals> ;
     skos:prefLabel "Species Registry" .
 
@@ -1299,21 +1166,9 @@ anyOf:
 - type: array
   items:
     $ref: '#/$defs/Catalog'
-- type: object
-  required:
-  - catalogs
-  properties:
-    base:
-      type: string
-      format: uri
-      x-jsonld-id: '@base'
-    catalogs:
-      type: array
-      items:
-        $ref: '#/$defs/Catalog'
-      x-jsonld-id: '@nest'
 x-jsonld-extra-terms:
   id: '@id'
+  catalogs: '@nest'
   name:
     x-jsonld-id: http://www.w3.org/2004/02/skos/core#prefLabel
     x-jsonld-container: '@language'
@@ -1363,7 +1218,6 @@ Links to the schema:
       "@id": "dct:hasPart",
       "@type": "@id"
     },
-    "base": "@base",
     "catalogs": "@nest",
     "Catalog": "dcat:Catalog",
     "ConceptScheme": "skos:ConceptScheme",

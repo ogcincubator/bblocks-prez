@@ -14,7 +14,6 @@
       "@id": "dct:hasPart",
       "@type": "@id"
     },
-    "base": "@base",
     "catalogs": "@nest",
     "Catalog": "dcat:Catalog",
     "ConceptScheme": "skos:ConceptScheme",

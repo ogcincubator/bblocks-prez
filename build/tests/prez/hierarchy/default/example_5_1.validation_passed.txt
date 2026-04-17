@@ -1,7 +1,7 @@
 Validation report for ogc.prez.hierarchy.default - Prez default hierarchy
-Generated 2026-04-17T11:53:44.647001+00:00
+Generated 2026-04-17T13:08:22.321303+00:00
 === Files ===
-Using examples/mixed-multi-catalog.json from examples
+Using examples/multi-catalog.json from examples
 JSON-LD context is present - uplifting
 Output JSON-LD example_5_1.jsonld created
 Output Turtle example_5_1.ttl created
@@ -17,12 +17,12 @@ Validation result for _sources/hierarchy/default/shapes.shacl:
   Conforms: True
   
 Focus nodes for _sources/hierarchy/default/shapes.shacl:
- - Shape prez:TopLevelItemShape: <https://example.org/climate/gcos-spec>,<https://example.org/hydrology/gsim>,<https://example.org/climate/variables>,<https://example.org/hydrology/hydrosheds>,<https://example.org/hydrology/surface-water>,<https://example.org/hydrology/features>,<https://example.org/climate/era5>,<https://example.org/hydrology/wmo-guide>,<https://example.org/climate/surface-vars>
- - Shape prez:InSchemeShape: <https://example.org/climate/variables/humidity>,<https://example.org/climate/variables/temperature>,<https://example.org/hydrology/features/lake>,<https://example.org/hydrology/features/river>,<https://example.org/hydrology/features/aquifer>,<https://example.org/climate/variables/precipitation>
- - Shape prez:ConceptAnchorShape: <https://example.org/climate/variables/humidity>,<https://example.org/climate/variables/temperature>,<https://example.org/hydrology/features/lake>,<https://example.org/hydrology/features/river>,<https://example.org/hydrology/features/aquifer>,<https://example.org/climate/variables/precipitation>
- - Shape prez:HasPartSubjectShape: ex:hydrology,ex:climate
- - Shape prez:PrefLabelShape: <https://example.org/climate/surface-vars>,<https://example.org/climate/variables/temperature>,<https://example.org/hydrology/gsim>,<https://example.org/climate/variables>,<https://example.org/hydrology/hydrosheds>,<https://example.org/climate/gcos-spec>,<https://example.org/hydrology/features/aquifer>,<https://example.org/hydrology/surface-water>,<https://example.org/climate/variables/humidity>,<https://example.org/hydrology/features>,<https://example.org/hydrology/features/lake>,<https://example.org/climate/era5>,<https://example.org/hydrology/wmo-guide>,<https://example.org/hydrology/features/river>,<https://example.org/climate/variables/precipitation>
- - Shape prez:AtLeastOneCatalogShape: _:n41d3a3b94127472f888530184406da26b1
+ - Shape prez:TopLevelItemShape: <https://example.org/species/mammals>,<https://example.org/env/habitats>,<https://example.org/env/protected>
+ - Shape prez:ConceptAnchorShape: <https://example.org/env/habitats/marine>,<https://example.org/env/habitats/wetland>,<https://example.org/species/mammals/bear>,<https://example.org/species/mammals/wolf>,<https://example.org/env/habitats/forest>
+ - Shape prez:HasPartSubjectShape: <https://example.org/species>,<https://example.org/env>
+ - Shape prez:InSchemeShape: <https://example.org/env/habitats/marine>,<https://example.org/env/habitats/wetland>,<https://example.org/species/mammals/bear>,<https://example.org/species/mammals/wolf>,<https://example.org/env/habitats/forest>
+ - Shape prez:AtLeastOneCatalogShape: _:nff58e0d0ae6949bc9ce6d7614d40a417b1
+ - Shape prez:PrefLabelShape: <https://example.org/env/habitats/marine>,<https://example.org/env/habitats>,<https://example.org/species/mammals/bear>,<https://example.org/species/mammals/wolf>,<https://example.org/species/mammals>,<https://example.org/env/habitats/wetland>,<https://example.org/env/habitats/forest>,<https://example.org/env/protected>
 
 === End SHACL ===
 

@@ -1,24 +1,23 @@
 @prefix dcat: <http://www.w3.org/ns/dcat#> .
 @prefix dcterms: <http://purl.org/dc/terms/> .
-@prefix ex: <https://example.org/> .
 @prefix skos: <http://www.w3.org/2004/02/skos/core#> .
 
-ex:my-catalog a dcat:Catalog ;
-    dcterms:hasPart ex:my-scheme ;
+<https://example.org/my-catalog> a dcat:Catalog ;
+    dcterms:hasPart <https://example.org/my-scheme> ;
     skos:prefLabel "My Catalog" .
 
-ex:concept-a a skos:Concept ;
-    skos:inScheme ex:my-scheme ;
+<https://example.org/concept-a> a skos:Concept ;
+    skos:inScheme <https://example.org/my-scheme> ;
     skos:prefLabel "Concept A" ;
-    skos:topConceptOf ex:my-scheme .
+    skos:topConceptOf <https://example.org/my-scheme> .
 
-ex:concept-b a skos:Concept ;
-    skos:inScheme ex:my-scheme ;
+<https://example.org/concept-b> a skos:Concept ;
+    skos:inScheme <https://example.org/my-scheme> ;
     skos:prefLabel "Concept B" ;
-    skos:topConceptOf ex:my-scheme .
+    skos:topConceptOf <https://example.org/my-scheme> .
 
-ex:my-scheme a skos:ConceptScheme ;
-    skos:hasTopConcept ex:concept-a,
-        ex:concept-b ;
+<https://example.org/my-scheme> a skos:ConceptScheme ;
+    skos:hasTopConcept <https://example.org/concept-a>,
+        <https://example.org/concept-b> ;
     skos:prefLabel "My Concept Scheme" .
 

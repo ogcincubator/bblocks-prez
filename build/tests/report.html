@@ -64,7 +64,7 @@
     <body>
         <div class="container">
             <h1 class="title">Building blocks validation report</h1>
-            <small class="datetime">Generated at 2026-04-17T11:53:44.757205+00:00</small>
+            <small class="datetime">Generated at 2026-04-17T13:08:22.341787+00:00</small>
                 <p class="summary fw-semibold text-success">
                     Number of passing building blocks: 1 / 1 (100%)
                 </p>
@@ -93,7 +93,7 @@
                             <div class="accordion-collapse collapse " id="bblock-collapse-ogc.prez.hierarchy.default">
                                 <div class="accordion-body">
                                         <p class="summary fw-semibold text-success">
-                                            Test passed: 6 / 6
+                                            Test passed: 5 / 5
                                         </p>
                                         <div class="card mb-2 validation-item " id="item-ogc.prez.hierarchy.default-1">
                                             <div class="card-body">
@@ -127,12 +127,12 @@
   Conforms: True
   </div>
                                                                     <div class="font-monospace entry-message section-shacl ">Focus nodes for _sources/hierarchy/default/shapes.shacl:
- - Shape prez:TopLevelItemShape: ex:my-scheme
- - Shape prez:InSchemeShape: ex:concept-b,ex:concept-a
- - Shape prez:ConceptAnchorShape: ex:concept-b,ex:concept-a
- - Shape prez:HasPartSubjectShape: ex:my-catalog
- - Shape prez:PrefLabelShape: ex:concept-b,ex:concept-a,ex:my-scheme
- - Shape prez:AtLeastOneCatalogShape: _:n41d3a3b94127472f888530184406da26b1
+ - Shape prez:TopLevelItemShape: &lt;https://example.org/my-scheme&gt;
+ - Shape prez:ConceptAnchorShape: &lt;https://example.org/concept-b&gt;,&lt;https://example.org/concept-a&gt;
+ - Shape prez:HasPartSubjectShape: &lt;https://example.org/my-catalog&gt;
+ - Shape prez:InSchemeShape: &lt;https://example.org/concept-b&gt;,&lt;https://example.org/concept-a&gt;
+ - Shape prez:AtLeastOneCatalogShape: _:nff58e0d0ae6949bc9ce6d7614d40a417b1
+ - Shape prez:PrefLabelShape: &lt;https://example.org/concept-b&gt;,&lt;https://example.org/my-scheme&gt;,&lt;https://example.org/concept-a&gt;
 </div>
                                                                     <div class="font-monospace subsection-title mt-2">Semantic Uplift</div>
                                                                     <div class="font-monospace entry-message section-semantic_uplift ">Running pre-uplift jq transform step from inline code</div>
@@ -161,7 +161,7 @@
                                                 <div class="card-text mt-2 validation-text collapse" id="uid-2">
                                                     <div class="validation-text-inner">
                                                                     <div class="font-monospace subsection-title mt-2">Files</div>
-                                                                    <div class="font-monospace entry-message section-files ">Using examples/minimal-with-base.json from examples</div>
+                                                                    <div class="font-monospace entry-message section-files ">Using examples/catalog-with-collection.json from examples</div>
                                                                     <div class="font-monospace entry-message section-files ">JSON-LD context is present - uplifting</div>
                                                                     <div class="font-monospace entry-message section-files ">Output JSON-LD example_2_1.jsonld created</div>
                                                                     <div class="font-monospace entry-message section-files ">Output Turtle example_2_1.ttl created</div>
@@ -173,12 +173,12 @@
   Conforms: True
   </div>
                                                                     <div class="font-monospace entry-message section-shacl ">Focus nodes for _sources/hierarchy/default/shapes.shacl:
- - Shape prez:TopLevelItemShape: ex:my-scheme
- - Shape prez:InSchemeShape: ex:concept-b,ex:concept-a
- - Shape prez:ConceptAnchorShape: ex:concept-b,ex:concept-a
- - Shape prez:HasPartSubjectShape: ex:my-catalog
- - Shape prez:PrefLabelShape: ex:concept-b,ex:concept-a,ex:my-scheme
- - Shape prez:AtLeastOneCatalogShape: _:n41d3a3b94127472f888530184406da26b1
+ - Shape prez:TopLevelItemShape: &lt;https://example.org/animals/pets&gt;,&lt;https://example.org/animals/scheme&gt;
+ - Shape prez:ConceptAnchorShape: &lt;https://example.org/animals/cat&gt;,&lt;https://example.org/animals/dog&gt;,&lt;https://example.org/animals/eagle&gt;
+ - Shape prez:HasPartSubjectShape: &lt;https://example.org/animals&gt;
+ - Shape prez:InSchemeShape: &lt;https://example.org/animals/cat&gt;,&lt;https://example.org/animals/dog&gt;,&lt;https://example.org/animals/eagle&gt;
+ - Shape prez:AtLeastOneCatalogShape: _:nff58e0d0ae6949bc9ce6d7614d40a417b1
+ - Shape prez:PrefLabelShape: &lt;https://example.org/animals/dog&gt;,&lt;https://example.org/animals/scheme&gt;,&lt;https://example.org/animals/eagle&gt;,&lt;https://example.org/animals/pets&gt;,&lt;https://example.org/animals/cat&gt;
 </div>
                                                                     <div class="font-monospace subsection-title mt-2">Semantic Uplift</div>
                                                                     <div class="font-monospace entry-message section-semantic_uplift ">Running pre-uplift jq transform step from inline code</div>
@@ -207,7 +207,7 @@
                                                 <div class="card-text mt-2 validation-text collapse" id="uid-3">
                                                     <div class="validation-text-inner">
                                                                     <div class="font-monospace subsection-title mt-2">Files</div>
-                                                                    <div class="font-monospace entry-message section-files ">Using examples/catalog-with-collection.json from examples</div>
+                                                                    <div class="font-monospace entry-message section-files ">Using examples/mixed-catalog.json from examples</div>
                                                                     <div class="font-monospace entry-message section-files ">JSON-LD context is present - uplifting</div>
                                                                     <div class="font-monospace entry-message section-files ">Output JSON-LD example_3_1.jsonld created</div>
                                                                     <div class="font-monospace entry-message section-files ">Output Turtle example_3_1.ttl created</div>
@@ -219,12 +219,12 @@
   Conforms: True
   </div>
                                                                     <div class="font-monospace entry-message section-shacl ">Focus nodes for _sources/hierarchy/default/shapes.shacl:
- - Shape prez:TopLevelItemShape: &lt;https://example.org/animals/pets&gt;,&lt;https://example.org/animals/scheme&gt;
- - Shape prez:InSchemeShape: &lt;https://example.org/animals/cat&gt;,&lt;https://example.org/animals/dog&gt;,&lt;https://example.org/animals/eagle&gt;
- - Shape prez:ConceptAnchorShape: &lt;https://example.org/animals/cat&gt;,&lt;https://example.org/animals/dog&gt;,&lt;https://example.org/animals/eagle&gt;
- - Shape prez:HasPartSubjectShape: ex:animals
- - Shape prez:PrefLabelShape: &lt;https://example.org/animals/pets&gt;,&lt;https://example.org/animals/scheme&gt;,&lt;https://example.org/animals/cat&gt;,&lt;https://example.org/animals/dog&gt;,&lt;https://example.org/animals/eagle&gt;
- - Shape prez:AtLeastOneCatalogShape: _:n41d3a3b94127472f888530184406da26b1
+ - Shape prez:TopLevelItemShape: &lt;https://example.org/land-cover/global-2020&gt;,&lt;https://example.org/land-cover/lccs-spec&gt;,&lt;https://example.org/land-cover/urban-types&gt;,&lt;https://example.org/land-cover/types&gt;
+ - Shape prez:ConceptAnchorShape: &lt;https://example.org/land-cover/types/forest&gt;,&lt;https://example.org/land-cover/types/water&gt;,&lt;https://example.org/land-cover/types/urban&gt;,&lt;https://example.org/land-cover/types/cropland&gt;
+ - Shape prez:HasPartSubjectShape: &lt;https://example.org/land-cover&gt;
+ - Shape prez:InSchemeShape: &lt;https://example.org/land-cover/types/forest&gt;,&lt;https://example.org/land-cover/types/water&gt;,&lt;https://example.org/land-cover/types/urban&gt;,&lt;https://example.org/land-cover/types/cropland&gt;
+ - Shape prez:AtLeastOneCatalogShape: _:nff58e0d0ae6949bc9ce6d7614d40a417b1
+ - Shape prez:PrefLabelShape: &lt;https://example.org/land-cover/types/forest&gt;,&lt;https://example.org/land-cover/types/urban&gt;,&lt;https://example.org/land-cover/urban-types&gt;,&lt;https://example.org/land-cover/types/cropland&gt;,&lt;https://example.org/land-cover/global-2020&gt;,&lt;https://example.org/land-cover/types&gt;,&lt;https://example.org/land-cover/lccs-spec&gt;,&lt;https://example.org/land-cover/types/water&gt;
 </div>
                                                                     <div class="font-monospace subsection-title mt-2">Semantic Uplift</div>
                                                                     <div class="font-monospace entry-message section-semantic_uplift ">Running pre-uplift jq transform step from inline code</div>
@@ -253,7 +253,7 @@
                                                 <div class="card-text mt-2 validation-text collapse" id="uid-4">
                                                     <div class="validation-text-inner">
                                                                     <div class="font-monospace subsection-title mt-2">Files</div>
-                                                                    <div class="font-monospace entry-message section-files ">Using examples/mixed-catalog.json from examples</div>
+                                                                    <div class="font-monospace entry-message section-files ">Using examples/mixed-multi-catalog.json from examples</div>
                                                                     <div class="font-monospace entry-message section-files ">JSON-LD context is present - uplifting</div>
                                                                     <div class="font-monospace entry-message section-files ">Output JSON-LD example_4_1.jsonld created</div>
                                                                     <div class="font-monospace entry-message section-files ">Output Turtle example_4_1.ttl created</div>
@@ -265,12 +265,12 @@
   Conforms: True
   </div>
                                                                     <div class="font-monospace entry-message section-shacl ">Focus nodes for _sources/hierarchy/default/shapes.shacl:
- - Shape prez:TopLevelItemShape: &lt;https://example.org/land-cover/lccs-spec&gt;,&lt;https://example.org/land-cover/urban-types&gt;,&lt;https://example.org/land-cover/global-2020&gt;,&lt;https://example.org/land-cover/types&gt;
- - Shape prez:InSchemeShape: &lt;https://example.org/land-cover/types/cropland&gt;,&lt;https://example.org/land-cover/types/forest&gt;,&lt;https://example.org/land-cover/types/water&gt;,&lt;https://example.org/land-cover/types/urban&gt;
- - Shape prez:ConceptAnchorShape: &lt;https://example.org/land-cover/types/cropland&gt;,&lt;https://example.org/land-cover/types/forest&gt;,&lt;https://example.org/land-cover/types/water&gt;,&lt;https://example.org/land-cover/types/urban&gt;
- - Shape prez:HasPartSubjectShape: ex:land-cover
- - Shape prez:PrefLabelShape: &lt;https://example.org/land-cover/types/cropland&gt;,&lt;https://example.org/land-cover/global-2020&gt;,&lt;https://example.org/land-cover/types&gt;,&lt;https://example.org/land-cover/lccs-spec&gt;,&lt;https://example.org/land-cover/types/urban&gt;,&lt;https://example.org/land-cover/types/forest&gt;,&lt;https://example.org/land-cover/urban-types&gt;,&lt;https://example.org/land-cover/types/water&gt;
- - Shape prez:AtLeastOneCatalogShape: _:n41d3a3b94127472f888530184406da26b1
+ - Shape prez:TopLevelItemShape: &lt;https://example.org/climate/era5&gt;,&lt;https://example.org/hydrology/wmo-guide&gt;,&lt;https://example.org/hydrology/gsim&gt;,&lt;https://example.org/climate/gcos-spec&gt;,&lt;https://example.org/hydrology/surface-water&gt;,&lt;https://example.org/hydrology/hydrosheds&gt;,&lt;https://example.org/climate/surface-vars&gt;,&lt;https://example.org/climate/variables&gt;,&lt;https://example.org/hydrology/features&gt;
+ - Shape prez:ConceptAnchorShape: &lt;https://example.org/climate/variables/temperature&gt;,&lt;https://example.org/hydrology/features/lake&gt;,&lt;https://example.org/hydrology/features/river&gt;,&lt;https://example.org/hydrology/features/aquifer&gt;,&lt;https://example.org/climate/variables/humidity&gt;,&lt;https://example.org/climate/variables/precipitation&gt;
+ - Shape prez:HasPartSubjectShape: &lt;https://example.org/climate&gt;,&lt;https://example.org/hydrology&gt;
+ - Shape prez:InSchemeShape: &lt;https://example.org/climate/variables/temperature&gt;,&lt;https://example.org/hydrology/features/lake&gt;,&lt;https://example.org/hydrology/features/river&gt;,&lt;https://example.org/hydrology/features/aquifer&gt;,&lt;https://example.org/climate/variables/humidity&gt;,&lt;https://example.org/climate/variables/precipitation&gt;
+ - Shape prez:AtLeastOneCatalogShape: _:nff58e0d0ae6949bc9ce6d7614d40a417b1
+ - Shape prez:PrefLabelShape: &lt;https://example.org/climate/era5&gt;,&lt;https://example.org/climate/variables/temperature&gt;,&lt;https://example.org/hydrology/wmo-guide&gt;,&lt;https://example.org/hydrology/features/lake&gt;,&lt;https://example.org/hydrology/features/river&gt;,&lt;https://example.org/hydrology/gsim&gt;,&lt;https://example.org/climate/gcos-spec&gt;,&lt;https://example.org/climate/variables/humidity&gt;,&lt;https://example.org/hydrology/surface-water&gt;,&lt;https://example.org/hydrology/hydrosheds&gt;,&lt;https://example.org/climate/surface-vars&gt;,&lt;https://example.org/climate/variables&gt;,&lt;https://example.org/hydrology/features/aquifer&gt;,&lt;https://example.org/hydrology/features&gt;,&lt;https://example.org/climate/variables/precipitation&gt;
 </div>
                                                                     <div class="font-monospace subsection-title mt-2">Semantic Uplift</div>
                                                                     <div class="font-monospace entry-message section-semantic_uplift ">Running pre-uplift jq transform step from inline code</div>
@@ -299,7 +299,7 @@
                                                 <div class="card-text mt-2 validation-text collapse" id="uid-5">
                                                     <div class="validation-text-inner">
                                                                     <div class="font-monospace subsection-title mt-2">Files</div>
-                                                                    <div class="font-monospace entry-message section-files ">Using examples/mixed-multi-catalog.json from examples</div>
+                                                                    <div class="font-monospace entry-message section-files ">Using examples/multi-catalog.json from examples</div>
                                                                     <div class="font-monospace entry-message section-files ">JSON-LD context is present - uplifting</div>
                                                                     <div class="font-monospace entry-message section-files ">Output JSON-LD example_5_1.jsonld created</div>
                                                                     <div class="font-monospace entry-message section-files ">Output Turtle example_5_1.ttl created</div>
@@ -311,58 +311,12 @@
   Conforms: True
   </div>
                                                                     <div class="font-monospace entry-message section-shacl ">Focus nodes for _sources/hierarchy/default/shapes.shacl:
- - Shape prez:TopLevelItemShape: &lt;https://example.org/climate/gcos-spec&gt;,&lt;https://example.org/hydrology/gsim&gt;,&lt;https://example.org/climate/variables&gt;,&lt;https://example.org/hydrology/hydrosheds&gt;,&lt;https://example.org/hydrology/surface-water&gt;,&lt;https://example.org/hydrology/features&gt;,&lt;https://example.org/climate/era5&gt;,&lt;https://example.org/hydrology/wmo-guide&gt;,&lt;https://example.org/climate/surface-vars&gt;
- - Shape prez:InSchemeShape: &lt;https://example.org/climate/variables/humidity&gt;,&lt;https://example.org/climate/variables/temperature&gt;,&lt;https://example.org/hydrology/features/lake&gt;,&lt;https://example.org/hydrology/features/river&gt;,&lt;https://example.org/hydrology/features/aquifer&gt;,&lt;https://example.org/climate/variables/precipitation&gt;
- - Shape prez:ConceptAnchorShape: &lt;https://example.org/climate/variables/humidity&gt;,&lt;https://example.org/climate/variables/temperature&gt;,&lt;https://example.org/hydrology/features/lake&gt;,&lt;https://example.org/hydrology/features/river&gt;,&lt;https://example.org/hydrology/features/aquifer&gt;,&lt;https://example.org/climate/variables/precipitation&gt;
- - Shape prez:HasPartSubjectShape: ex:hydrology,ex:climate
- - Shape prez:PrefLabelShape: &lt;https://example.org/climate/surface-vars&gt;,&lt;https://example.org/climate/variables/temperature&gt;,&lt;https://example.org/hydrology/gsim&gt;,&lt;https://example.org/climate/variables&gt;,&lt;https://example.org/hydrology/hydrosheds&gt;,&lt;https://example.org/climate/gcos-spec&gt;,&lt;https://example.org/hydrology/features/aquifer&gt;,&lt;https://example.org/hydrology/surface-water&gt;,&lt;https://example.org/climate/variables/humidity&gt;,&lt;https://example.org/hydrology/features&gt;,&lt;https://example.org/hydrology/features/lake&gt;,&lt;https://example.org/climate/era5&gt;,&lt;https://example.org/hydrology/wmo-guide&gt;,&lt;https://example.org/hydrology/features/river&gt;,&lt;https://example.org/climate/variables/precipitation&gt;
- - Shape prez:AtLeastOneCatalogShape: _:n41d3a3b94127472f888530184406da26b1
-</div>
-                                                                    <div class="font-monospace subsection-title mt-2">Semantic Uplift</div>
-                                                                    <div class="font-monospace entry-message section-semantic_uplift ">Running pre-uplift jq transform step from inline code</div>
-                                                                    <div class="font-monospace entry-message section-semantic_uplift ">Running post-uplift sparql-update transform step from inline code</div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="card mb-2 validation-item " id="item-ogc.prez.hierarchy.default-6">
-                                            <div class="card-body">
-                                                <div class="card-title mb-0 anchor-container">
-                                                    <button type="button" class="btn btn-sm btn-primary collapsed"
-                                                            data-bs-toggle="collapse" data-bs-target="#uid-6"
-                                                            aria-expanded="false" aria-controls="uid-6"
-                                                            style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .75rem;">
-                                                        <i class="bi bi-caret-right-fill caret"></i>
-                                                        Details
-                                                    </button>
-                                                    <a href="prez/hierarchy/default/example_6_1.json" target="_blank">example_6_1.json</a>
-                                                    <span class="badge bg-secondary example">Example</span>
-                                                    <a class="anchor" href="#item-ogc.prez.hierarchy.default-6">¶</a>
-                                                    <div class="float-end">
-                                                            <span class="badge text-bg-success me-2">Passed</span>
-                                                    </div>
-                                                </div>
-                                                <div class="card-text mt-2 validation-text collapse" id="uid-6">
-                                                    <div class="validation-text-inner">
-                                                                    <div class="font-monospace subsection-title mt-2">Files</div>
-                                                                    <div class="font-monospace entry-message section-files ">Using examples/multi-catalog.json from examples</div>
-                                                                    <div class="font-monospace entry-message section-files ">JSON-LD context is present - uplifting</div>
-                                                                    <div class="font-monospace entry-message section-files ">Output JSON-LD example_6_1.jsonld created</div>
-                                                                    <div class="font-monospace entry-message section-files ">Output Turtle example_6_1.ttl created</div>
-                                                                    <div class="font-monospace subsection-title mt-2">JSON Schema</div>
-                                                                    <div class="font-monospace entry-message section-json_schema ">Validation passed</div>
-                                                                    <div class="font-monospace subsection-title mt-2">SHACL</div>
-                                                                    <div class="font-monospace entry-message section-shacl ">Validation result for _sources/hierarchy/default/shapes.shacl:
-  Validation Report
-  Conforms: True
-  </div>
-                                                                    <div class="font-monospace entry-message section-shacl ">Focus nodes for _sources/hierarchy/default/shapes.shacl:
- - Shape prez:TopLevelItemShape: &lt;https://example.org/env/habitats&gt;,&lt;https://example.org/env/protected&gt;,&lt;https://example.org/species/mammals&gt;
- - Shape prez:InSchemeShape: &lt;https://example.org/env/habitats/marine&gt;,&lt;https://example.org/env/habitats/forest&gt;,&lt;https://example.org/species/mammals/bear&gt;,&lt;https://example.org/env/habitats/wetland&gt;,&lt;https://example.org/species/mammals/wolf&gt;
- - Shape prez:ConceptAnchorShape: &lt;https://example.org/env/habitats/marine&gt;,&lt;https://example.org/env/habitats/forest&gt;,&lt;https://example.org/species/mammals/bear&gt;,&lt;https://example.org/env/habitats/wetland&gt;,&lt;https://example.org/species/mammals/wolf&gt;
- - Shape prez:HasPartSubjectShape: ex:species,ex:env
- - Shape prez:PrefLabelShape: &lt;https://example.org/env/habitats&gt;,&lt;https://example.org/env/habitats/forest&gt;,&lt;https://example.org/species/mammals/wolf&gt;,&lt;https://example.org/species/mammals&gt;,&lt;https://example.org/env/habitats/marine&gt;,&lt;https://example.org/env/habitats/wetland&gt;,&lt;https://example.org/env/protected&gt;,&lt;https://example.org/species/mammals/bear&gt;
- - Shape prez:AtLeastOneCatalogShape: _:n41d3a3b94127472f888530184406da26b1
+ - Shape prez:TopLevelItemShape: &lt;https://example.org/species/mammals&gt;,&lt;https://example.org/env/habitats&gt;,&lt;https://example.org/env/protected&gt;
+ - Shape prez:ConceptAnchorShape: &lt;https://example.org/env/habitats/marine&gt;,&lt;https://example.org/env/habitats/wetland&gt;,&lt;https://example.org/species/mammals/bear&gt;,&lt;https://example.org/species/mammals/wolf&gt;,&lt;https://example.org/env/habitats/forest&gt;
+ - Shape prez:HasPartSubjectShape: &lt;https://example.org/species&gt;,&lt;https://example.org/env&gt;
+ - Shape prez:InSchemeShape: &lt;https://example.org/env/habitats/marine&gt;,&lt;https://example.org/env/habitats/wetland&gt;,&lt;https://example.org/species/mammals/bear&gt;,&lt;https://example.org/species/mammals/wolf&gt;,&lt;https://example.org/env/habitats/forest&gt;
+ - Shape prez:AtLeastOneCatalogShape: _:nff58e0d0ae6949bc9ce6d7614d40a417b1
+ - Shape prez:PrefLabelShape: &lt;https://example.org/env/habitats/marine&gt;,&lt;https://example.org/env/habitats&gt;,&lt;https://example.org/species/mammals/bear&gt;,&lt;https://example.org/species/mammals/wolf&gt;,&lt;https://example.org/species/mammals&gt;,&lt;https://example.org/env/habitats/wetland&gt;,&lt;https://example.org/env/habitats/forest&gt;,&lt;https://example.org/env/protected&gt;
 </div>
                                                                     <div class="font-monospace subsection-title mt-2">Semantic Uplift</div>
                                                                     <div class="font-monospace entry-message section-semantic_uplift ">Running pre-uplift jq transform step from inline code</div>

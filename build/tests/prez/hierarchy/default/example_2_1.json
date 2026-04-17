@@ -1,23 +1,38 @@
 {
-  "base": "https://example.org/",
-  "catalogs": [
+  "id": "https://example.org/animals",
+  "name": "Animal Taxonomy",
+  "items": [
     {
-      "id": "my-catalog",
-      "name": "My Catalog",
-      "items": [
+      "id": "https://example.org/animals/scheme",
+      "name": "Animal Species",
+      "definition": "A classification of common animal species.",
+      "concepts": [
         {
-          "id": "my-scheme",
-          "name": "My Concept Scheme",
-          "concepts": [
-            {
-              "id": "concept-a",
-              "name": "Concept A"
-            },
-            {
-              "id": "concept-b",
-              "name": "Concept B"
-            }
-          ]
+          "id": "https://example.org/animals/dog",
+          "name": "Dog"
+        },
+        {
+          "id": "https://example.org/animals/cat",
+          "name": "Cat"
+        },
+        {
+          "id": "https://example.org/animals/eagle",
+          "name": "Eagle"
+        }
+      ]
+    },
+    {
+      "id": "https://example.org/animals/pets",
+      "name": "Domestic Pets",
+      "type": "Collection",
+      "members": [
+        {
+          "id": "https://example.org/animals/dog",
+          "name": "Dog"
+        },
+        {
+          "id": "https://example.org/animals/cat",
+          "name": "Cat"
         }
       ]
     }

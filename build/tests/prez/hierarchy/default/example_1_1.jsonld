@@ -1,10 +1,5 @@
 {
-  "@context": [
-    {
-      "ex": "https://example.org/"
-    },
-    "https://ogcincubator.github.io/bblocks-prez/build/annotated/prez/hierarchy/default/context.jsonld"
-  ],
+  "@context": "https://ogcincubator.github.io/bblocks-prez/build/annotated/prez/hierarchy/default/context.jsonld",
   "id": "https://example.org/my-catalog",
   "name": "My Catalog",
   "items": [

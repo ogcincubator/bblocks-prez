@@ -1,134 +1,98 @@
 {
-  "@context": [
-    {
-      "ex": "https://example.org/"
-    },
-    "https://ogcincubator.github.io/bblocks-prez/build/annotated/prez/hierarchy/default/context.jsonld"
-  ],
+  "@context": "https://ogcincubator.github.io/bblocks-prez/build/annotated/prez/hierarchy/default/context.jsonld",
   "@graph": [
     {
-      "id": "https://example.org/climate",
+      "id": "https://example.org/env",
       "name": {
-        "en": "Climate Observations",
-        "fr": "Observations Climatiques"
+        "en": "Environmental Data",
+        "es": "Datos Ambientales"
       },
       "items": [
         {
-          "id": "https://example.org/climate/variables",
-          "name": "Climate Variables",
-          "definition": "Essential climate variables as defined by GCOS.",
+          "id": "https://example.org/env/habitats",
+          "name": {
+            "en": "Habitat Types",
+            "es": "Tipos de H\u00e1bitat"
+          },
+          "definition": "Classification of natural habitats.",
           "concepts": [
             {
-              "id": "https://example.org/climate/variables/temperature",
-              "name": "Air Temperature",
+              "id": "https://example.org/env/habitats/forest",
+              "name": {
+                "en": "Forest",
+                "es": "Bosque"
+              },
               "type": "Concept"
             },
             {
-              "id": "https://example.org/climate/variables/precipitation",
-              "name": "Precipitation",
+              "id": "https://example.org/env/habitats/wetland",
+              "name": {
+                "en": "Wetland",
+                "es": "Humedal"
+              },
               "type": "Concept"
             },
             {
-              "id": "https://example.org/climate/variables/humidity",
-              "name": "Relative Humidity",
+              "id": "https://example.org/env/habitats/marine",
+              "name": {
+                "en": "Marine",
+                "es": "Marino"
+              },
               "type": "Concept"
             }
           ],
           "type": "ConceptScheme"
         },
         {
-          "id": "https://example.org/climate/surface-vars",
-          "name": "Surface Variables",
+          "id": "https://example.org/env/protected",
+          "name": {
+            "en": "Protected Habitats",
+            "es": "H\u00e1bitats Protegidos"
+          },
           "type": "Collection",
-          "definition": "Climate variables measured at surface level.",
           "members": [
             {
-              "id": "https://example.org/climate/variables/temperature",
-              "name": "Air Temperature",
+              "id": "https://example.org/env/habitats/forest",
+              "name": {
+                "en": "Forest",
+                "es": "Bosque"
+              },
               "type": "Concept"
             },
             {
-              "id": "https://example.org/climate/variables/precipitation",
-              "name": "Precipitation",
+              "id": "https://example.org/env/habitats/wetland",
+              "name": {
+                "en": "Wetland",
+                "es": "Humedal"
+              },
               "type": "Concept"
             }
           ]
-        },
-        {
-          "id": "https://example.org/climate/era5",
-          "name": "ERA5 Reanalysis",
-          "type": "Dataset",
-          "definition": "ECMWF global climate reanalysis dataset from 1940 to present."
-        },
-        {
-          "id": "https://example.org/climate/gcos-spec",
-          "name": "GCOS Essential Climate Variables",
-          "type": "Resource",
-          "definition": "Official GCOS specification for essential climate variables."
         }
       ],
       "type": "Catalog"
     },
     {
-      "id": "https://example.org/hydrology",
-      "name": "Hydrological Data",
+      "id": "https://example.org/species",
+      "name": "Species Registry",
       "items": [
         {
-          "id": "https://example.org/hydrology/features",
-          "name": "Hydrological Features",
+          "id": "https://example.org/species/mammals",
+          "name": "Mammals",
+          "definition": "Registry of mammal species.",
           "concepts": [
             {
-              "id": "https://example.org/hydrology/features/river",
-              "name": "River",
+              "id": "https://example.org/species/mammals/bear",
+              "name": "Bear",
               "type": "Concept"
             },
             {
-              "id": "https://example.org/hydrology/features/lake",
-              "name": "Lake",
-              "type": "Concept"
-            },
-            {
-              "id": "https://example.org/hydrology/features/aquifer",
-              "name": "Aquifer",
+              "id": "https://example.org/species/mammals/wolf",
+              "name": "Wolf",
               "type": "Concept"
             }
           ],
           "type": "ConceptScheme"
-        },
-        {
-          "id": "https://example.org/hydrology/surface-water",
-          "name": "Surface Water Bodies",
-          "type": "Collection",
-          "members": [
-            {
-              "id": "https://example.org/hydrology/features/river",
-              "name": "River",
-              "type": "Concept"
-            },
-            {
-              "id": "https://example.org/hydrology/features/lake",
-              "name": "Lake",
-              "type": "Concept"
-            }
-          ]
-        },
-        {
-          "id": "https://example.org/hydrology/gsim",
-          "name": "GSIM Streamflow Dataset",
-          "type": "Dataset",
-          "definition": "Global Streamflow Indices and Metadata archive."
-        },
-        {
-          "id": "https://example.org/hydrology/hydrosheds",
-          "name": "HydroSHEDS",
-          "type": "Dataset",
-          "definition": "Hydrographic data derived from SRTM elevation data at multiple scales."
-        },
-        {
-          "id": "https://example.org/hydrology/wmo-guide",
-          "name": "WMO Hydrological Practices Guide",
-          "type": "Resource",
-          "definition": "WMO reference guide for hydrological observation and data management."
         }
       ],
       "type": "Catalog"

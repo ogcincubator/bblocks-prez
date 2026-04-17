@@ -10,5 +10,3 @@ path	@id	schema
 /_anyOf/0/items/_oneOf/1/type	@type	/github/workspace/build/annotated/prez/hierarchy/default/schema.yaml
 /_anyOf/0/items/_oneOf/1/members	http://www.w3.org/2004/02/skos/core#member	/github/workspace/build/annotated/prez/hierarchy/default/schema.yaml
 /_anyOf/0/items/_oneOf/2/type	@type	/github/workspace/build/annotated/prez/hierarchy/default/schema.yaml
-/_anyOf/2/base	@base	/github/workspace/build/annotated/prez/hierarchy/default/schema.yaml
-/_anyOf/2/catalogs	@nest	/github/workspace/build/annotated/prez/hierarchy/default/schema.yaml
