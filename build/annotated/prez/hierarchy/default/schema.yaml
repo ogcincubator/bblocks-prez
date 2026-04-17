@@ -1,0 +1,132 @@
+$defs:
+  Text:
+    description: 'Either a plain string or a languageCode -> value mapping for multi-language
+      strings.
+
+      '
+    oneOf:
+    - type: string
+    - type: object
+      propertyNames:
+        pattern: ^[a-zA-Z][a-zA-Z0-9]*(-[a-zA-Z0-9]+)*$
+      additionalProperties:
+        type: string
+  NamedResource:
+    type: object
+    required:
+    - id
+    - name
+    properties:
+      id:
+        type: string
+        x-jsonld-id: '@id'
+      name:
+        $ref: '#/$defs/Text'
+        x-jsonld-id: http://www.w3.org/2004/02/skos/core#prefLabel
+        x-jsonld-container: '@language'
+      definition:
+        $ref: '#/$defs/Text'
+        x-jsonld-id: http://www.w3.org/2004/02/skos/core#definition
+        x-jsonld-container: '@language'
+  Catalog:
+    allOf:
+    - $ref: '#/$defs/NamedResource'
+    properties:
+      type:
+        const: Catalog
+        x-jsonld-id: '@type'
+      items:
+        type: array
+        items:
+          $ref: '#/$defs/SecondLevelEntry'
+        x-jsonld-id: http://purl.org/dc/terms/hasPart
+        x-jsonld-type: '@id'
+  ConceptScheme:
+    allOf:
+    - $ref: '#/$defs/NamedResource'
+    properties:
+      type:
+        const: ConceptScheme
+        x-jsonld-id: '@type'
+      concepts:
+        type: array
+        items:
+          $ref: '#/$defs/Concept'
+        x-jsonld-reverse: skos:inScheme
+  Collection:
+    allOf:
+    - $ref: '#/$defs/NamedResource'
+    required:
+    - type
+    properties:
+      type:
+        const: Collection
+        x-jsonld-id: '@type'
+      members:
+        type: array
+        items:
+          $ref: '#/$defs/Concept'
+        x-jsonld-id: http://www.w3.org/2004/02/skos/core#member
+        x-jsonld-type: '@id'
+  Concept:
+    allOf:
+    - $ref: '#/$defs/NamedResource'
+    properties:
+      type:
+        const: Concept
+        x-jsonld-id: '@type'
+  SecondLevelEntry:
+    allOf:
+    - $ref: '#/$defs/NamedResource'
+    oneOf:
+    - $ref: '#/$defs/ConceptScheme'
+    - $ref: '#/$defs/Collection'
+    - required:
+      - type
+      properties:
+        type:
+          enum:
+          - Dataset
+          - Resource
+          x-jsonld-id: '@type'
+anyOf:
+- $ref: '#/$defs/Catalog'
+- type: array
+  items:
+    $ref: '#/$defs/Catalog'
+- type: object
+  required:
+  - catalogs
+  properties:
+    base:
+      type: string
+      format: uri
+      x-jsonld-id: '@base'
+    catalogs:
+      type: array
+      items:
+        $ref: '#/$defs/Catalog'
+      x-jsonld-id: '@nest'
+x-jsonld-extra-terms:
+  id: '@id'
+  name:
+    x-jsonld-id: http://www.w3.org/2004/02/skos/core#prefLabel
+    x-jsonld-container: '@language'
+  definition:
+    x-jsonld-id: http://www.w3.org/2004/02/skos/core#definition
+    x-jsonld-container: '@language'
+  Catalog: http://www.w3.org/ns/dcat#Catalog
+  ConceptScheme: http://www.w3.org/2004/02/skos/core#ConceptScheme
+  Collection: http://www.w3.org/2004/02/skos/core#Collection
+  Concept: http://www.w3.org/2004/02/skos/core#Concept
+  Dataset: http://www.w3.org/ns/dcat#Dataset
+  Resource: http://www.w3.org/ns/dcat#Resource
+  members:
+    x-jsonld-id: http://www.w3.org/2004/02/skos/core#member
+    x-jsonld-type: '@id'
+  concepts:
+    x-jsonld-reverse: skos:inScheme
+x-jsonld-prefixes:
+  skos: http://www.w3.org/2004/02/skos/core#
+  dcat: http://www.w3.org/ns/dcat#
+  dct: http://purl.org/dc/terms/

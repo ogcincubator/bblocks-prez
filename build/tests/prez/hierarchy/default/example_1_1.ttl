@@ -1,0 +1,24 @@
+@prefix dcat: <http://www.w3.org/ns/dcat#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix ex: <https://example.org/> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+
+ex:my-catalog a dcat:Catalog ;
+    dcterms:hasPart ex:my-scheme ;
+    skos:prefLabel "My Catalog" .
+
+ex:concept-a a skos:Concept ;
+    skos:inScheme ex:my-scheme ;
+    skos:prefLabel "Concept A" ;
+    skos:topConceptOf ex:my-scheme .
+
+ex:concept-b a skos:Concept ;
+    skos:inScheme ex:my-scheme ;
+    skos:prefLabel "Concept B" ;
+    skos:topConceptOf ex:my-scheme .
+
+ex:my-scheme a skos:ConceptScheme ;
+    skos:hasTopConcept ex:concept-a,
+        ex:concept-b ;
+    skos:prefLabel "My Concept Scheme" .
+

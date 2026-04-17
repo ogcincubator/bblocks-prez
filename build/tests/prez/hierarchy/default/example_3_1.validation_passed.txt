@@ -1,0 +1,33 @@
+Validation report for ogc.prez.hierarchy.default - Prez default hierarchy
+Generated 2026-04-17T11:52:40.800201+00:00
+=== Files ===
+Using examples/catalog-with-collection.json from examples
+JSON-LD context is present - uplifting
+Output JSON-LD example_3_1.jsonld created
+Output Turtle example_3_1.ttl created
+=== End Files ===
+
+=== JSON Schema ===
+Validation passed
+=== End JSON Schema ===
+
+=== SHACL ===
+Validation result for _sources/hierarchy/default/shapes.shacl:
+  Validation Report
+  Conforms: True
+  
+Focus nodes for _sources/hierarchy/default/shapes.shacl:
+ - Shape prez:InSchemeShape: <https://example.org/animals/eagle>,<https://example.org/animals/cat>,<https://example.org/animals/dog>
+ - Shape prez:HasPartSubjectShape: ex:animals
+ - Shape prez:TopLevelItemShape: <https://example.org/animals/pets>,<https://example.org/animals/scheme>
+ - Shape prez:ConceptAnchorShape: <https://example.org/animals/eagle>,<https://example.org/animals/cat>,<https://example.org/animals/dog>
+ - Shape prez:PrefLabelShape: <https://example.org/animals/eagle>,<https://example.org/animals/pets>,<https://example.org/animals/dog>,<https://example.org/animals/cat>,<https://example.org/animals/scheme>
+ - Shape prez:AtLeastOneCatalogShape: _:nf510d027382a4d61839e46e2a8ee1600b1
+
+=== End SHACL ===
+
+=== Semantic Uplift ===
+Running pre-uplift jq transform step from inline code
+Running post-uplift sparql-update transform step from inline code
+=== End Semantic Uplift ===
+

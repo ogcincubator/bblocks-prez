@@ -1,0 +1,304 @@
+{
+  "@context": [
+    {
+      "@base": "https://ogcincubator.github.io/bblocks-prez"
+    },
+    {
+      "bblocks": "https://www.opengis.net/def/bblocks/",
+      "rdfs": "http://www.w3.org/2000/01/rdf-schema#",
+      "skos": "http://www.w3.org/2004/02/skos/core#",
+      "dct": "http://purl.org/dc/terms/",
+      "xsd": "http://www.w3.org/2001/XMLSchema#",
+      "prof": "http://www.w3.org/ns/dx/prof/",
+      "dcat": "http://www.w3.org/ns/dcat#",
+      "modspec": "http://www.opengis.net/def/ont/modspec/",
+      "void": "http://rdfs.org/ns/void#",
+      "foaf": "http://xmlns.com/foaf/0.1/",
+      "role": "http://www.w3.org/ns/dx/prof/role/",
+      "shacl": "https://www.w3.org/TR/shacl/",
+      "owl": "http://www.w3.org/2002/07/owl#",
+      "baseURL": "@id",
+      "name": "rdfs:label",
+      "abstract": {
+        "@id": "dct:abstract",
+        "@type": "https://www.w3.org/ns/iana/media-types/text/markdown"
+      },
+      "description": {
+        "@id": "dct:description",
+        "@type": "https://www.w3.org/ns/iana/media-types/text/markdown"
+      },
+      "status": {
+        "@id": "bblocks:status",
+        "@type": "@id",
+        "@context": {
+          "@base": "http://www.opengis.net/def/status/"
+        }
+      },
+      "dateTimeAddition": {
+        "@id": "dct:created",
+        "@type": "xsd:dateTime"
+      },
+      "version": "dct:hasVersion",
+      "dateOfLastChange": {
+        "@id": "dct:modified",
+        "@type": "xsd:date"
+      },
+      "modified": {
+        "@id": "dct:modified",
+        "@type": "xsd:dateTime"
+      },
+      "scope": {
+        "@id": "bblocks:scope",
+        "@type": "@id",
+        "@context": {
+          "@base": "http://www.opengis.net/def/bblocks/scope/"
+        }
+      },
+      "sources": {
+        "@id": "dct:source",
+        "@context": {
+          "title": "rdfs:label",
+          "link": "@id"
+        }
+      },
+      "schema": {
+        "@id": "prof:hasResource",
+        "@type": "@id"
+      },
+      "ldContext": {
+        "@id": "prof:hasResource",
+        "@type": "@id"
+      },
+      "sourceLdContext": {
+        "@id": "bblocks:hasSourceJsonLdContext",
+        "@type": "@id"
+      },
+      "documentation": {
+        "@id": "dct:description",
+        "@type": "@id",
+        "@container": "@index",
+        "@index": "dct:identifier",
+        "@context": {
+          "mediatype": "dct:format",
+          "url": {
+            "@id": "rdfs:isDefinedBy",
+            "@type": "@id"
+          }
+        }
+      },
+      "rdfs:isDefinedBy": {
+        "@type": "@id"
+      },
+      "hasConcepts": {
+        "@reverse": "skos:inScheme"
+      },
+      "dependsOn": {
+        "@id": "bblocks:dependsOn",
+        "@type": "@id"
+      },
+      "isProfileOf": {
+        "@id": "prof:isProfileOf",
+        "@type": "@id"
+      },
+      "tags": "dcat:keyword",
+      "shaclShapes": {
+        "@id": "prof:hasResource",
+        "@type": "@id"
+      },
+      "validationReport": {
+        "@id": "bblocks:hasValidationReport",
+        "@type": "@id"
+      },
+      "validationPassed": "bblocks:validationPassed",
+      "imports": {
+        "@id": "owl:imports",
+        "@type": "@id"
+      },
+      "conformanceClasses": {
+        "@id": "modspec:class",
+        "@type": "@id"
+      },
+      "requirementClasses": {
+        "@id": "modspec:requirementsClass",
+        "@type": "@id"
+      },
+      "sparqlEndpoint": {
+        "@id": "void:sparqlEndpoint",
+        "@type": "@id"
+      },
+      "viewerURL": {
+        "@id": "foaf:homepage",
+        "@type": "@id"
+      },
+      "dct:conformsTo": {
+        "@type": "@id"
+      },
+      "prof:hasRole": {
+        "@type": "@id"
+      },
+      "prof:hasArtifact": {
+        "@type": "@id"
+      },
+      "rdfs:seeAlso": {
+        "@type": "@id"
+      },
+      "ontology": {
+        "@id": "prof:hasResource",
+        "@type": "@id"
+      },
+      "rdfData": {
+        "@id": "prof:hasResource",
+        "@type": "@id"
+      },
+      "links": {
+        "@id": "prof:hasResource",
+        "@context": "https://opengeospatial.github.io/bblocks/annotated-schemas/ogc-utils/json-link/context.jsonld"
+      },
+      "concept": {
+        "@id": "skos:closeMatch",
+        "@type": "@id"
+      },
+      "rdfType": {
+        "@id": "rdfs:subClassOf",
+        "@type": "@id"
+      }
+    }
+  ],
+  "name": "Building Blocks - Prez OGC Blocks",
+  "abstract": "OGC Blocks for working with the [Prez](https://github.com/RDFLib/prez) application.\n",
+  "description": "This collection provides OGC Building Blocks for working with [Prez](https://github.com/RDFLib/prez),\na read-only linked data API and browser built on SPARQL.\n\nBuilding blocks in this collection define JSON input formats and semantic uplift pipelines that\ntransform structured JSON documents into RDF graphs ready for publication via Prez. They rely on\nstandard vocabularies \u2014 primarily DCAT and SKOS \u2014 and follow OGC patterns for schema definition,\nvalidation (JSON Schema + SHACL), and semantic uplift (jq + SPARQL).\n",
+  "modified": "2026-04-17T11:52:40.135669",
+  "tooling": {
+    "bblocks-postprocess": {
+      "commitId": "\"82fc8650df6a65be1e17f7c6440191f0b7c6ccff",
+      "shortCommitId": "\"82fc86",
+      "date": "2026-04-17T09:37:57+00:00\""
+    }
+  },
+  "gitRepository": "https://github.com/ogcincubator/bblocks-prez",
+  "gitHubRepository": "https://github.com/ogcincubator/bblocks-prez/blob/master/",
+  "baseURL": "https://ogcincubator.github.io/bblocks-prez/",
+  "viewerURL": "https://ogcincubator.github.io/bblocks-prez/",
+  "validationReport": "https://ogcincubator.github.io/bblocks-prez/build/tests/report.html",
+  "validationReportJson": "https://ogcincubator.github.io/bblocks-prez/build/tests/report.json",
+  "imports": [
+    "https://opengeospatial.github.io/bblocks/register.json"
+  ],
+  "remoteCacheDir": "https://ogcincubator.github.io/bblocks-prez/build/annotated/_cache",
+  "links": [
+    {
+      "rel": "self",
+      "href": "https://ogcincubator.github.io/bblocks-prez/build/register.json",
+      "type": "application/json",
+      "title": "This Building Blocks Register in JSON format"
+    },
+    {
+      "rel": "self",
+      "href": "https://ogcincubator.github.io/bblocks-prez/build/bblocks.ttl",
+      "type": "text/turtle",
+      "title": "This Building Blocks Register in RDF Turtle format"
+    },
+    {
+      "rel": "self",
+      "href": "https://ogcincubator.github.io/bblocks-prez/build/bblocks.jsonld",
+      "type": "application/ld+json",
+      "title": "This Building Blocks Register in JSON-LD format"
+    }
+  ],
+  "@type": [
+    "skos:ConceptScheme",
+    "dcat:Catalog",
+    "bblocks:BBlocksRegister"
+  ],
+  "skos:prefLabel": "Building Blocks - Prez OGC Blocks",
+  "hasConcepts": [
+    {
+      "itemIdentifier": "ogc.prez.hierarchy.default",
+      "name": "Prez default hierarchy",
+      "abstract": "Helps create a default Prez hierarchy",
+      "status": "under-development",
+      "dateTimeAddition": "2026-04-17T00:00:00Z",
+      "itemClass": "schema",
+      "register": "ogc-building-block-register",
+      "version": "0.1",
+      "link": "https://github.com/RDFLib/prez/raw/refs/heads/main/prez/reference_data/endpoints/data_endpoints_default/default_endpoints.ttl",
+      "tags": [
+        "prez",
+        "hierarchy"
+      ],
+      "shaclShapes": [
+        {
+          "prof:hasArtifact": [
+            "https://ogcincubator.github.io/bblocks-prez/_sources/hierarchy/default/shapes.shacl"
+          ],
+          "rdfs:seeAlso": "bblocks://ogc.prez.hierarchy.default",
+          "prof:hasRole": "role:validation",
+          "dct:format": "text/turtle",
+          "dct:conformsTo": "shacl:"
+        }
+      ],
+      "ldContext": {
+        "prof:hasArtifact": "https://ogcincubator.github.io/bblocks-prez/build/annotated/prez/hierarchy/default/context.jsonld",
+        "prof:hasRole": "role:mapping",
+        "dct:format": "application/ld+json",
+        "dct:conformsTo": "https://www.w3.org/TR/json-ld11/"
+      },
+      "dateOfLastChange": "2026-04-17",
+      "schema": [
+        {
+          "prof:hasArtifact": "https://ogcincubator.github.io/bblocks-prez/build/annotated/prez/hierarchy/default/schema.yaml",
+          "prof:hasRole": "role:schema",
+          "dct:format": "application/yaml",
+          "dct:conformsTo": "https://json-schema.org/draft/2020-12/schema"
+        },
+        {
+          "prof:hasArtifact": "https://ogcincubator.github.io/bblocks-prez/build/annotated/prez/hierarchy/default/schema.json",
+          "prof:hasRole": "role:schema",
+          "dct:format": "application/json",
+          "dct:conformsTo": "https://json-schema.org/draft/2020-12/schema"
+        }
+      ],
+      "sourceSchema": "https://ogcincubator.github.io/bblocks-prez/_sources/hierarchy/default/schema.yaml",
+      "sourceLdContext": "https://ogcincubator.github.io/bblocks-prez/_sources/hierarchy/default/context.jsonld",
+      "resolvedSchemaProperties": "https://ogcincubator.github.io/bblocks-prez/build/annotated/prez/hierarchy/default/resolvedProperties.json",
+      "sourceFiles": "https://ogcincubator.github.io/bblocks-prez/_sources/hierarchy/default/",
+      "rdfData": [],
+      "validationPassed": true,
+      "testOutputs": "https://github.com/ogcincubator/bblocks-prez/blob/master/build/tests/prez/hierarchy/default/",
+      "documentation": {
+        "json-full": {
+          "mediatype": "application/json",
+          "url": "https://ogcincubator.github.io/bblocks-prez/build/generateddocs/json-full/prez/hierarchy/default/index.json"
+        },
+        "markdown": {
+          "mediatype": "text/markdown",
+          "url": "https://ogcincubator.github.io/bblocks-prez/build/generateddocs/markdown/prez/hierarchy/default/index.md"
+        },
+        "bblocks-viewer": {
+          "mediatype": "text/html",
+          "url": "https://ogcincubator.github.io/bblocks-prez/bblock/ogc.prez.hierarchy.default"
+        }
+      },
+      "@id": "bblocks://ogc.prez.hierarchy.default",
+      "@type": [
+        "bblocks:Schema",
+        "skos:Concept",
+        "dcat:Dataset",
+        "bblocks:BBlock"
+      ],
+      "skos:prefLabel": "Prez default hierarchy",
+      "openAPIDocument": null,
+      "ontology": null,
+      "dependsOn": null,
+      "isProfileOf": null,
+      "skos:topConceptOf": {
+        "@id": "https://ogcincubator.github.io/bblocks-prez/"
+      }
+    }
+  ],
+  "skos:hasTopConcept": [
+    {
+      "@id": "bblocks://ogc.prez.hierarchy.default"
+    }
+  ]
+}

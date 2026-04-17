@@ -1,0 +1,87 @@
+[
+  {
+    "id": "https://example.org/env",
+    "name": {
+      "en": "Environmental Data",
+      "es": "Datos Ambientales"
+    },
+    "items": [
+      {
+        "id": "https://example.org/env/habitats",
+        "name": {
+          "en": "Habitat Types",
+          "es": "Tipos de H\u00e1bitat"
+        },
+        "definition": "Classification of natural habitats.",
+        "concepts": [
+          {
+            "id": "https://example.org/env/habitats/forest",
+            "name": {
+              "en": "Forest",
+              "es": "Bosque"
+            }
+          },
+          {
+            "id": "https://example.org/env/habitats/wetland",
+            "name": {
+              "en": "Wetland",
+              "es": "Humedal"
+            }
+          },
+          {
+            "id": "https://example.org/env/habitats/marine",
+            "name": {
+              "en": "Marine",
+              "es": "Marino"
+            }
+          }
+        ]
+      },
+      {
+        "id": "https://example.org/env/protected",
+        "name": {
+          "en": "Protected Habitats",
+          "es": "H\u00e1bitats Protegidos"
+        },
+        "type": "Collection",
+        "members": [
+          {
+            "id": "https://example.org/env/habitats/forest",
+            "name": {
+              "en": "Forest",
+              "es": "Bosque"
+            }
+          },
+          {
+            "id": "https://example.org/env/habitats/wetland",
+            "name": {
+              "en": "Wetland",
+              "es": "Humedal"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "https://example.org/species",
+    "name": "Species Registry",
+    "items": [
+      {
+        "id": "https://example.org/species/mammals",
+        "name": "Mammals",
+        "definition": "Registry of mammal species.",
+        "concepts": [
+          {
+            "id": "https://example.org/species/mammals/bear",
+            "name": "Bear"
+          },
+          {
+            "id": "https://example.org/species/mammals/wolf",
+            "name": "Wolf"
+          }
+        ]
+      }
+    ]
+  }
+]

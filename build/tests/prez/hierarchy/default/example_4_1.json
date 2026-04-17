@@ -1,0 +1,53 @@
+{
+  "id": "https://example.org/land-cover",
+  "name": "Land Cover Catalog",
+  "items": [
+    {
+      "id": "https://example.org/land-cover/types",
+      "name": "Land Cover Types",
+      "definition": "LCCS-based classification of land cover categories.",
+      "concepts": [
+        {
+          "id": "https://example.org/land-cover/types/cropland",
+          "name": "Cropland"
+        },
+        {
+          "id": "https://example.org/land-cover/types/forest",
+          "name": "Forest"
+        },
+        {
+          "id": "https://example.org/land-cover/types/urban",
+          "name": "Urban"
+        },
+        {
+          "id": "https://example.org/land-cover/types/water",
+          "name": "Water Bodies"
+        }
+      ]
+    },
+    {
+      "id": "https://example.org/land-cover/urban-types",
+      "name": "Urban Land Cover",
+      "type": "Collection",
+      "definition": "Subset of land cover types applicable to urban areas.",
+      "members": [
+        {
+          "id": "https://example.org/land-cover/types/urban",
+          "name": "Urban"
+        }
+      ]
+    },
+    {
+      "id": "https://example.org/land-cover/global-2020",
+      "name": "Global Land Cover Map 2020",
+      "type": "Dataset",
+      "definition": "30m resolution global land cover product derived from Sentinel-2 imagery."
+    },
+    {
+      "id": "https://example.org/land-cover/lccs-spec",
+      "name": "FAO LCCS Specification",
+      "type": "Resource",
+      "definition": "Land Cover Classification System specification published by FAO."
+    }
+  ]
+}

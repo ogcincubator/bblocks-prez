@@ -1,0 +1,53 @@
+@prefix dcat: <http://www.w3.org/ns/dcat#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix ex: <https://example.org/> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+
+ex:land-cover a dcat:Catalog ;
+    dcterms:hasPart <https://example.org/land-cover/global-2020>,
+        <https://example.org/land-cover/lccs-spec>,
+        <https://example.org/land-cover/types>,
+        <https://example.org/land-cover/urban-types> ;
+    skos:prefLabel "Land Cover Catalog" .
+
+<https://example.org/land-cover/global-2020> a dcat:Dataset ;
+    skos:definition "30m resolution global land cover product derived from Sentinel-2 imagery." ;
+    skos:prefLabel "Global Land Cover Map 2020" .
+
+<https://example.org/land-cover/lccs-spec> a dcat:Resource ;
+    skos:definition "Land Cover Classification System specification published by FAO." ;
+    skos:prefLabel "FAO LCCS Specification" .
+
+<https://example.org/land-cover/types/cropland> a skos:Concept ;
+    skos:inScheme <https://example.org/land-cover/types> ;
+    skos:prefLabel "Cropland" ;
+    skos:topConceptOf <https://example.org/land-cover/types> .
+
+<https://example.org/land-cover/types/forest> a skos:Concept ;
+    skos:inScheme <https://example.org/land-cover/types> ;
+    skos:prefLabel "Forest" ;
+    skos:topConceptOf <https://example.org/land-cover/types> .
+
+<https://example.org/land-cover/types/water> a skos:Concept ;
+    skos:inScheme <https://example.org/land-cover/types> ;
+    skos:prefLabel "Water Bodies" ;
+    skos:topConceptOf <https://example.org/land-cover/types> .
+
+<https://example.org/land-cover/urban-types> a skos:Collection ;
+    skos:definition "Subset of land cover types applicable to urban areas." ;
+    skos:member <https://example.org/land-cover/types/urban> ;
+    skos:prefLabel "Urban Land Cover" .
+
+<https://example.org/land-cover/types/urban> a skos:Concept ;
+    skos:inScheme <https://example.org/land-cover/types> ;
+    skos:prefLabel "Urban" ;
+    skos:topConceptOf <https://example.org/land-cover/types> .
+
+<https://example.org/land-cover/types> a skos:ConceptScheme ;
+    skos:definition "LCCS-based classification of land cover categories." ;
+    skos:hasTopConcept <https://example.org/land-cover/types/cropland>,
+        <https://example.org/land-cover/types/forest>,
+        <https://example.org/land-cover/types/urban>,
+        <https://example.org/land-cover/types/water> ;
+    skos:prefLabel "Land Cover Types" .
+

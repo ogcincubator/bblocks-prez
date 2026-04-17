@@ -1,0 +1,33 @@
+Validation report for ogc.prez.hierarchy.default - Prez default hierarchy
+Generated 2026-04-17T11:52:40.878432+00:00
+=== Files ===
+Using examples/mixed-catalog.json from examples
+JSON-LD context is present - uplifting
+Output JSON-LD example_4_1.jsonld created
+Output Turtle example_4_1.ttl created
+=== End Files ===
+
+=== JSON Schema ===
+Validation passed
+=== End JSON Schema ===
+
+=== SHACL ===
+Validation result for _sources/hierarchy/default/shapes.shacl:
+  Validation Report
+  Conforms: True
+  
+Focus nodes for _sources/hierarchy/default/shapes.shacl:
+ - Shape prez:InSchemeShape: <https://example.org/land-cover/types/urban>,<https://example.org/land-cover/types/cropland>,<https://example.org/land-cover/types/water>,<https://example.org/land-cover/types/forest>
+ - Shape prez:HasPartSubjectShape: ex:land-cover
+ - Shape prez:TopLevelItemShape: <https://example.org/land-cover/global-2020>,<https://example.org/land-cover/lccs-spec>,<https://example.org/land-cover/urban-types>,<https://example.org/land-cover/types>
+ - Shape prez:ConceptAnchorShape: <https://example.org/land-cover/types/urban>,<https://example.org/land-cover/types/cropland>,<https://example.org/land-cover/types/water>,<https://example.org/land-cover/types/forest>
+ - Shape prez:PrefLabelShape: <https://example.org/land-cover/global-2020>,<https://example.org/land-cover/types/urban>,<https://example.org/land-cover/types/cropland>,<https://example.org/land-cover/types/water>,<https://example.org/land-cover/urban-types>,<https://example.org/land-cover/types/forest>,<https://example.org/land-cover/lccs-spec>,<https://example.org/land-cover/types>
+ - Shape prez:AtLeastOneCatalogShape: _:nf510d027382a4d61839e46e2a8ee1600b1
+
+=== End SHACL ===
+
+=== Semantic Uplift ===
+Running pre-uplift jq transform step from inline code
+Running post-uplift sparql-update transform step from inline code
+=== End Semantic Uplift ===
+

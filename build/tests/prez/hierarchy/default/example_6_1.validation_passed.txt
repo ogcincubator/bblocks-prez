@@ -1,0 +1,33 @@
+Validation report for ogc.prez.hierarchy.default - Prez default hierarchy
+Generated 2026-04-17T11:52:41.084222+00:00
+=== Files ===
+Using examples/multi-catalog.json from examples
+JSON-LD context is present - uplifting
+Output JSON-LD example_6_1.jsonld created
+Output Turtle example_6_1.ttl created
+=== End Files ===
+
+=== JSON Schema ===
+Validation passed
+=== End JSON Schema ===
+
+=== SHACL ===
+Validation result for _sources/hierarchy/default/shapes.shacl:
+  Validation Report
+  Conforms: True
+  
+Focus nodes for _sources/hierarchy/default/shapes.shacl:
+ - Shape prez:InSchemeShape: <https://example.org/species/mammals/wolf>,<https://example.org/env/habitats/forest>,<https://example.org/env/habitats/wetland>,<https://example.org/env/habitats/marine>,<https://example.org/species/mammals/bear>
+ - Shape prez:HasPartSubjectShape: ex:env,ex:species
+ - Shape prez:TopLevelItemShape: <https://example.org/env/habitats>,<https://example.org/species/mammals>,<https://example.org/env/protected>
+ - Shape prez:ConceptAnchorShape: <https://example.org/species/mammals/wolf>,<https://example.org/env/habitats/forest>,<https://example.org/env/habitats/wetland>,<https://example.org/env/habitats/marine>,<https://example.org/species/mammals/bear>
+ - Shape prez:PrefLabelShape: <https://example.org/species/mammals/wolf>,<https://example.org/env/habitats/forest>,<https://example.org/env/habitats>,<https://example.org/env/habitats/wetland>,<https://example.org/env/habitats/marine>,<https://example.org/species/mammals/bear>,<https://example.org/env/protected>,<https://example.org/species/mammals>
+ - Shape prez:AtLeastOneCatalogShape: _:nf510d027382a4d61839e46e2a8ee1600b1
+
+=== End SHACL ===
+
+=== Semantic Uplift ===
+Running pre-uplift jq transform step from inline code
+Running post-uplift sparql-update transform step from inline code
+=== End Semantic Uplift ===
+

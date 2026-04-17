@@ -1,0 +1,137 @@
+{
+  "@context": [
+    {
+      "ex": "https://example.org/"
+    },
+    "https://ogcincubator.github.io/bblocks-prez/build/annotated/prez/hierarchy/default/context.jsonld"
+  ],
+  "@graph": [
+    {
+      "id": "https://example.org/climate",
+      "name": {
+        "en": "Climate Observations",
+        "fr": "Observations Climatiques"
+      },
+      "items": [
+        {
+          "id": "https://example.org/climate/variables",
+          "name": "Climate Variables",
+          "definition": "Essential climate variables as defined by GCOS.",
+          "concepts": [
+            {
+              "id": "https://example.org/climate/variables/temperature",
+              "name": "Air Temperature",
+              "type": "Concept"
+            },
+            {
+              "id": "https://example.org/climate/variables/precipitation",
+              "name": "Precipitation",
+              "type": "Concept"
+            },
+            {
+              "id": "https://example.org/climate/variables/humidity",
+              "name": "Relative Humidity",
+              "type": "Concept"
+            }
+          ],
+          "type": "ConceptScheme"
+        },
+        {
+          "id": "https://example.org/climate/surface-vars",
+          "name": "Surface Variables",
+          "type": "Collection",
+          "definition": "Climate variables measured at surface level.",
+          "members": [
+            {
+              "id": "https://example.org/climate/variables/temperature",
+              "name": "Air Temperature",
+              "type": "Concept"
+            },
+            {
+              "id": "https://example.org/climate/variables/precipitation",
+              "name": "Precipitation",
+              "type": "Concept"
+            }
+          ]
+        },
+        {
+          "id": "https://example.org/climate/era5",
+          "name": "ERA5 Reanalysis",
+          "type": "Dataset",
+          "definition": "ECMWF global climate reanalysis dataset from 1940 to present."
+        },
+        {
+          "id": "https://example.org/climate/gcos-spec",
+          "name": "GCOS Essential Climate Variables",
+          "type": "Resource",
+          "definition": "Official GCOS specification for essential climate variables."
+        }
+      ],
+      "type": "Catalog"
+    },
+    {
+      "id": "https://example.org/hydrology",
+      "name": "Hydrological Data",
+      "items": [
+        {
+          "id": "https://example.org/hydrology/features",
+          "name": "Hydrological Features",
+          "concepts": [
+            {
+              "id": "https://example.org/hydrology/features/river",
+              "name": "River",
+              "type": "Concept"
+            },
+            {
+              "id": "https://example.org/hydrology/features/lake",
+              "name": "Lake",
+              "type": "Concept"
+            },
+            {
+              "id": "https://example.org/hydrology/features/aquifer",
+              "name": "Aquifer",
+              "type": "Concept"
+            }
+          ],
+          "type": "ConceptScheme"
+        },
+        {
+          "id": "https://example.org/hydrology/surface-water",
+          "name": "Surface Water Bodies",
+          "type": "Collection",
+          "members": [
+            {
+              "id": "https://example.org/hydrology/features/river",
+              "name": "River",
+              "type": "Concept"
+            },
+            {
+              "id": "https://example.org/hydrology/features/lake",
+              "name": "Lake",
+              "type": "Concept"
+            }
+          ]
+        },
+        {
+          "id": "https://example.org/hydrology/gsim",
+          "name": "GSIM Streamflow Dataset",
+          "type": "Dataset",
+          "definition": "Global Streamflow Indices and Metadata archive."
+        },
+        {
+          "id": "https://example.org/hydrology/hydrosheds",
+          "name": "HydroSHEDS",
+          "type": "Dataset",
+          "definition": "Hydrographic data derived from SRTM elevation data at multiple scales."
+        },
+        {
+          "id": "https://example.org/hydrology/wmo-guide",
+          "name": "WMO Hydrological Practices Guide",
+          "type": "Resource",
+          "definition": "WMO reference guide for hydrological observation and data management."
+        }
+      ],
+      "type": "Catalog"
+    }
+  ]
+}

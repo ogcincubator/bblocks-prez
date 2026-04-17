@@ -1,0 +1,408 @@
+
+
+<!doctype html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Building Blocks validation report</title>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+        <style>
+            .entry-message {
+                white-space: pre-wrap;
+                font-size: 80%;
+                line-height: 1.1;
+            }
+            *[data-bs-toggle] .caret {
+                display: inline-block;
+                transform: rotate(90deg);
+                transition: transform 0.25s;
+            }
+            *[data-bs-toggle].collapsed .caret {
+                transform: rotate(0deg);
+            }
+            .highlighted {
+                animation: highlight-border 3500ms ease-out;
+            }
+            .highlighted h2 button {
+                animation: highlight 3500ms ease-out;
+            }
+            @keyframes highlight {
+                0% {
+                    background: #ffff90;
+                }
+                100% {
+                    background: var(--bs-accordion-active-bg);
+                }
+            }
+            @keyframes highlight-border {
+                0% {
+                    border-color: red;
+                    border-width: 2px;
+                }
+                100% {
+                    border-color: var(--bs-accordion-border-color);
+                    border-width: var(--bs-accordion-border-width);
+                }
+            }
+            .anchor {
+                color: black;
+                opacity: 0;
+                text-decoration: none;
+                margin-left: 0.5em;
+                margin-right: 0.5em;
+            }
+            .anchor-container:hover .anchor {
+                opacity: 60%;
+            }
+            .anchor-container:hover .anchor:hover {
+                opacity: 100%;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="container">
+            <h1 class="title">Building blocks validation report</h1>
+            <small class="datetime">Generated at 2026-04-17T11:52:41.104893+00:00</small>
+                <p class="summary fw-semibold text-success">
+                    Number of passing building blocks: 1 / 1 (100%)
+                </p>
+            <div class="text-end small" id="expand-collapse">
+                <a href="#" class="expand-all">Expand all</a>
+                <a href="#" class="collapse-all">Collapse all</a>
+            </div>
+                <div class="accordion mt-2" id="bblock-reports">
+                        <div class="accordion-item bblock-report" data-bblock-id="ogc.prez.hierarchy.default" id="bblock-ogc.prez.hierarchy.default">
+                            <h2 class="accordion-header bblock-title anchor-container">
+                                <button class="accordion-button collapsed" type="button"
+                                    data-bs-toggle="collapse"
+                                    data-bs-target="#bblock-collapse-ogc\.prez\.hierarchy\.default">
+                                    <div class="flex-fill">
+                                        Prez default hierarchy
+                                        <small class="ms-2 bblock-id">ogc.prez.hierarchy.default</small>
+                                        <a class="anchor" href="#bblock-ogc.prez.hierarchy.default">¶</a>
+                                    </div>
+
+                                    <span class="badge text-bg-success me-2">
+                                            Passed
+                                            (100% passed)
+                                    </span>
+                                </button>
+                            </h2>
+                            <div class="accordion-collapse collapse " id="bblock-collapse-ogc.prez.hierarchy.default">
+                                <div class="accordion-body">
+                                        <p class="summary fw-semibold text-success">
+                                            Test passed: 6 / 6
+                                        </p>
+                                        <div class="card mb-2 validation-item " id="item-ogc.prez.hierarchy.default-1">
+                                            <div class="card-body">
+                                                <div class="card-title mb-0 anchor-container">
+                                                    <button type="button" class="btn btn-sm btn-primary collapsed"
+                                                            data-bs-toggle="collapse" data-bs-target="#uid-1"
+                                                            aria-expanded="false" aria-controls="uid-1"
+                                                            style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .75rem;">
+                                                        <i class="bi bi-caret-right-fill caret"></i>
+                                                        Details
+                                                    </button>
+                                                    <a href="prez/hierarchy/default/example_1_1.json" target="_blank">example_1_1.json</a>
+                                                    <span class="badge bg-secondary example">Example</span>
+                                                    <a class="anchor" href="#item-ogc.prez.hierarchy.default-1">¶</a>
+                                                    <div class="float-end">
+                                                            <span class="badge text-bg-success me-2">Passed</span>
+                                                    </div>
+                                                </div>
+                                                <div class="card-text mt-2 validation-text collapse" id="uid-1">
+                                                    <div class="validation-text-inner">
+                                                                    <div class="font-monospace subsection-title mt-2">Files</div>
+                                                                    <div class="font-monospace entry-message section-files ">Using examples/minimal.json from examples</div>
+                                                                    <div class="font-monospace entry-message section-files ">JSON-LD context is present - uplifting</div>
+                                                                    <div class="font-monospace entry-message section-files ">Output JSON-LD example_1_1.jsonld created</div>
+                                                                    <div class="font-monospace entry-message section-files ">Output Turtle example_1_1.ttl created</div>
+                                                                    <div class="font-monospace subsection-title mt-2">JSON Schema</div>
+                                                                    <div class="font-monospace entry-message section-json_schema ">Validation passed</div>
+                                                                    <div class="font-monospace subsection-title mt-2">SHACL</div>
+                                                                    <div class="font-monospace entry-message section-shacl ">Validation result for _sources/hierarchy/default/shapes.shacl:
+  Validation Report
+  Conforms: True
+  </div>
+                                                                    <div class="font-monospace entry-message section-shacl ">Focus nodes for _sources/hierarchy/default/shapes.shacl:
+ - Shape prez:InSchemeShape: ex:concept-b,ex:concept-a
+ - Shape prez:HasPartSubjectShape: ex:my-catalog
+ - Shape prez:TopLevelItemShape: ex:my-scheme
+ - Shape prez:ConceptAnchorShape: ex:concept-b,ex:concept-a
+ - Shape prez:PrefLabelShape: ex:concept-b,ex:my-scheme,ex:concept-a
+ - Shape prez:AtLeastOneCatalogShape: _:nf510d027382a4d61839e46e2a8ee1600b1
+</div>
+                                                                    <div class="font-monospace subsection-title mt-2">Semantic Uplift</div>
+                                                                    <div class="font-monospace entry-message section-semantic_uplift ">Running pre-uplift jq transform step from inline code</div>
+                                                                    <div class="font-monospace entry-message section-semantic_uplift ">Running post-uplift sparql-update transform step from inline code</div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="card mb-2 validation-item " id="item-ogc.prez.hierarchy.default-2">
+                                            <div class="card-body">
+                                                <div class="card-title mb-0 anchor-container">
+                                                    <button type="button" class="btn btn-sm btn-primary collapsed"
+                                                            data-bs-toggle="collapse" data-bs-target="#uid-2"
+                                                            aria-expanded="false" aria-controls="uid-2"
+                                                            style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .75rem;">
+                                                        <i class="bi bi-caret-right-fill caret"></i>
+                                                        Details
+                                                    </button>
+                                                    <a href="prez/hierarchy/default/example_2_1.json" target="_blank">example_2_1.json</a>
+                                                    <span class="badge bg-secondary example">Example</span>
+                                                    <a class="anchor" href="#item-ogc.prez.hierarchy.default-2">¶</a>
+                                                    <div class="float-end">
+                                                            <span class="badge text-bg-success me-2">Passed</span>
+                                                    </div>
+                                                </div>
+                                                <div class="card-text mt-2 validation-text collapse" id="uid-2">
+                                                    <div class="validation-text-inner">
+                                                                    <div class="font-monospace subsection-title mt-2">Files</div>
+                                                                    <div class="font-monospace entry-message section-files ">Using examples/minimal-with-base.json from examples</div>
+                                                                    <div class="font-monospace entry-message section-files ">JSON-LD context is present - uplifting</div>
+                                                                    <div class="font-monospace entry-message section-files ">Output JSON-LD example_2_1.jsonld created</div>
+                                                                    <div class="font-monospace entry-message section-files ">Output Turtle example_2_1.ttl created</div>
+                                                                    <div class="font-monospace subsection-title mt-2">JSON Schema</div>
+                                                                    <div class="font-monospace entry-message section-json_schema ">Validation passed</div>
+                                                                    <div class="font-monospace subsection-title mt-2">SHACL</div>
+                                                                    <div class="font-monospace entry-message section-shacl ">Validation result for _sources/hierarchy/default/shapes.shacl:
+  Validation Report
+  Conforms: True
+  </div>
+                                                                    <div class="font-monospace entry-message section-shacl ">Focus nodes for _sources/hierarchy/default/shapes.shacl:
+ - Shape prez:InSchemeShape: ex:concept-b,ex:concept-a
+ - Shape prez:HasPartSubjectShape: ex:my-catalog
+ - Shape prez:TopLevelItemShape: ex:my-scheme
+ - Shape prez:ConceptAnchorShape: ex:concept-b,ex:concept-a
+ - Shape prez:PrefLabelShape: ex:concept-b,ex:my-scheme,ex:concept-a
+ - Shape prez:AtLeastOneCatalogShape: _:nf510d027382a4d61839e46e2a8ee1600b1
+</div>
+                                                                    <div class="font-monospace subsection-title mt-2">Semantic Uplift</div>
+                                                                    <div class="font-monospace entry-message section-semantic_uplift ">Running pre-uplift jq transform step from inline code</div>
+                                                                    <div class="font-monospace entry-message section-semantic_uplift ">Running post-uplift sparql-update transform step from inline code</div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="card mb-2 validation-item " id="item-ogc.prez.hierarchy.default-3">
+                                            <div class="card-body">
+                                                <div class="card-title mb-0 anchor-container">
+                                                    <button type="button" class="btn btn-sm btn-primary collapsed"
+                                                            data-bs-toggle="collapse" data-bs-target="#uid-3"
+                                                            aria-expanded="false" aria-controls="uid-3"
+                                                            style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .75rem;">
+                                                        <i class="bi bi-caret-right-fill caret"></i>
+                                                        Details
+                                                    </button>
+                                                    <a href="prez/hierarchy/default/example_3_1.json" target="_blank">example_3_1.json</a>
+                                                    <span class="badge bg-secondary example">Example</span>
+                                                    <a class="anchor" href="#item-ogc.prez.hierarchy.default-3">¶</a>
+                                                    <div class="float-end">
+                                                            <span class="badge text-bg-success me-2">Passed</span>
+                                                    </div>
+                                                </div>
+                                                <div class="card-text mt-2 validation-text collapse" id="uid-3">
+                                                    <div class="validation-text-inner">
+                                                                    <div class="font-monospace subsection-title mt-2">Files</div>
+                                                                    <div class="font-monospace entry-message section-files ">Using examples/catalog-with-collection.json from examples</div>
+                                                                    <div class="font-monospace entry-message section-files ">JSON-LD context is present - uplifting</div>
+                                                                    <div class="font-monospace entry-message section-files ">Output JSON-LD example_3_1.jsonld created</div>
+                                                                    <div class="font-monospace entry-message section-files ">Output Turtle example_3_1.ttl created</div>
+                                                                    <div class="font-monospace subsection-title mt-2">JSON Schema</div>
+                                                                    <div class="font-monospace entry-message section-json_schema ">Validation passed</div>
+                                                                    <div class="font-monospace subsection-title mt-2">SHACL</div>
+                                                                    <div class="font-monospace entry-message section-shacl ">Validation result for _sources/hierarchy/default/shapes.shacl:
+  Validation Report
+  Conforms: True
+  </div>
+                                                                    <div class="font-monospace entry-message section-shacl ">Focus nodes for _sources/hierarchy/default/shapes.shacl:
+ - Shape prez:InSchemeShape: &lt;https://example.org/animals/eagle&gt;,&lt;https://example.org/animals/cat&gt;,&lt;https://example.org/animals/dog&gt;
+ - Shape prez:HasPartSubjectShape: ex:animals
+ - Shape prez:TopLevelItemShape: &lt;https://example.org/animals/pets&gt;,&lt;https://example.org/animals/scheme&gt;
+ - Shape prez:ConceptAnchorShape: &lt;https://example.org/animals/eagle&gt;,&lt;https://example.org/animals/cat&gt;,&lt;https://example.org/animals/dog&gt;
+ - Shape prez:PrefLabelShape: &lt;https://example.org/animals/eagle&gt;,&lt;https://example.org/animals/pets&gt;,&lt;https://example.org/animals/dog&gt;,&lt;https://example.org/animals/cat&gt;,&lt;https://example.org/animals/scheme&gt;
+ - Shape prez:AtLeastOneCatalogShape: _:nf510d027382a4d61839e46e2a8ee1600b1
+</div>
+                                                                    <div class="font-monospace subsection-title mt-2">Semantic Uplift</div>
+                                                                    <div class="font-monospace entry-message section-semantic_uplift ">Running pre-uplift jq transform step from inline code</div>
+                                                                    <div class="font-monospace entry-message section-semantic_uplift ">Running post-uplift sparql-update transform step from inline code</div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="card mb-2 validation-item " id="item-ogc.prez.hierarchy.default-4">
+                                            <div class="card-body">
+                                                <div class="card-title mb-0 anchor-container">
+                                                    <button type="button" class="btn btn-sm btn-primary collapsed"
+                                                            data-bs-toggle="collapse" data-bs-target="#uid-4"
+                                                            aria-expanded="false" aria-controls="uid-4"
+                                                            style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .75rem;">
+                                                        <i class="bi bi-caret-right-fill caret"></i>
+                                                        Details
+                                                    </button>
+                                                    <a href="prez/hierarchy/default/example_4_1.json" target="_blank">example_4_1.json</a>
+                                                    <span class="badge bg-secondary example">Example</span>
+                                                    <a class="anchor" href="#item-ogc.prez.hierarchy.default-4">¶</a>
+                                                    <div class="float-end">
+                                                            <span class="badge text-bg-success me-2">Passed</span>
+                                                    </div>
+                                                </div>
+                                                <div class="card-text mt-2 validation-text collapse" id="uid-4">
+                                                    <div class="validation-text-inner">
+                                                                    <div class="font-monospace subsection-title mt-2">Files</div>
+                                                                    <div class="font-monospace entry-message section-files ">Using examples/mixed-catalog.json from examples</div>
+                                                                    <div class="font-monospace entry-message section-files ">JSON-LD context is present - uplifting</div>
+                                                                    <div class="font-monospace entry-message section-files ">Output JSON-LD example_4_1.jsonld created</div>
+                                                                    <div class="font-monospace entry-message section-files ">Output Turtle example_4_1.ttl created</div>
+                                                                    <div class="font-monospace subsection-title mt-2">JSON Schema</div>
+                                                                    <div class="font-monospace entry-message section-json_schema ">Validation passed</div>
+                                                                    <div class="font-monospace subsection-title mt-2">SHACL</div>
+                                                                    <div class="font-monospace entry-message section-shacl ">Validation result for _sources/hierarchy/default/shapes.shacl:
+  Validation Report
+  Conforms: True
+  </div>
+                                                                    <div class="font-monospace entry-message section-shacl ">Focus nodes for _sources/hierarchy/default/shapes.shacl:
+ - Shape prez:InSchemeShape: &lt;https://example.org/land-cover/types/urban&gt;,&lt;https://example.org/land-cover/types/cropland&gt;,&lt;https://example.org/land-cover/types/water&gt;,&lt;https://example.org/land-cover/types/forest&gt;
+ - Shape prez:HasPartSubjectShape: ex:land-cover
+ - Shape prez:TopLevelItemShape: &lt;https://example.org/land-cover/global-2020&gt;,&lt;https://example.org/land-cover/lccs-spec&gt;,&lt;https://example.org/land-cover/urban-types&gt;,&lt;https://example.org/land-cover/types&gt;
+ - Shape prez:ConceptAnchorShape: &lt;https://example.org/land-cover/types/urban&gt;,&lt;https://example.org/land-cover/types/cropland&gt;,&lt;https://example.org/land-cover/types/water&gt;,&lt;https://example.org/land-cover/types/forest&gt;
+ - Shape prez:PrefLabelShape: &lt;https://example.org/land-cover/global-2020&gt;,&lt;https://example.org/land-cover/types/urban&gt;,&lt;https://example.org/land-cover/types/cropland&gt;,&lt;https://example.org/land-cover/types/water&gt;,&lt;https://example.org/land-cover/urban-types&gt;,&lt;https://example.org/land-cover/types/forest&gt;,&lt;https://example.org/land-cover/lccs-spec&gt;,&lt;https://example.org/land-cover/types&gt;
+ - Shape prez:AtLeastOneCatalogShape: _:nf510d027382a4d61839e46e2a8ee1600b1
+</div>
+                                                                    <div class="font-monospace subsection-title mt-2">Semantic Uplift</div>
+                                                                    <div class="font-monospace entry-message section-semantic_uplift ">Running pre-uplift jq transform step from inline code</div>
+                                                                    <div class="font-monospace entry-message section-semantic_uplift ">Running post-uplift sparql-update transform step from inline code</div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="card mb-2 validation-item " id="item-ogc.prez.hierarchy.default-5">
+                                            <div class="card-body">
+                                                <div class="card-title mb-0 anchor-container">
+                                                    <button type="button" class="btn btn-sm btn-primary collapsed"
+                                                            data-bs-toggle="collapse" data-bs-target="#uid-5"
+                                                            aria-expanded="false" aria-controls="uid-5"
+                                                            style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .75rem;">
+                                                        <i class="bi bi-caret-right-fill caret"></i>
+                                                        Details
+                                                    </button>
+                                                    <a href="prez/hierarchy/default/example_5_1.json" target="_blank">example_5_1.json</a>
+                                                    <span class="badge bg-secondary example">Example</span>
+                                                    <a class="anchor" href="#item-ogc.prez.hierarchy.default-5">¶</a>
+                                                    <div class="float-end">
+                                                            <span class="badge text-bg-success me-2">Passed</span>
+                                                    </div>
+                                                </div>
+                                                <div class="card-text mt-2 validation-text collapse" id="uid-5">
+                                                    <div class="validation-text-inner">
+                                                                    <div class="font-monospace subsection-title mt-2">Files</div>
+                                                                    <div class="font-monospace entry-message section-files ">Using examples/mixed-multi-catalog.json from examples</div>
+                                                                    <div class="font-monospace entry-message section-files ">JSON-LD context is present - uplifting</div>
+                                                                    <div class="font-monospace entry-message section-files ">Output JSON-LD example_5_1.jsonld created</div>
+                                                                    <div class="font-monospace entry-message section-files ">Output Turtle example_5_1.ttl created</div>
+                                                                    <div class="font-monospace subsection-title mt-2">JSON Schema</div>
+                                                                    <div class="font-monospace entry-message section-json_schema ">Validation passed</div>
+                                                                    <div class="font-monospace subsection-title mt-2">SHACL</div>
+                                                                    <div class="font-monospace entry-message section-shacl ">Validation result for _sources/hierarchy/default/shapes.shacl:
+  Validation Report
+  Conforms: True
+  </div>
+                                                                    <div class="font-monospace entry-message section-shacl ">Focus nodes for _sources/hierarchy/default/shapes.shacl:
+ - Shape prez:InSchemeShape: &lt;https://example.org/hydrology/features/river&gt;,&lt;https://example.org/climate/variables/temperature&gt;,&lt;https://example.org/climate/variables/humidity&gt;,&lt;https://example.org/climate/variables/precipitation&gt;,&lt;https://example.org/hydrology/features/aquifer&gt;,&lt;https://example.org/hydrology/features/lake&gt;
+ - Shape prez:HasPartSubjectShape: ex:climate,ex:hydrology
+ - Shape prez:TopLevelItemShape: &lt;https://example.org/climate/variables&gt;,&lt;https://example.org/hydrology/surface-water&gt;,&lt;https://example.org/hydrology/features&gt;,&lt;https://example.org/hydrology/wmo-guide&gt;,&lt;https://example.org/hydrology/gsim&gt;,&lt;https://example.org/hydrology/hydrosheds&gt;,&lt;https://example.org/climate/era5&gt;,&lt;https://example.org/climate/gcos-spec&gt;,&lt;https://example.org/climate/surface-vars&gt;
+ - Shape prez:ConceptAnchorShape: &lt;https://example.org/hydrology/features/river&gt;,&lt;https://example.org/climate/variables/temperature&gt;,&lt;https://example.org/climate/variables/humidity&gt;,&lt;https://example.org/climate/variables/precipitation&gt;,&lt;https://example.org/hydrology/features/aquifer&gt;,&lt;https://example.org/hydrology/features/lake&gt;
+ - Shape prez:PrefLabelShape: &lt;https://example.org/climate/variables&gt;,&lt;https://example.org/hydrology/surface-water&gt;,&lt;https://example.org/hydrology/features/river&gt;,&lt;https://example.org/hydrology/features&gt;,&lt;https://example.org/climate/variables/temperature&gt;,&lt;https://example.org/hydrology/wmo-guide&gt;,&lt;https://example.org/hydrology/gsim&gt;,&lt;https://example.org/hydrology/features/aquifer&gt;,&lt;https://example.org/hydrology/features/lake&gt;,&lt;https://example.org/hydrology/hydrosheds&gt;,&lt;https://example.org/climate/era5&gt;,&lt;https://example.org/climate/gcos-spec&gt;,&lt;https://example.org/climate/surface-vars&gt;,&lt;https://example.org/climate/variables/humidity&gt;,&lt;https://example.org/climate/variables/precipitation&gt;
+ - Shape prez:AtLeastOneCatalogShape: _:nf510d027382a4d61839e46e2a8ee1600b1
+</div>
+                                                                    <div class="font-monospace subsection-title mt-2">Semantic Uplift</div>
+                                                                    <div class="font-monospace entry-message section-semantic_uplift ">Running pre-uplift jq transform step from inline code</div>
+                                                                    <div class="font-monospace entry-message section-semantic_uplift ">Running post-uplift sparql-update transform step from inline code</div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="card mb-2 validation-item " id="item-ogc.prez.hierarchy.default-6">
+                                            <div class="card-body">
+                                                <div class="card-title mb-0 anchor-container">
+                                                    <button type="button" class="btn btn-sm btn-primary collapsed"
+                                                            data-bs-toggle="collapse" data-bs-target="#uid-6"
+                                                            aria-expanded="false" aria-controls="uid-6"
+                                                            style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .75rem;">
+                                                        <i class="bi bi-caret-right-fill caret"></i>
+                                                        Details
+                                                    </button>
+                                                    <a href="prez/hierarchy/default/example_6_1.json" target="_blank">example_6_1.json</a>
+                                                    <span class="badge bg-secondary example">Example</span>
+                                                    <a class="anchor" href="#item-ogc.prez.hierarchy.default-6">¶</a>
+                                                    <div class="float-end">
+                                                            <span class="badge text-bg-success me-2">Passed</span>
+                                                    </div>
+                                                </div>
+                                                <div class="card-text mt-2 validation-text collapse" id="uid-6">
+                                                    <div class="validation-text-inner">
+                                                                    <div class="font-monospace subsection-title mt-2">Files</div>
+                                                                    <div class="font-monospace entry-message section-files ">Using examples/multi-catalog.json from examples</div>
+                                                                    <div class="font-monospace entry-message section-files ">JSON-LD context is present - uplifting</div>
+                                                                    <div class="font-monospace entry-message section-files ">Output JSON-LD example_6_1.jsonld created</div>
+                                                                    <div class="font-monospace entry-message section-files ">Output Turtle example_6_1.ttl created</div>
+                                                                    <div class="font-monospace subsection-title mt-2">JSON Schema</div>
+                                                                    <div class="font-monospace entry-message section-json_schema ">Validation passed</div>
+                                                                    <div class="font-monospace subsection-title mt-2">SHACL</div>
+                                                                    <div class="font-monospace entry-message section-shacl ">Validation result for _sources/hierarchy/default/shapes.shacl:
+  Validation Report
+  Conforms: True
+  </div>
+                                                                    <div class="font-monospace entry-message section-shacl ">Focus nodes for _sources/hierarchy/default/shapes.shacl:
+ - Shape prez:InSchemeShape: &lt;https://example.org/species/mammals/wolf&gt;,&lt;https://example.org/env/habitats/forest&gt;,&lt;https://example.org/env/habitats/wetland&gt;,&lt;https://example.org/env/habitats/marine&gt;,&lt;https://example.org/species/mammals/bear&gt;
+ - Shape prez:HasPartSubjectShape: ex:env,ex:species
+ - Shape prez:TopLevelItemShape: &lt;https://example.org/env/habitats&gt;,&lt;https://example.org/species/mammals&gt;,&lt;https://example.org/env/protected&gt;
+ - Shape prez:ConceptAnchorShape: &lt;https://example.org/species/mammals/wolf&gt;,&lt;https://example.org/env/habitats/forest&gt;,&lt;https://example.org/env/habitats/wetland&gt;,&lt;https://example.org/env/habitats/marine&gt;,&lt;https://example.org/species/mammals/bear&gt;
+ - Shape prez:PrefLabelShape: &lt;https://example.org/species/mammals/wolf&gt;,&lt;https://example.org/env/habitats/forest&gt;,&lt;https://example.org/env/habitats&gt;,&lt;https://example.org/env/habitats/wetland&gt;,&lt;https://example.org/env/habitats/marine&gt;,&lt;https://example.org/species/mammals/bear&gt;,&lt;https://example.org/env/protected&gt;,&lt;https://example.org/species/mammals&gt;
+ - Shape prez:AtLeastOneCatalogShape: _:nf510d027382a4d61839e46e2a8ee1600b1
+</div>
+                                                                    <div class="font-monospace subsection-title mt-2">Semantic Uplift</div>
+                                                                    <div class="font-monospace entry-message section-semantic_uplift ">Running pre-uplift jq transform step from inline code</div>
+                                                                    <div class="font-monospace entry-message section-semantic_uplift ">Running post-uplift sparql-update transform step from inline code</div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                </div>
+                            </div>
+                        </div>
+                </div>
+        </div>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+        <script type="text/javascript">
+            window.addEventListener('load', () => {
+                const accordionEntries = [...document.querySelectorAll('#bblock-reports .accordion-collapse')];
+                document.querySelector('#expand-collapse').addEventListener('click', ev => {
+                    ev.preventDefault();
+                    if (ev.target.matches('.expand-all')) {
+                        accordionEntries.forEach(e => e.classList.add('show'));
+                    } else if (ev.target.matches('.collapse-all')) {
+                        accordionEntries.forEach(e => e.classList.remove('show'));
+                    }
+                });
+                if (/^#(bblock|item)-/.test(location.hash)) {
+                    const highlight = document.querySelector(location.hash.replaceAll('.', '\\.'));
+                    if (highlight) {
+                        highlight.querySelector('.accordion-collapse').classList.add('show');
+                        highlight.classList.add('highlighted');
+                    }
+                }
+                document.addEventListener('click', ev => {
+                    if (!ev.target.classList.contains('anchor') || !ev.target.href) {
+                      return;
+                    }
+                    ev.stopPropagation();
+                    navigator?.clipboard?.writeText(ev.target.href);
+                });
+            });
+        </script>
+    </body>
+</html>

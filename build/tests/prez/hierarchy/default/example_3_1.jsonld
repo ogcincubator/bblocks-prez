@@ -1,0 +1,53 @@
+{
+  "@context": [
+    {
+      "ex": "https://example.org/"
+    },
+    "https://ogcincubator.github.io/bblocks-prez/build/annotated/prez/hierarchy/default/context.jsonld"
+  ],
+  "id": "https://example.org/animals",
+  "name": "Animal Taxonomy",
+  "items": [
+    {
+      "id": "https://example.org/animals/scheme",
+      "name": "Animal Species",
+      "definition": "A classification of common animal species.",
+      "concepts": [
+        {
+          "id": "https://example.org/animals/dog",
+          "name": "Dog",
+          "type": "Concept"
+        },
+        {
+          "id": "https://example.org/animals/cat",
+          "name": "Cat",
+          "type": "Concept"
+        },
+        {
+          "id": "https://example.org/animals/eagle",
+          "name": "Eagle",
+          "type": "Concept"
+        }
+      ],
+      "type": "ConceptScheme"
+    },
+    {
+      "id": "https://example.org/animals/pets",
+      "name": "Domestic Pets",
+      "type": "Collection",
+      "members": [
+        {
+          "id": "https://example.org/animals/dog",
+          "name": "Dog",
+          "type": "Concept"
+        },
+        {
+          "id": "https://example.org/animals/cat",
+          "name": "Cat",
+          "type": "Concept"
+        }
+      ]
+    }
+  ],
+  "type": "Catalog"
+}

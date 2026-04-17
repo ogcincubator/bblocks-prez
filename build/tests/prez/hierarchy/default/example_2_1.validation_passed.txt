@@ -1,0 +1,33 @@
+Validation report for ogc.prez.hierarchy.default - Prez default hierarchy
+Generated 2026-04-17T11:52:40.745068+00:00
+=== Files ===
+Using examples/minimal-with-base.json from examples
+JSON-LD context is present - uplifting
+Output JSON-LD example_2_1.jsonld created
+Output Turtle example_2_1.ttl created
+=== End Files ===
+
+=== JSON Schema ===
+Validation passed
+=== End JSON Schema ===
+
+=== SHACL ===
+Validation result for _sources/hierarchy/default/shapes.shacl:
+  Validation Report
+  Conforms: True
+  
+Focus nodes for _sources/hierarchy/default/shapes.shacl:
+ - Shape prez:InSchemeShape: ex:concept-b,ex:concept-a
+ - Shape prez:HasPartSubjectShape: ex:my-catalog
+ - Shape prez:TopLevelItemShape: ex:my-scheme
+ - Shape prez:ConceptAnchorShape: ex:concept-b,ex:concept-a
+ - Shape prez:PrefLabelShape: ex:concept-b,ex:my-scheme,ex:concept-a
+ - Shape prez:AtLeastOneCatalogShape: _:nf510d027382a4d61839e46e2a8ee1600b1
+
+=== End SHACL ===
+
+=== Semantic Uplift ===
+Running pre-uplift jq transform step from inline code
+Running post-uplift sparql-update transform step from inline code
+=== End Semantic Uplift ===
+

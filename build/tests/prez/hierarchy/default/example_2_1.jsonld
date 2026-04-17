@@ -1,0 +1,35 @@
+{
+  "@context": [
+    {
+      "ex": "https://example.org/"
+    },
+    "https://ogcincubator.github.io/bblocks-prez/build/annotated/prez/hierarchy/default/context.jsonld"
+  ],
+  "base": "https://example.org/",
+  "catalogs": [
+    {
+      "id": "my-catalog",
+      "name": "My Catalog",
+      "items": [
+        {
+          "id": "my-scheme",
+          "name": "My Concept Scheme",
+          "concepts": [
+            {
+              "id": "concept-a",
+              "name": "Concept A",
+              "type": "Concept"
+            },
+            {
+              "id": "concept-b",
+              "name": "Concept B",
+              "type": "Concept"
+            }
+          ],
+          "type": "ConceptScheme"
+        }
+      ],
+      "type": "Catalog"
+    }
+  ]
+}

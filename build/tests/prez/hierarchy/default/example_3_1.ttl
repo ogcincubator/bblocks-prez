@@ -1,0 +1,37 @@
+@prefix dcat: <http://www.w3.org/ns/dcat#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix ex: <https://example.org/> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+
+ex:animals a dcat:Catalog ;
+    dcterms:hasPart <https://example.org/animals/pets>,
+        <https://example.org/animals/scheme> ;
+    skos:prefLabel "Animal Taxonomy" .
+
+<https://example.org/animals/eagle> a skos:Concept ;
+    skos:inScheme <https://example.org/animals/scheme> ;
+    skos:prefLabel "Eagle" ;
+    skos:topConceptOf <https://example.org/animals/scheme> .
+
+<https://example.org/animals/pets> a skos:Collection ;
+    skos:member <https://example.org/animals/cat>,
+        <https://example.org/animals/dog> ;
+    skos:prefLabel "Domestic Pets" .
+
+<https://example.org/animals/cat> a skos:Concept ;
+    skos:inScheme <https://example.org/animals/scheme> ;
+    skos:prefLabel "Cat" ;
+    skos:topConceptOf <https://example.org/animals/scheme> .
+
+<https://example.org/animals/dog> a skos:Concept ;
+    skos:inScheme <https://example.org/animals/scheme> ;
+    skos:prefLabel "Dog" ;
+    skos:topConceptOf <https://example.org/animals/scheme> .
+
+<https://example.org/animals/scheme> a skos:ConceptScheme ;
+    skos:definition "A classification of common animal species." ;
+    skos:hasTopConcept <https://example.org/animals/cat>,
+        <https://example.org/animals/dog>,
+        <https://example.org/animals/eagle> ;
+    skos:prefLabel "Animal Species" .
+
