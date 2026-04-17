@@ -1,6 +1,3 @@
-prefixes:
-  ex: https://example.org/
-
 examples:
   - title: Minimal catalog
     content: |
@@ -9,15 +6,6 @@ examples:
     snippets:
       - language: json
         ref: examples/minimal.json
-        base-uri: https://example.org/
-
-  - title: Minimal catalog with base URL
-    content: |
-      Same minimal structure as above, but wrapped in the envelope form that provides
-      a `base` URL. IDs are relative to that base, keeping them short.
-    snippets:
-      - language: json
-        ref: examples/minimal-with-base.json
         base-uri: https://example.org/
 
   - title: Catalog with concept scheme and collection

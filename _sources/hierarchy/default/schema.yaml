@@ -78,13 +78,4 @@ anyOf:
   - type: array
     items:
       $ref: '#/$defs/Catalog'
-  - type: object
-    required: [catalogs]
-    properties:
-      base:
-        type: string
-        format: uri
-      catalogs:
-        type: array
-        items:
-          $ref: '#/$defs/Catalog'
+

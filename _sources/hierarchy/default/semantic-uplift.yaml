@@ -12,7 +12,6 @@ additionalSteps:
       
       def walkEntities:
       addMissingType |
-      if .catalogs then .catalogs |= map(walkEntities) else . end |
       if .items then .items |= map(walkEntities) else . end |
       if .concepts then .concepts |= map(walkEntities) else . end |
       if .members then .members |= map(walkEntities) else . end;
