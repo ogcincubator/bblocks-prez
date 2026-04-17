@@ -1,5 +1,5 @@
 Validation report for ogc.prez.hierarchy.default - Prez default hierarchy
-Generated 2026-04-17T11:52:41.000900+00:00
+Generated 2026-04-17T11:53:44.647001+00:00
 === Files ===
 Using examples/mixed-multi-catalog.json from examples
 JSON-LD context is present - uplifting
@@ -17,12 +17,12 @@ Validation result for _sources/hierarchy/default/shapes.shacl:
   Conforms: True
   
 Focus nodes for _sources/hierarchy/default/shapes.shacl:
- - Shape prez:InSchemeShape: <https://example.org/hydrology/features/river>,<https://example.org/climate/variables/temperature>,<https://example.org/climate/variables/humidity>,<https://example.org/climate/variables/precipitation>,<https://example.org/hydrology/features/aquifer>,<https://example.org/hydrology/features/lake>
- - Shape prez:HasPartSubjectShape: ex:climate,ex:hydrology
- - Shape prez:TopLevelItemShape: <https://example.org/climate/variables>,<https://example.org/hydrology/surface-water>,<https://example.org/hydrology/features>,<https://example.org/hydrology/wmo-guide>,<https://example.org/hydrology/gsim>,<https://example.org/hydrology/hydrosheds>,<https://example.org/climate/era5>,<https://example.org/climate/gcos-spec>,<https://example.org/climate/surface-vars>
- - Shape prez:ConceptAnchorShape: <https://example.org/hydrology/features/river>,<https://example.org/climate/variables/temperature>,<https://example.org/climate/variables/humidity>,<https://example.org/climate/variables/precipitation>,<https://example.org/hydrology/features/aquifer>,<https://example.org/hydrology/features/lake>
- - Shape prez:PrefLabelShape: <https://example.org/climate/variables>,<https://example.org/hydrology/surface-water>,<https://example.org/hydrology/features/river>,<https://example.org/hydrology/features>,<https://example.org/climate/variables/temperature>,<https://example.org/hydrology/wmo-guide>,<https://example.org/hydrology/gsim>,<https://example.org/hydrology/features/aquifer>,<https://example.org/hydrology/features/lake>,<https://example.org/hydrology/hydrosheds>,<https://example.org/climate/era5>,<https://example.org/climate/gcos-spec>,<https://example.org/climate/surface-vars>,<https://example.org/climate/variables/humidity>,<https://example.org/climate/variables/precipitation>
- - Shape prez:AtLeastOneCatalogShape: _:nf510d027382a4d61839e46e2a8ee1600b1
+ - Shape prez:TopLevelItemShape: <https://example.org/climate/gcos-spec>,<https://example.org/hydrology/gsim>,<https://example.org/climate/variables>,<https://example.org/hydrology/hydrosheds>,<https://example.org/hydrology/surface-water>,<https://example.org/hydrology/features>,<https://example.org/climate/era5>,<https://example.org/hydrology/wmo-guide>,<https://example.org/climate/surface-vars>
+ - Shape prez:InSchemeShape: <https://example.org/climate/variables/humidity>,<https://example.org/climate/variables/temperature>,<https://example.org/hydrology/features/lake>,<https://example.org/hydrology/features/river>,<https://example.org/hydrology/features/aquifer>,<https://example.org/climate/variables/precipitation>
+ - Shape prez:ConceptAnchorShape: <https://example.org/climate/variables/humidity>,<https://example.org/climate/variables/temperature>,<https://example.org/hydrology/features/lake>,<https://example.org/hydrology/features/river>,<https://example.org/hydrology/features/aquifer>,<https://example.org/climate/variables/precipitation>
+ - Shape prez:HasPartSubjectShape: ex:hydrology,ex:climate
+ - Shape prez:PrefLabelShape: <https://example.org/climate/surface-vars>,<https://example.org/climate/variables/temperature>,<https://example.org/hydrology/gsim>,<https://example.org/climate/variables>,<https://example.org/hydrology/hydrosheds>,<https://example.org/climate/gcos-spec>,<https://example.org/hydrology/features/aquifer>,<https://example.org/hydrology/surface-water>,<https://example.org/climate/variables/humidity>,<https://example.org/hydrology/features>,<https://example.org/hydrology/features/lake>,<https://example.org/climate/era5>,<https://example.org/hydrology/wmo-guide>,<https://example.org/hydrology/features/river>,<https://example.org/climate/variables/precipitation>
+ - Shape prez:AtLeastOneCatalogShape: _:n41d3a3b94127472f888530184406da26b1
 
 === End SHACL ===
 

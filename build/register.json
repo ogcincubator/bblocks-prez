@@ -2,7 +2,7 @@
   "name": "Prez OGC Blocks",
   "abstract": "OGC Blocks for working with the [Prez](https://github.com/RDFLib/prez) application.\n",
   "description": "This collection provides OGC Building Blocks for working with [Prez](https://github.com/RDFLib/prez),\na read-only linked data API and browser built on SPARQL.\n\nBuilding blocks in this collection define JSON input formats and semantic uplift pipelines that\ntransform structured JSON documents into RDF graphs ready for publication via Prez. They rely on\nstandard vocabularies \u2014 primarily DCAT and SKOS \u2014 and follow OGC patterns for schema definition,\nvalidation (JSON Schema + SHACL), and semantic uplift (jq + SPARQL).\n",
-  "modified": "2026-04-17T11:52:40.135669",
+  "modified": "2026-04-17T11:53:43.802084",
   "tooling": {
     "bblocks-postprocess": {
       "commitId": "\"82fc8650df6a65be1e17f7c6440191f0b7c6ccff",

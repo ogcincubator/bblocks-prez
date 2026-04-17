@@ -2,8 +2,8 @@
 @prefix dcat: <http://www.w3.org/ns/dcat#> .
 @prefix dct: <http://purl.org/dc/terms/> .
 @prefix foaf: <http://xmlns.com/foaf/0.1/> .
-@prefix ns1: <http://www.w3.org/ns/oa#> .
-@prefix ns2: <http://www.iana.org/assignments/> .
+@prefix ns1: <http://www.iana.org/assignments/> .
+@prefix ns2: <http://www.w3.org/ns/oa#> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
 @prefix prof: <http://www.w3.org/ns/dx/prof/> .
 @prefix prov: <http://www.w3.org/ns/prov#> .
@@ -16,18 +16,18 @@
 
 <https://ogcincubator.github.io/bblocks-prez/build/bblocks.ttl> a prov:Entity ;
     dct:format "text/turtle" ;
-    prov:wasAttributedTo _:Na4ca7006d11d4539a4df9f81cd85fdd6 ;
+    prov:wasAttributedTo _:Nbad08a10ef914693989718e7492055d6 ;
     prov:wasGeneratedBy [ a prov:Activity ;
-            prov:endedAtTime "2026-04-17T11:52:41.213610"^^xsd:dateTime ;
-            prov:startedAtTime "2026-04-17T11:52:41.106482"^^xsd:dateTime ;
+            prov:endedAtTime "2026-04-17T11:53:44.843547"^^xsd:dateTime ;
+            prov:startedAtTime "2026-04-17T11:53:44.758818"^^xsd:dateTime ;
             prov:used [ a prov:Entity ;
-                    dct:format "application/json" ;
-                    dct:hasVersion "git:487bb07a6e7b9afa4a801bc25d88ef8d3ab85a4c" ;
-                    rdfs:seeAlso <https://ogcincubator.github.io/bblocks-prez/build/register.json> ],
-                [ a prov:Entity ;
                     dct:format "application/yaml" ;
-                    rdfs:seeAlso <file:///src/ogc/bblocks/register-context.yaml> ] ;
-            prov:wasAssociatedWith _:Na4ca7006d11d4539a4df9f81cd85fdd6 ] .
+                    rdfs:seeAlso <file:///src/ogc/bblocks/register-context.yaml> ],
+                [ a prov:Entity ;
+                    dct:format "application/json" ;
+                    dct:hasVersion "git:626878161839489776273c004e3854c5cd536c10" ;
+                    rdfs:seeAlso <https://ogcincubator.github.io/bblocks-prez/build/register.json> ] ;
+            prov:wasAssociatedWith _:Nbad08a10ef914693989718e7492055d6 ] .
 
 <bblocks://ogc.prez.hierarchy.default> a skos:Concept,
         dcat:Dataset,
@@ -84,26 +84,26 @@ transform structured JSON documents into RDF graphs ready for publication via Pr
 standard vocabularies — primarily DCAT and SKOS — and follow OGC patterns for schema definition,
 validation (JSON Schema + SHACL), and semantic uplift (jq + SPARQL).
 """^^<https://www.w3.org/ns/iana/media-types/text/markdown> ;
-    dct:modified "2026-04-17T11:52:40.135669"^^xsd:dateTime ;
+    dct:modified "2026-04-17T11:53:43.802084"^^xsd:dateTime ;
     owl:imports <https://opengeospatial.github.io/bblocks/register.json> ;
     skos:hasTopConcept <bblocks://ogc.prez.hierarchy.default> ;
     skos:prefLabel "Building Blocks - Prez OGC Blocks" ;
-    prof:hasResource [ rdfs:label "This Building Blocks Register in JSON format" ;
-            dct:type "application/json" ;
-            ns2:relation <http://www.iana.org/assignments/relation/self> ;
-            ns1:hasTarget <https://ogcincubator.github.io/bblocks-prez/build/register.json> ],
-        [ rdfs:label "This Building Blocks Register in JSON-LD format" ;
+    prof:hasResource [ rdfs:label "This Building Blocks Register in JSON-LD format" ;
             dct:type "application/ld+json" ;
-            ns2:relation <http://www.iana.org/assignments/relation/self> ;
-            ns1:hasTarget <https://ogcincubator.github.io/bblocks-prez/build/bblocks.jsonld> ],
+            ns1:relation <http://www.iana.org/assignments/relation/self> ;
+            ns2:hasTarget <https://ogcincubator.github.io/bblocks-prez/build/bblocks.jsonld> ],
         [ rdfs:label "This Building Blocks Register in RDF Turtle format" ;
             dct:type "text/turtle" ;
-            ns2:relation <http://www.iana.org/assignments/relation/self> ;
-            ns1:hasTarget <https://ogcincubator.github.io/bblocks-prez/build/bblocks.ttl> ] ;
+            ns1:relation <http://www.iana.org/assignments/relation/self> ;
+            ns2:hasTarget <https://ogcincubator.github.io/bblocks-prez/build/bblocks.ttl> ],
+        [ rdfs:label "This Building Blocks Register in JSON format" ;
+            dct:type "application/json" ;
+            ns1:relation <http://www.iana.org/assignments/relation/self> ;
+            ns2:hasTarget <https://ogcincubator.github.io/bblocks-prez/build/register.json> ] ;
     foaf:homepage <https://ogcincubator.github.io/bblocks-prez/> ;
     bblocks:hasValidationReport <https://ogcincubator.github.io/bblocks-prez/build/tests/report.html> .
 
-_:Na4ca7006d11d4539a4df9f81cd85fdd6 a prov:Agent,
+_:Nbad08a10ef914693989718e7492055d6 a prov:Agent,
         schema:SoftwareApplication ;
     rdfs:label "OGC-NA tools" ;
     dct:hasVersion "0.5.28" ;
