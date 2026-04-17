@@ -1,0 +1,97 @@
+@prefix sh:   <http://www.w3.org/ns/shacl#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix dcat: <http://www.w3.org/ns/dcat#> .
+@prefix dct:  <http://purl.org/dc/terms/> .
+@prefix rdf:  <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xsd:  <http://www.w3.org/2001/XMLSchema#> .
+@prefix prez: <https://ogcincubator.io/prez/hierarchy/shapes#> .
+
+# 1. The graph must contain at least one dcat:Catalog.
+prez:AtLeastOneCatalogShape
+  a sh:NodeShape ;
+  sh:targetNode [] ; # Dummy
+  sh:sparql [
+    sh:message "The graph must contain at least one dcat:Catalog." ;
+    sh:select """
+      PREFIX dcat: <http://www.w3.org/ns/dcat#>
+      SELECT $this WHERE {
+        FILTER NOT EXISTS { ?c a dcat:Catalog }
+      }
+    """ ;
+  ] .
+
+# 2. ConceptSchemes, Collections, Datasets, and Resources must be dct:hasPart of a dcat:Catalog.
+prez:TopLevelItemShape
+  a sh:NodeShape ;
+  sh:targetClass skos:ConceptScheme, skos:Collection, dcat:Dataset, dcat:Resource;
+  sh:sparql [
+    sh:message "ConceptSchemes, Collections, Datasets, and Resources must be linked to a dcat:Catalog via dct:hasPart." ;
+    sh:select """
+      PREFIX dcat: <http://www.w3.org/ns/dcat#>
+      PREFIX dct:  <http://purl.org/dc/terms/>
+      SELECT $this WHERE {
+        FILTER NOT EXISTS {
+          ?catalog a dcat:Catalog ;
+                   dct:hasPart $this .
+        }
+      }
+    """ ;
+  ] .
+
+# 3. A skos:Concept must have skos:inScheme to a ConceptScheme, or be skos:member of a Collection.
+prez:ConceptAnchorShape
+  a sh:NodeShape ;
+  sh:targetClass skos:Concept ;
+  sh:sparql [
+    sh:message "A skos:Concept must have skos:inScheme to a skos:ConceptScheme, or be a skos:member of a skos:Collection." ;
+    sh:select """
+      PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+      SELECT $this WHERE {
+        FILTER NOT EXISTS {
+          { $this skos:inScheme ?cs . ?cs a skos:ConceptScheme }
+          UNION
+          { ?col skos:member $this . ?col a skos:Collection }
+        }
+      }
+    """ ;
+  ] .
+
+# 4. Anything with skos:inScheme must be a skos:Concept, and both skos:topConceptOf
+#    and its inverse skos:hasTopConcept must exist.
+prez:InSchemeShape
+  a sh:NodeShape ;
+  sh:targetSubjectsOf skos:inScheme ;
+  sh:class skos:Concept ;
+  sh:sparql [
+    sh:message "A resource with skos:inScheme must have skos:topConceptOf to a skos:ConceptScheme, and that scheme must assert skos:hasTopConcept back." ;
+    sh:select """
+      PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+      SELECT $this WHERE {
+        FILTER NOT EXISTS {
+          $this skos:topConceptOf ?cs .
+          ?cs a skos:ConceptScheme ;
+              skos:hasTopConcept $this .
+        }
+      }
+    """ ;
+  ] .
+
+# 5. All resources of the known types must have at least one skos:prefLabel.
+prez:PrefLabelShape
+  a sh:NodeShape ;
+  sh:targetClass skos:ConceptScheme, skos:Collection, dcat:Dataset, dcat:Resource, skos:Concept;
+  sh:property [
+    sh:path skos:prefLabel ;
+    sh:minCount 1 ;
+    sh:message "All resources of known types must have at least one skos:prefLabel." ;
+  ] .
+
+# 6. Anything that has dct:hasPart must have at least one rdf:type.
+prez:HasPartSubjectShape
+  a sh:NodeShape ;
+  sh:targetSubjectsOf dct:hasPart ;
+  sh:property [
+    sh:path rdf:type ;
+    sh:minCount 1 ;
+    sh:message "Resources that use dct:hasPart must have at least one rdf:type." ;
+  ] .

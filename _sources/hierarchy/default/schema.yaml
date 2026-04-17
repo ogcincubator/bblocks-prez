@@ -1,0 +1,90 @@
+$defs:
+  Text:
+    description: |
+      Either a plain string or a languageCode -> value mapping for multi-language strings.
+    oneOf:
+      - type: string
+      - type: object
+        propertyNames:
+          pattern: '^[a-zA-Z][a-zA-Z0-9]*(-[a-zA-Z0-9]+)*$'
+        additionalProperties:
+          type: string
+
+  NamedResource:
+    type: object
+    required: [id, name]
+    properties:
+      id:
+        type: string
+      name:
+        $ref: '#/$defs/Text'
+      definition:
+        $ref: '#/$defs/Text'
+
+  Catalog:
+    allOf:
+      - $ref: '#/$defs/NamedResource'
+    properties:
+      type:
+        const: Catalog
+      items:
+        type: array
+        items:
+          $ref: '#/$defs/SecondLevelEntry'
+
+  ConceptScheme:
+    allOf:
+      - $ref: '#/$defs/NamedResource'
+    properties:
+      type:
+        const: ConceptScheme
+      concepts:
+        type: array
+        items:
+          $ref: '#/$defs/Concept'
+
+  Collection:
+    allOf:
+      - $ref: '#/$defs/NamedResource'
+    required: [type]
+    properties:
+      type:
+        const: Collection
+      members:
+        type: array
+        items:
+          $ref: '#/$defs/Concept'
+
+  Concept:
+    allOf:
+      - $ref: '#/$defs/NamedResource'
+    properties:
+      type:
+        const: Concept
+
+  SecondLevelEntry:
+    allOf:
+      - $ref: '#/$defs/NamedResource'
+    oneOf:
+      - $ref: '#/$defs/ConceptScheme'
+      - $ref: '#/$defs/Collection'
+      - required: [type]
+        properties:
+          type:
+            enum: [Dataset, Resource]
+
+anyOf:
+  - $ref: '#/$defs/Catalog'
+  - type: array
+    items:
+      $ref: '#/$defs/Catalog'
+  - type: object
+    required: [catalogs]
+    properties:
+      base:
+        type: string
+        format: uri
+      catalogs:
+        type: array
+        items:
+          $ref: '#/$defs/Catalog'

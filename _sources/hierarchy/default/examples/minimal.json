@@ -1,0 +1,20 @@
+{
+  "id": "https://example.org/my-catalog",
+  "name": "My Catalog",
+  "items": [
+    {
+      "id": "https://example.org/my-scheme",
+      "name": "My Concept Scheme",
+      "concepts": [
+        {
+          "id": "https://example.org/concept-a",
+          "name": "Concept A"
+        },
+        {
+          "id": "https://example.org/concept-b",
+          "name": "Concept B"
+        }
+      ]
+    }
+  ]
+}

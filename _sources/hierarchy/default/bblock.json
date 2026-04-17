@@ -1,0 +1,11 @@
+{
+  "name": "Prez default hierarchy",
+  "abstract": "Helps create a default Prez hierarchy",
+  "status": "under-development",
+  "dateTimeAddition": "2026-04-17T00:00:00Z",
+  "itemClass": "schema",
+  "register": "ogc-building-block-register",
+  "version": "0.1",
+  "link": "https://github.com/RDFLib/prez/raw/refs/heads/main/prez/reference_data/endpoints/data_endpoints_default/default_endpoints.ttl",
+  "tags": ["prez", "hierarchy"]
+}

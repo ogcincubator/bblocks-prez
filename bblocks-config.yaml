@@ -1,18 +1,22 @@
 # A short, descriptive name of this building block collection
-name: My OGC Building Blocks repository
+name: Prez OGC Blocks
 
 # Short abstract for this collection (optional)
 abstract: |
-  This is an example text for the abstract. It should be short and to the point.
-  A "Tell me more" link will appear if there is an additional description with a longer explanation.
+  OGC Blocks for working with the [Prez](https://github.com/RDFLib/prez) application.
 
 # Description for this collection (optional)
 description: |
-  The description can be longer. Both **the abstract** *and the description* support Markdown,
-  including [links](https://google.es).
+  This collection provides OGC Building Blocks for working with [Prez](https://github.com/RDFLib/prez),
+  a read-only linked data API and browser built on SPARQL.
+
+  Building blocks in this collection define JSON input formats and semantic uplift pipelines that
+  transform structured JSON documents into RDF graphs ready for publication via Prez. They rely on
+  standard vocabularies — primarily DCAT and SKOS — and follow OGC patterns for schema definition,
+  validation (JSON Schema + SHACL), and semantic uplift (jq + SPARQL).
 
 # Customize the following prefix (will be prepended to the path of the building blocks):
-identifier-prefix: ogc.bbr.template.
+identifier-prefix: ogc.prez.
 
 # List of imports ("default" is an alias for the main OGC Building Blocks Register)
 imports:

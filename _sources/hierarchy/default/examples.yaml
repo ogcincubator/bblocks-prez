@@ -1,0 +1,59 @@
+prefixes:
+  ex: https://example.org/
+
+examples:
+  - title: Minimal catalog
+    content: |
+      A single catalog containing one concept scheme with two concepts.
+      Type annotations are omitted; they will be inferred during semantic uplift.
+    snippets:
+      - language: json
+        ref: examples/minimal.json
+        base-uri: https://example.org/
+
+  - title: Minimal catalog with base URL
+    content: |
+      Same minimal structure as above, but wrapped in the envelope form that provides
+      a `base` URL. IDs are relative to that base, keeping them short.
+    snippets:
+      - language: json
+        ref: examples/minimal-with-base.json
+        base-uri: https://example.org/
+
+  - title: Catalog with concept scheme and collection
+    content: |
+      A catalog containing a concept scheme (all animal species) and a collection
+      (domestic pets) referencing a subset of those concepts.
+    snippets:
+      - language: json
+        ref: examples/catalog-with-collection.json
+        base-uri: https://example.org/
+
+  - title: Catalog mixing concept scheme, collection, dataset, and resource
+    content: |
+      A land cover catalog combining a concept scheme (LCCS-based types), a collection
+      (urban subset), a dataset (global map), and an external resource (FAO specification).
+    snippets:
+      - language: json
+        ref: examples/mixed-catalog.json
+        base-uri: https://example.org/
+
+  - title: Multiple mixed catalogs
+    content: |
+      Two domain catalogs (climate and hydrology), each containing concept schemes,
+      collections, datasets, and resources. Demonstrates how different entry types
+      coexist within and across catalogs.
+    snippets:
+      - language: json
+        ref: examples/mixed-multi-catalog.json
+        base-uri: https://example.org/
+
+  - title: Multiple catalogs with multilingual labels
+    content: |
+      An array of two catalogs. The first covers environmental data and demonstrates
+      multilingual `name` values and a collection grouping a subset of a concept
+      scheme. The second is a simpler species registry.
+    snippets:
+      - language: json
+        ref: examples/multi-catalog.json
+        base-uri: https://example.org/

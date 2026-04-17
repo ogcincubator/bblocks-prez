@@ -1,0 +1,31 @@
+additionalSteps:
+  - description: Entails missing types
+    type: jq
+    code: |
+      def addMissingType:
+      if .type then .
+      elif .items then . + {type: "Catalog"}
+      elif .concepts then . + {type: "ConceptScheme"}
+      elif .id then . + {type: "Concept"}
+      else .
+      end;
+      
+      def walkEntities:
+      addMissingType |
+      if .catalogs then .catalogs |= map(walkEntities) else . end |
+      if .items then .items |= map(walkEntities) else . end |
+      if .concepts then .concepts |= map(walkEntities) else . end |
+      if .members then .members |= map(walkEntities) else . end;
+      
+      if type == "array" then map(walkEntities) else walkEntities end
+
+  - description: Enrich inScheme with top concepts so that Prez displays even prettier hierarchies.
+    type: sparql-update
+    code: |
+      PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+      INSERT {
+        ?c skos:topConceptOf ?cs .
+        ?cs skos:hasTopConcept ?c .
+      } WHERE {
+        ?c skos:inScheme ?cs
+      }
