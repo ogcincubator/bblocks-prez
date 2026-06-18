@@ -1,26 +1,22 @@
-[
-  {
-    "prefix": "registers",
-    "uri": "urn:ogc:defs/catalogs/register/collections/"
-  },
-  {
-    "prefix": "ex",
-    "uri": "https://example.org/"
-  },
-  {
-    "id": "https://example.org/my-catalog",
-    "name": "My Catalog",
-    "items": [
-      {
-        "id": "https://example.org/my-scheme",
-        "name": "My Concept Scheme",
-        "concepts": [
-          {
-            "id": "https://example.org/concept-a",
-            "name": "Concept A"
-          }
-        ]
-      }
-    ]
-  }
-]
+{
+  "id": "https://example.org/simple-catalog",
+  "name": "Simple catalog",
+  "items": [
+    {
+      "id": "https://example.org/simple-scheme",
+      "name": "Simple scheme",
+      "concepts": [
+        {
+          "id": "https://example.org/concept/root",
+          "name": "Root concept",
+          "narrower": [
+            {
+              "id": "https://example.org/concept/child",
+              "name": "Child concept"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

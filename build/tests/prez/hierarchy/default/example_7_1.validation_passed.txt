@@ -1,0 +1,42 @@
+Validation report for ogc.prez.hierarchy.default - Prez default hierarchy
+Generated 2026-06-18T10:44:03.906152+00:00
+=== Files ===
+Using examples/concept-hierarchy.json from examples
+JSON-LD context is present - uplifting
+Output JSON-LD example_7_1.jsonld created
+Output Turtle example_7_1.ttl created
+=== End Files ===
+
+=== JSON Schema ===
+Validation passed
+=== End JSON Schema ===
+
+=== SHACL ===
+Validation result for _sources/hierarchy/default/shapes.shacl:
+  Validation Report
+  Conforms: True
+  
+Focus nodes for _sources/hierarchy/default/shapes.shacl:
+ - Shape prez:TopLevelItemShape: <https://example.org/animal-scheme>
+ - Shape prez:PrefLabelShape: <https://example.org/concept/cat>,<https://example.org/animal-scheme>,<https://example.org/concept/bird>,<https://example.org/concept/dog>,<https://example.org/concept/mammal>,<https://example.org/concept/pet>,<https://example.org/concept/animal>
+ - Shape prez:InSchemeShape: <https://example.org/concept/cat>,<https://example.org/concept/bird>,<https://example.org/concept/dog>,<https://example.org/concept/mammal>,<https://example.org/concept/pet>,<https://example.org/concept/animal>
+ - Shape prez:ConceptAnchorShape: <https://example.org/concept/cat>,<https://example.org/concept/bird>,<https://example.org/concept/dog>,<https://example.org/concept/mammal>,<https://example.org/concept/pet>,<https://example.org/concept/animal>
+ - Shape prez:HasPartSubjectShape: <https://example.org/taxonomy-catalog>
+ - Shape prez:AtLeastOneCatalogShape: _:nffef885f7529408092ea0e94aa4a1279b1
+
+Validation result for _sources/prefix/shapes.shacl:
+  Validation Report
+  Conforms: True
+  
+Focus nodes for _sources/prefix/shapes.shacl:
+ - Shape vann:PrefixDeclarationShape: *none*
+
+=== End SHACL ===
+
+=== Semantic Uplift ===
+Running pre-uplift jq transform step from inline code
+Running post-uplift sparql-update transform step from inline code
+Running post-uplift sparql-update transform step from inline code
+Running post-uplift sparql-update transform step from inline code
+=== End Semantic Uplift ===
+

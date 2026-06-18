@@ -1,0 +1,24 @@
+@prefix dcat: <http://www.w3.org/ns/dcat#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+
+<https://example.org/cat/top> a dcat:TopCatalog ;
+    dcterms:hasPart <https://example.org/col/lengths>,
+        <https://example.org/ont/units> ;
+    skos:prefLabel "Vocabulary definitions" .
+
+<https://example.org/col/lengths> a skos:Collection ;
+    skos:member <https://example.org/concept/foot>,
+        <https://example.org/concept/metre> ;
+    skos:prefLabel "Length-related concepts" .
+
+<https://example.org/concept/foot> a skos:Concept ;
+    skos:prefLabel "Foot" .
+
+<https://example.org/concept/metre> a skos:Concept ;
+    skos:prefLabel "Metre" .
+
+<https://example.org/ont/units> a owl:Ontology ;
+    skos:prefLabel "Units of measure ontology" .
+

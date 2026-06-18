@@ -1,0 +1,24 @@
+{
+  "id": "https://example.org/cat/top",
+  "name": "Example domain",
+  "type": "TopCatalog",
+  "items": [
+    {
+      "id": "https://example.org/cs/animals",
+      "name": "Animal classification",
+      "type": "ConceptScheme",
+      "concepts": [
+        {
+          "id": "https://example.org/concept/mammal",
+          "name": "Mammal",
+          "type": "Concept"
+        },
+        {
+          "id": "https://example.org/concept/bird",
+          "name": "Bird",
+          "type": "Concept"
+        }
+      ]
+    }
+  ]
+}

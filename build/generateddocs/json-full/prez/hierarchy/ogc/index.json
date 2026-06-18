@@ -1,0 +1,229 @@
+
+
+{
+  "itemIdentifier": "ogc.prez.hierarchy.ogc",
+  "name": "Prez OGC hierarchy",
+  "abstract": "Helps create the OGC knowledge graph hierarchy in Prez, with TopCatalogs, recursively nested Catalogs, and Ontologies.",
+  "status": "under-development",
+  "dateTimeAddition": "2026-06-18T00:00:00Z",
+  "itemClass": "schema",
+  "register": "ogc-building-block-register",
+  "version": "0.1",
+  "tags": [
+    "prez",
+    "hierarchy",
+    "ogc"
+  ],
+  "shaclShapes": {
+    "ogc.prez.hierarchy.ogc": [
+      "https://ogcincubator.github.io/bblocks-prez/_sources/hierarchy/ogc/shapes.shacl"
+    ],
+    "ogc.prez.prefix": [
+      "https://ogcincubator.github.io/bblocks-prez/_sources/prefix/shapes.shacl"
+    ]
+  },
+  "dependsOn": [
+    "ogc.prez.prefix"
+  ],
+  "ldContext": "https://ogcincubator.github.io/bblocks-prez/build/annotated/prez/hierarchy/ogc/context.jsonld",
+  "dateOfLastChange": "2026-06-18",
+  "schema": {
+    "application/yaml": "https://ogcincubator.github.io/bblocks-prez/build/annotated/prez/hierarchy/ogc/schema.yaml",
+    "application/json": "https://ogcincubator.github.io/bblocks-prez/build/annotated/prez/hierarchy/ogc/schema.json"
+  },
+  "sourceSchema": "https://ogcincubator.github.io/bblocks-prez/_sources/hierarchy/ogc/schema.yaml",
+  "sourceLdContext": "https://ogcincubator.github.io/bblocks-prez/_sources/hierarchy/ogc/context.jsonld",
+  "resolvedSchemaProperties": "https://ogcincubator.github.io/bblocks-prez/build/annotated/prez/hierarchy/ogc/resolvedProperties.json",
+  "sourceFiles": "https://ogcincubator.github.io/bblocks-prez/_sources/hierarchy/ogc/",
+  "validationPassed": true,
+  "testOutputs": "https://github.com/ogcincubator/bblocks-prez/blob/master/build/tests/prez/hierarchy/ogc/",
+  "description": "This building block defines a JSON input format for describing the OGC knowledge graph hierarchy of linked\ndata resources used by [Prez](https://github.com/RDFLib/prez), and provides the semantic uplift pipeline to\nconvert it to RDF. It is a variant of the [default Prez hierarchy](bblocks://ogc.prez.hierarchy.default)\nbuilding block, generalized to support the structure of the OGC definitions server: a distinct top-level\ncatalog type, and Catalogs that can be nested to any depth.\n\n## Structure\n\nThe top-level input is either a single TopCatalog object, or an array mixing TopCatalog objects with\n[namespace prefix declarations](bblocks://ogc.prez.prefix). Prefix declarations have no `id` \u2014 they\nuplift to standalone blank nodes, unrelated to the catalogs or to each other, used by Prez to build\nits global CURIE map.\n\nA TopCatalog (`dcat:TopCatalog`) sits at the root of the hierarchy. Its `items` (and, recursively, the\n`items` of any nested Catalog) can be any mix of:\n\n| Type | JSON discriminator | RDF type |\n|---|---|---|\n| Catalog | `type: Catalog` | `dcat:Catalog` |\n| Concept Scheme | `type: ConceptScheme` | `skos:ConceptScheme` |\n| Collection | `type: Collection` | `skos:Collection` |\n| Dataset | `type: Dataset` | `dcat:Dataset` |\n| Resource | `type: Resource` | `dcat:Resource` |\n| Ontology | `type: Ontology` | `owl:Ontology` |\n\nConcept Schemes and Collections in turn contain **concepts** (`skos:Concept`).\n\nA TopCatalog's or Catalog's items can also be plain IRI strings instead of embedded objects, for\nresources that are already defined elsewhere \u2014 for example, in a different graph. A plain string\nbecomes a `dct:hasPart` link to that IRI, without asserting any type or label locally; this allows\ndeclaring standalone catalogs whose concept schemes, datasets, etc. live elsewhere.\n\nConcepts can be arranged into a `skos:broader` / `skos:narrower` hierarchy:\n\n- `broader` is an array of concept ids (strings) referencing already-declared concepts.\n- `narrower` is an array mixing concept ids (strings) and/or **embedded Concept objects** \u2014 allowing a\n  whole sub-tree to be declared inline under its parent, instead of being listed flatly under the\n  Concept Scheme's `concepts`.\n\nOnly one direction needs to be asserted per relation; the inverse is entailed during semantic uplift.\nA concept nested only inside another concept's `narrower` (and not also listed directly under\n`concepts`) is automatically anchored to the same Concept Scheme as its ancestor.\n\nOnly concepts with no `skos:broader` (i.e. the roots of the hierarchy) are marked as\n`skos:topConceptOf` their scheme \u2014 concepts that are narrower of another concept are not top concepts.\n\nUnlike the default hierarchy, `type` is **required on every entry**, including Concept Schemes and\nConcepts. This building block has more entry types than the default hierarchy, and several of them\n(TopCatalog vs. Catalog, in particular) share the exact same shape (`id`, `name`, `items`), so there is\nno reliable structural cue to infer the type automatically \u2014 an explicit `type` keeps the model\nunambiguous and avoids a type-inference step in the uplift pipeline.\n\nThe `name` field (mapped to `skos:prefLabel`) supports both plain strings and language-tagged objects, e.g.:\n\n```json\n\"name\": { \"en\": \"Habitat Types\", \"es\": \"Tipos de H\u00e1bitat\" }\n```\n\n## Semantic uplift\n\nThe following steps are applied after JSON-LD conversion:\n\n1. **SPARQL UPDATE** \u2014 entails the inverse of any asserted `skos:broader` / `skos:narrower` relation.\n2. **SPARQL UPDATE** \u2014 propagates `skos:inScheme` along `skos:narrower` chains, so that concepts nested\n   only inline (not listed under a Concept Scheme's `concepts`) are still anchored to their scheme.\n3. **SPARQL UPDATE** \u2014 adds `skos:topConceptOf` / `skos:hasTopConcept` links between root concepts (those\n   without a `skos:broader`) and their concept schemes, enabling richer hierarchy display in Prez.\n\n## Vocabularies\n\n| Prefix | Namespace |\n|---|---|\n| `dcat` | `http://www.w3.org/ns/dcat#` |\n| `dct` | `http://purl.org/dc/terms/` |\n| `skos` | `http://www.w3.org/2004/02/skos/core#` |\n| `owl` | `http://www.w3.org/2002/07/owl#` |\n| `vann` | `http://purl.org/vocab/vann/` |\n",
+  "examples": [
+    {
+      "title": "Minimal TopCatalog",
+      "content": "A single TopCatalog containing one concept scheme with two concepts.\n",
+      "snippets": [
+        {
+          "language": "json",
+          "ref": "https://ogcincubator.github.io/bblocks-prez/_sources/hierarchy/ogc/examples/minimal.json",
+          "base-uri": "https://example.org/",
+          "url": "https://ogcincubator.github.io/bblocks-prez/build/tests/prez/hierarchy/ogc/example_1_1.json",
+          "code": "{\n  \"id\": \"https://example.org/cat/top\",\n  \"name\": \"Example domain\",\n  \"type\": \"TopCatalog\",\n  \"items\": [\n    {\n      \"id\": \"https://example.org/cs/animals\",\n      \"name\": \"Animal classification\",\n      \"type\": \"ConceptScheme\",\n      \"concepts\": [\n        { \"id\": \"https://example.org/concept/mammal\", \"name\": \"Mammal\", \"type\": \"Concept\" },\n        { \"id\": \"https://example.org/concept/bird\", \"name\": \"Bird\", \"type\": \"Concept\" }\n      ]\n    }\n  ]\n}\n"
+        },
+        {
+          "language": "jsonld",
+          "url": "https://ogcincubator.github.io/bblocks-prez/build/tests/prez/hierarchy/ogc/example_1_1.jsonld",
+          "code": "{\n  \"@context\": \"https://ogcincubator.github.io/bblocks-prez/build/annotated/prez/hierarchy/ogc/context.jsonld\",\n  \"id\": \"https://example.org/cat/top\",\n  \"name\": \"Example domain\",\n  \"type\": \"TopCatalog\",\n  \"items\": [\n    {\n      \"id\": \"https://example.org/cs/animals\",\n      \"name\": \"Animal classification\",\n      \"type\": \"ConceptScheme\",\n      \"concepts\": [\n        {\n          \"id\": \"https://example.org/concept/mammal\",\n          \"name\": \"Mammal\",\n          \"type\": \"Concept\"\n        },\n        {\n          \"id\": \"https://example.org/concept/bird\",\n          \"name\": \"Bird\",\n          \"type\": \"Concept\"\n        }\n      ]\n    }\n  ]\n}"
+        },
+        {
+          "language": "ttl",
+          "url": "https://ogcincubator.github.io/bblocks-prez/build/tests/prez/hierarchy/ogc/example_1_1.ttl",
+          "code": "@prefix dcat: <http://www.w3.org/ns/dcat#> .\n@prefix dcterms: <http://purl.org/dc/terms/> .\n@prefix skos: <http://www.w3.org/2004/02/skos/core#> .\n\n<https://example.org/cat/top> a dcat:TopCatalog ;\n    dcterms:hasPart <https://example.org/cs/animals> ;\n    skos:prefLabel \"Example domain\" .\n\n<https://example.org/concept/bird> a skos:Concept ;\n    skos:inScheme <https://example.org/cs/animals> ;\n    skos:prefLabel \"Bird\" ;\n    skos:topConceptOf <https://example.org/cs/animals> .\n\n<https://example.org/concept/mammal> a skos:Concept ;\n    skos:inScheme <https://example.org/cs/animals> ;\n    skos:prefLabel \"Mammal\" ;\n    skos:topConceptOf <https://example.org/cs/animals> .\n\n<https://example.org/cs/animals> a skos:ConceptScheme ;\n    skos:hasTopConcept <https://example.org/concept/bird>,\n        <https://example.org/concept/mammal> ;\n    skos:prefLabel \"Animal classification\" .\n\n"
+        }
+      ]
+    },
+    {
+      "title": "Recursively nested catalogs",
+      "content": "A TopCatalog containing a Catalog, which in turn contains another Catalog holding\na Dataset. Catalogs can be nested to any depth under a TopCatalog.\n",
+      "snippets": [
+        {
+          "language": "json",
+          "ref": "https://ogcincubator.github.io/bblocks-prez/_sources/hierarchy/ogc/examples/nested-catalogs.json",
+          "base-uri": "https://example.org/",
+          "url": "https://ogcincubator.github.io/bblocks-prez/build/tests/prez/hierarchy/ogc/example_2_1.json",
+          "code": "{\n  \"id\": \"https://example.org/cat/top\",\n  \"name\": \"Earth observation definitions\",\n  \"type\": \"TopCatalog\",\n  \"items\": [\n    {\n      \"id\": \"https://example.org/cat/climate\",\n      \"name\": \"Climate\",\n      \"type\": \"Catalog\",\n      \"items\": [\n        {\n          \"id\": \"https://example.org/cat/climate-indices\",\n          \"name\": \"Climate indices\",\n          \"type\": \"Catalog\",\n          \"items\": [\n            {\n              \"id\": \"https://example.org/dataset/temperature-anomaly\",\n              \"name\": \"Global temperature anomaly dataset\",\n              \"type\": \"Dataset\"\n            }\n          ]\n        }\n      ]\n    }\n  ]\n}\n"
+        },
+        {
+          "language": "jsonld",
+          "url": "https://ogcincubator.github.io/bblocks-prez/build/tests/prez/hierarchy/ogc/example_2_1.jsonld",
+          "code": "{\n  \"@context\": \"https://ogcincubator.github.io/bblocks-prez/build/annotated/prez/hierarchy/ogc/context.jsonld\",\n  \"id\": \"https://example.org/cat/top\",\n  \"name\": \"Earth observation definitions\",\n  \"type\": \"TopCatalog\",\n  \"items\": [\n    {\n      \"id\": \"https://example.org/cat/climate\",\n      \"name\": \"Climate\",\n      \"type\": \"Catalog\",\n      \"items\": [\n        {\n          \"id\": \"https://example.org/cat/climate-indices\",\n          \"name\": \"Climate indices\",\n          \"type\": \"Catalog\",\n          \"items\": [\n            {\n              \"id\": \"https://example.org/dataset/temperature-anomaly\",\n              \"name\": \"Global temperature anomaly dataset\",\n              \"type\": \"Dataset\"\n            }\n          ]\n        }\n      ]\n    }\n  ]\n}"
+        },
+        {
+          "language": "ttl",
+          "url": "https://ogcincubator.github.io/bblocks-prez/build/tests/prez/hierarchy/ogc/example_2_1.ttl",
+          "code": "@prefix dcat: <http://www.w3.org/ns/dcat#> .\n@prefix dcterms: <http://purl.org/dc/terms/> .\n@prefix skos: <http://www.w3.org/2004/02/skos/core#> .\n\n<https://example.org/cat/top> a dcat:TopCatalog ;\n    dcterms:hasPart <https://example.org/cat/climate> ;\n    skos:prefLabel \"Earth observation definitions\" .\n\n<https://example.org/cat/climate> a dcat:Catalog ;\n    dcterms:hasPart <https://example.org/cat/climate-indices> ;\n    skos:prefLabel \"Climate\" .\n\n<https://example.org/cat/climate-indices> a dcat:Catalog ;\n    dcterms:hasPart <https://example.org/dataset/temperature-anomaly> ;\n    skos:prefLabel \"Climate indices\" .\n\n<https://example.org/dataset/temperature-anomaly> a dcat:Dataset ;\n    skos:prefLabel \"Global temperature anomaly dataset\" .\n\n"
+        }
+      ]
+    },
+    {
+      "title": "TopCatalog with an Ontology and a Collection",
+      "content": "A TopCatalog combining an Ontology entry with a Collection grouping a subset\nof concepts.\n",
+      "snippets": [
+        {
+          "language": "json",
+          "ref": "https://ogcincubator.github.io/bblocks-prez/_sources/hierarchy/ogc/examples/with-ontology.json",
+          "base-uri": "https://example.org/",
+          "url": "https://ogcincubator.github.io/bblocks-prez/build/tests/prez/hierarchy/ogc/example_3_1.json",
+          "code": "{\n  \"id\": \"https://example.org/cat/top\",\n  \"name\": \"Vocabulary definitions\",\n  \"type\": \"TopCatalog\",\n  \"items\": [\n    {\n      \"id\": \"https://example.org/ont/units\",\n      \"name\": \"Units of measure ontology\",\n      \"type\": \"Ontology\"\n    },\n    {\n      \"id\": \"https://example.org/col/lengths\",\n      \"name\": \"Length-related concepts\",\n      \"type\": \"Collection\",\n      \"members\": [\n        { \"id\": \"https://example.org/concept/metre\", \"name\": \"Metre\", \"type\": \"Concept\" },\n        { \"id\": \"https://example.org/concept/foot\", \"name\": \"Foot\", \"type\": \"Concept\" }\n      ]\n    }\n  ]\n}\n"
+        },
+        {
+          "language": "jsonld",
+          "url": "https://ogcincubator.github.io/bblocks-prez/build/tests/prez/hierarchy/ogc/example_3_1.jsonld",
+          "code": "{\n  \"@context\": \"https://ogcincubator.github.io/bblocks-prez/build/annotated/prez/hierarchy/ogc/context.jsonld\",\n  \"id\": \"https://example.org/cat/top\",\n  \"name\": \"Vocabulary definitions\",\n  \"type\": \"TopCatalog\",\n  \"items\": [\n    {\n      \"id\": \"https://example.org/ont/units\",\n      \"name\": \"Units of measure ontology\",\n      \"type\": \"Ontology\"\n    },\n    {\n      \"id\": \"https://example.org/col/lengths\",\n      \"name\": \"Length-related concepts\",\n      \"type\": \"Collection\",\n      \"members\": [\n        {\n          \"id\": \"https://example.org/concept/metre\",\n          \"name\": \"Metre\",\n          \"type\": \"Concept\"\n        },\n        {\n          \"id\": \"https://example.org/concept/foot\",\n          \"name\": \"Foot\",\n          \"type\": \"Concept\"\n        }\n      ]\n    }\n  ]\n}"
+        },
+        {
+          "language": "ttl",
+          "url": "https://ogcincubator.github.io/bblocks-prez/build/tests/prez/hierarchy/ogc/example_3_1.ttl",
+          "code": "@prefix dcat: <http://www.w3.org/ns/dcat#> .\n@prefix dcterms: <http://purl.org/dc/terms/> .\n@prefix owl: <http://www.w3.org/2002/07/owl#> .\n@prefix skos: <http://www.w3.org/2004/02/skos/core#> .\n\n<https://example.org/cat/top> a dcat:TopCatalog ;\n    dcterms:hasPart <https://example.org/col/lengths>,\n        <https://example.org/ont/units> ;\n    skos:prefLabel \"Vocabulary definitions\" .\n\n<https://example.org/col/lengths> a skos:Collection ;\n    skos:member <https://example.org/concept/foot>,\n        <https://example.org/concept/metre> ;\n    skos:prefLabel \"Length-related concepts\" .\n\n<https://example.org/concept/foot> a skos:Concept ;\n    skos:prefLabel \"Foot\" .\n\n<https://example.org/concept/metre> a skos:Concept ;\n    skos:prefLabel \"Metre\" .\n\n<https://example.org/ont/units> a owl:Ontology ;\n    skos:prefLabel \"Units of measure ontology\" .\n\n"
+        }
+      ]
+    },
+    {
+      "title": "Concept with an implicit narrower hierarchy",
+      "content": "A single root concept declares one nested concept under `narrower`, with no `broader` and\nno `topConceptOf` authored anywhere (`type` is still required on every entry in this\nhierarchy, unlike the default one). Semantic uplift entails `skos:broader` on the child\nfrom the parent's `narrower`, anchors the child to the scheme via `skos:inScheme`\npropagation, and marks only the root (which has no `skos:broader`) as `skos:topConceptOf`\nthe scheme.\n",
+      "snippets": [
+        {
+          "language": "json",
+          "ref": "https://ogcincubator.github.io/bblocks-prez/_sources/hierarchy/ogc/examples/implicit-narrower.json",
+          "base-uri": "https://example.org/",
+          "url": "https://ogcincubator.github.io/bblocks-prez/build/tests/prez/hierarchy/ogc/example_4_1.json",
+          "code": "{\n  \"id\": \"https://example.org/cat/top\",\n  \"name\": \"Simple definitions\",\n  \"type\": \"TopCatalog\",\n  \"items\": [\n    {\n      \"id\": \"https://example.org/simple-scheme\",\n      \"name\": \"Simple scheme\",\n      \"type\": \"ConceptScheme\",\n      \"concepts\": [\n        {\n          \"id\": \"https://example.org/concept/root\",\n          \"name\": \"Root concept\",\n          \"type\": \"Concept\",\n          \"narrower\": [\n            { \"id\": \"https://example.org/concept/child\", \"name\": \"Child concept\", \"type\": \"Concept\" }\n          ]\n        }\n      ]\n    }\n  ]\n}\n"
+        },
+        {
+          "language": "jsonld",
+          "url": "https://ogcincubator.github.io/bblocks-prez/build/tests/prez/hierarchy/ogc/example_4_1.jsonld",
+          "code": "{\n  \"@context\": \"https://ogcincubator.github.io/bblocks-prez/build/annotated/prez/hierarchy/ogc/context.jsonld\",\n  \"id\": \"https://example.org/cat/top\",\n  \"name\": \"Simple definitions\",\n  \"type\": \"TopCatalog\",\n  \"items\": [\n    {\n      \"id\": \"https://example.org/simple-scheme\",\n      \"name\": \"Simple scheme\",\n      \"type\": \"ConceptScheme\",\n      \"concepts\": [\n        {\n          \"id\": \"https://example.org/concept/root\",\n          \"name\": \"Root concept\",\n          \"type\": \"Concept\",\n          \"narrower\": [\n            {\n              \"id\": \"https://example.org/concept/child\",\n              \"name\": \"Child concept\",\n              \"type\": \"Concept\"\n            }\n          ]\n        }\n      ]\n    }\n  ]\n}"
+        },
+        {
+          "language": "ttl",
+          "url": "https://ogcincubator.github.io/bblocks-prez/build/tests/prez/hierarchy/ogc/example_4_1.ttl",
+          "code": "@prefix dcat: <http://www.w3.org/ns/dcat#> .\n@prefix dcterms: <http://purl.org/dc/terms/> .\n@prefix skos: <http://www.w3.org/2004/02/skos/core#> .\n\n<https://example.org/cat/top> a dcat:TopCatalog ;\n    dcterms:hasPart <https://example.org/simple-scheme> ;\n    skos:prefLabel \"Simple definitions\" .\n\n<https://example.org/concept/child> a skos:Concept ;\n    skos:broader <https://example.org/concept/root> ;\n    skos:inScheme <https://example.org/simple-scheme> ;\n    skos:prefLabel \"Child concept\" .\n\n<https://example.org/concept/root> a skos:Concept ;\n    skos:inScheme <https://example.org/simple-scheme> ;\n    skos:narrower <https://example.org/concept/child> ;\n    skos:prefLabel \"Root concept\" ;\n    skos:topConceptOf <https://example.org/simple-scheme> .\n\n<https://example.org/simple-scheme> a skos:ConceptScheme ;\n    skos:hasTopConcept <https://example.org/concept/root> ;\n    skos:prefLabel \"Simple scheme\" .\n\n"
+        }
+      ]
+    },
+    {
+      "title": "Concept scheme with a broader/narrower hierarchy",
+      "content": "A concept scheme demonstrating `skos:broader` / `skos:narrower` relations: \"Animal\" has\n\"Mammal\" and \"Bird\" nested inline as narrower concepts, \"Mammal\" in turn nests \"Dog\" and\n\"Cat\". A separate top concept, \"Pet\", references \"Dog\" and \"Cat\" by id to add a second\n`skos:broader` parent to each \u2014 a poly-hierarchy. Only \"Animal\" and \"Pet\" (which have no\n`skos:broader`) end up as `skos:topConceptOf` the scheme.\n",
+      "snippets": [
+        {
+          "language": "json",
+          "ref": "https://ogcincubator.github.io/bblocks-prez/_sources/hierarchy/ogc/examples/concept-hierarchy.json",
+          "base-uri": "https://example.org/",
+          "url": "https://ogcincubator.github.io/bblocks-prez/build/tests/prez/hierarchy/ogc/example_5_1.json",
+          "code": "{\n  \"id\": \"https://example.org/cat/top\",\n  \"name\": \"Taxonomy definitions\",\n  \"type\": \"TopCatalog\",\n  \"items\": [\n    {\n      \"id\": \"https://example.org/animal-scheme\",\n      \"name\": \"Animal taxonomy\",\n      \"type\": \"ConceptScheme\",\n      \"concepts\": [\n        {\n          \"id\": \"https://example.org/concept/animal\",\n          \"name\": \"Animal\",\n          \"type\": \"Concept\",\n          \"narrower\": [\n            {\n              \"id\": \"https://example.org/concept/mammal\",\n              \"name\": \"Mammal\",\n              \"type\": \"Concept\",\n              \"narrower\": [\n                { \"id\": \"https://example.org/concept/dog\", \"name\": \"Dog\", \"type\": \"Concept\" },\n                { \"id\": \"https://example.org/concept/cat\", \"name\": \"Cat\", \"type\": \"Concept\" }\n              ]\n            },\n            {\n              \"id\": \"https://example.org/concept/bird\",\n              \"name\": \"Bird\",\n              \"type\": \"Concept\"\n            }\n          ]\n        },\n        {\n          \"id\": \"https://example.org/concept/pet\",\n          \"name\": \"Pet\",\n          \"type\": \"Concept\",\n          \"narrower\": [\n            \"https://example.org/concept/dog\",\n            \"https://example.org/concept/cat\"\n          ]\n        }\n      ]\n    }\n  ]\n}\n"
+        },
+        {
+          "language": "jsonld",
+          "url": "https://ogcincubator.github.io/bblocks-prez/build/tests/prez/hierarchy/ogc/example_5_1.jsonld",
+          "code": "{\n  \"@context\": \"https://ogcincubator.github.io/bblocks-prez/build/annotated/prez/hierarchy/ogc/context.jsonld\",\n  \"id\": \"https://example.org/cat/top\",\n  \"name\": \"Taxonomy definitions\",\n  \"type\": \"TopCatalog\",\n  \"items\": [\n    {\n      \"id\": \"https://example.org/animal-scheme\",\n      \"name\": \"Animal taxonomy\",\n      \"type\": \"ConceptScheme\",\n      \"concepts\": [\n        {\n          \"id\": \"https://example.org/concept/animal\",\n          \"name\": \"Animal\",\n          \"type\": \"Concept\",\n          \"narrower\": [\n            {\n              \"id\": \"https://example.org/concept/mammal\",\n              \"name\": \"Mammal\",\n              \"type\": \"Concept\",\n              \"narrower\": [\n                {\n                  \"id\": \"https://example.org/concept/dog\",\n                  \"name\": \"Dog\",\n                  \"type\": \"Concept\"\n                },\n                {\n                  \"id\": \"https://example.org/concept/cat\",\n                  \"name\": \"Cat\",\n                  \"type\": \"Concept\"\n                }\n              ]\n            },\n            {\n              \"id\": \"https://example.org/concept/bird\",\n              \"name\": \"Bird\",\n              \"type\": \"Concept\"\n            }\n          ]\n        },\n        {\n          \"id\": \"https://example.org/concept/pet\",\n          \"name\": \"Pet\",\n          \"type\": \"Concept\",\n          \"narrower\": [\n            \"https://example.org/concept/dog\",\n            \"https://example.org/concept/cat\"\n          ]\n        }\n      ]\n    }\n  ]\n}"
+        },
+        {
+          "language": "ttl",
+          "url": "https://ogcincubator.github.io/bblocks-prez/build/tests/prez/hierarchy/ogc/example_5_1.ttl",
+          "code": "@prefix dcat: <http://www.w3.org/ns/dcat#> .\n@prefix dcterms: <http://purl.org/dc/terms/> .\n@prefix skos: <http://www.w3.org/2004/02/skos/core#> .\n\n<https://example.org/cat/top> a dcat:TopCatalog ;\n    dcterms:hasPart <https://example.org/animal-scheme> ;\n    skos:prefLabel \"Taxonomy definitions\" .\n\n<https://example.org/concept/bird> a skos:Concept ;\n    skos:broader <https://example.org/concept/animal> ;\n    skos:inScheme <https://example.org/animal-scheme> ;\n    skos:prefLabel \"Bird\" .\n\n<https://example.org/concept/cat> a skos:Concept ;\n    skos:broader <https://example.org/concept/mammal>,\n        <https://example.org/concept/pet> ;\n    skos:inScheme <https://example.org/animal-scheme> ;\n    skos:prefLabel \"Cat\" .\n\n<https://example.org/concept/dog> a skos:Concept ;\n    skos:broader <https://example.org/concept/mammal>,\n        <https://example.org/concept/pet> ;\n    skos:inScheme <https://example.org/animal-scheme> ;\n    skos:prefLabel \"Dog\" .\n\n<https://example.org/concept/animal> a skos:Concept ;\n    skos:inScheme <https://example.org/animal-scheme> ;\n    skos:narrower <https://example.org/concept/bird>,\n        <https://example.org/concept/mammal> ;\n    skos:prefLabel \"Animal\" ;\n    skos:topConceptOf <https://example.org/animal-scheme> .\n\n<https://example.org/concept/mammal> a skos:Concept ;\n    skos:broader <https://example.org/concept/animal> ;\n    skos:inScheme <https://example.org/animal-scheme> ;\n    skos:narrower <https://example.org/concept/cat>,\n        <https://example.org/concept/dog> ;\n    skos:prefLabel \"Mammal\" .\n\n<https://example.org/concept/pet> a skos:Concept ;\n    skos:inScheme <https://example.org/animal-scheme> ;\n    skos:narrower <https://example.org/concept/cat>,\n        <https://example.org/concept/dog> ;\n    skos:prefLabel \"Pet\" ;\n    skos:topConceptOf <https://example.org/animal-scheme> .\n\n<https://example.org/animal-scheme> a skos:ConceptScheme ;\n    skos:hasTopConcept <https://example.org/concept/animal>,\n        <https://example.org/concept/pet> ;\n    skos:prefLabel \"Animal taxonomy\" .\n\n"
+        }
+      ]
+    },
+    {
+      "title": "TopCatalog with externally-defined items",
+      "content": "A standalone TopCatalog whose items are plain IRI strings rather than embedded objects,\nfor resources that are already defined elsewhere \u2014 possibly in a different graph. Each\nstring becomes a `dct:hasPart` link to that IRI, without asserting any type or label\nlocally.\n",
+      "snippets": [
+        {
+          "language": "json",
+          "ref": "https://ogcincubator.github.io/bblocks-prez/_sources/hierarchy/ogc/examples/external-references.json",
+          "base-uri": "https://example.org/",
+          "url": "https://ogcincubator.github.io/bblocks-prez/build/tests/prez/hierarchy/ogc/example_6_1.json",
+          "code": "{\n  \"id\": \"https://example.org/cat/data-models\",\n  \"name\": \"OGC data models (partial)\",\n  \"type\": \"TopCatalog\",\n  \"items\": [\n    \"http://www.opengis.net/def/observationType/timeseriesML\",\n    \"http://www.opengis.net/def/waterml\",\n    \"http://www.opengis.net/ont/geosparql\"\n  ]\n}\n"
+        },
+        {
+          "language": "jsonld",
+          "url": "https://ogcincubator.github.io/bblocks-prez/build/tests/prez/hierarchy/ogc/example_6_1.jsonld",
+          "code": "{\n  \"@context\": \"https://ogcincubator.github.io/bblocks-prez/build/annotated/prez/hierarchy/ogc/context.jsonld\",\n  \"id\": \"https://example.org/cat/data-models\",\n  \"name\": \"OGC data models (partial)\",\n  \"type\": \"TopCatalog\",\n  \"items\": [\n    \"http://www.opengis.net/def/observationType/timeseriesML\",\n    \"http://www.opengis.net/def/waterml\",\n    \"http://www.opengis.net/ont/geosparql\"\n  ]\n}"
+        },
+        {
+          "language": "ttl",
+          "url": "https://ogcincubator.github.io/bblocks-prez/build/tests/prez/hierarchy/ogc/example_6_1.ttl",
+          "code": "@prefix dcat: <http://www.w3.org/ns/dcat#> .\n@prefix dcterms: <http://purl.org/dc/terms/> .\n@prefix skos: <http://www.w3.org/2004/02/skos/core#> .\n\n<https://example.org/cat/data-models> a dcat:TopCatalog ;\n    dcterms:hasPart <http://www.opengis.net/def/observationType/timeseriesML>,\n        <http://www.opengis.net/def/waterml>,\n        <http://www.opengis.net/ont/geosparql> ;\n    skos:prefLabel \"OGC data models (partial)\" .\n\n"
+        }
+      ]
+    },
+    {
+      "title": "Multiple TopCatalogs with namespace prefix declarations",
+      "content": "An array mixing namespace prefix declarations with two independent TopCatalogs.\nPrefix declarations have no `id` and are uplifted as standalone blank nodes,\nunrelated to the catalogs or to each other \u2014 they are not part of the hierarchy,\njust global CURIE hints for Prez.\n",
+      "snippets": [
+        {
+          "language": "json",
+          "ref": "https://ogcincubator.github.io/bblocks-prez/_sources/hierarchy/ogc/examples/multi-topcatalog-with-prefixes.json",
+          "base-uri": "https://example.org/",
+          "url": "https://ogcincubator.github.io/bblocks-prez/build/tests/prez/hierarchy/ogc/example_7_1.json",
+          "code": "[\n  { \"prefix\": \"ex\", \"uri\": \"https://example.org/\" },\n  {\n    \"id\": \"https://example.org/cat/standards\",\n    \"name\": \"OGC Standards\",\n    \"type\": \"TopCatalog\",\n    \"items\": [\n      {\n        \"id\": \"https://example.org/resource/abstract-spec\",\n        \"name\": \"Abstract Specification\",\n        \"type\": \"Resource\"\n      }\n    ]\n  },\n  {\n    \"id\": \"https://example.org/cat/registers\",\n    \"name\": \"OGC Registers\",\n    \"type\": \"TopCatalog\",\n    \"items\": [\n      {\n        \"id\": \"https://example.org/resource/codelist\",\n        \"name\": \"Codelist register\",\n        \"type\": \"Resource\"\n      }\n    ]\n  }\n]\n"
+        },
+        {
+          "language": "jsonld",
+          "url": "https://ogcincubator.github.io/bblocks-prez/build/tests/prez/hierarchy/ogc/example_7_1.jsonld",
+          "code": "{\n  \"@context\": \"https://ogcincubator.github.io/bblocks-prez/build/annotated/prez/hierarchy/ogc/context.jsonld\",\n  \"@graph\": [\n    {\n      \"prefix\": \"ex\",\n      \"uri\": \"https://example.org/\"\n    },\n    {\n      \"id\": \"https://example.org/cat/standards\",\n      \"name\": \"OGC Standards\",\n      \"type\": \"TopCatalog\",\n      \"items\": [\n        {\n          \"id\": \"https://example.org/resource/abstract-spec\",\n          \"name\": \"Abstract Specification\",\n          \"type\": \"Resource\"\n        }\n      ]\n    },\n    {\n      \"id\": \"https://example.org/cat/registers\",\n      \"name\": \"OGC Registers\",\n      \"type\": \"TopCatalog\",\n      \"items\": [\n        {\n          \"id\": \"https://example.org/resource/codelist\",\n          \"name\": \"Codelist register\",\n          \"type\": \"Resource\"\n        }\n      ]\n    }\n  ]\n}"
+        },
+        {
+          "language": "ttl",
+          "url": "https://ogcincubator.github.io/bblocks-prez/build/tests/prez/hierarchy/ogc/example_7_1.ttl",
+          "code": "@prefix dcat: <http://www.w3.org/ns/dcat#> .\n@prefix dcterms: <http://purl.org/dc/terms/> .\n@prefix skos: <http://www.w3.org/2004/02/skos/core#> .\n@prefix vann: <http://purl.org/vocab/vann/> .\n\n<https://example.org/cat/registers> a dcat:TopCatalog ;\n    dcterms:hasPart <https://example.org/resource/codelist> ;\n    skos:prefLabel \"OGC Registers\" .\n\n<https://example.org/cat/standards> a dcat:TopCatalog ;\n    dcterms:hasPart <https://example.org/resource/abstract-spec> ;\n    skos:prefLabel \"OGC Standards\" .\n\n<https://example.org/resource/abstract-spec> a dcat:Resource ;\n    skos:prefLabel \"Abstract Specification\" .\n\n<https://example.org/resource/codelist> a dcat:Resource ;\n    skos:prefLabel \"Codelist register\" .\n\n[] vann:preferredNamespacePrefix \"ex\" ;\n    vann:preferredNamespaceUri \"https://example.org/\" .\n\n"
+        }
+      ]
+    }
+  ],
+  "annotatedSchema": "$defs:\n  Text:\n    description: 'Either a plain string or a languageCode -> value mapping for multi-language\n      strings.\n\n      '\n    oneOf:\n    - type: string\n    - type: object\n      propertyNames:\n        pattern: ^[a-zA-Z][a-zA-Z0-9]*(-[a-zA-Z0-9]+)*$\n      additionalProperties:\n        type: string\n  NamedResource:\n    type: object\n    required:\n    - id\n    - name\n    - type\n    properties:\n      id:\n        type: string\n        x-jsonld-id: '@id'\n      name:\n        $ref: '#/$defs/Text'\n        x-jsonld-id: http://www.w3.org/2004/02/skos/core#prefLabel\n        x-jsonld-container: '@language'\n      definition:\n        $ref: '#/$defs/Text'\n        x-jsonld-id: http://www.w3.org/2004/02/skos/core#definition\n        x-jsonld-container: '@language'\n  TopCatalog:\n    allOf:\n    - $ref: '#/$defs/NamedResource'\n    properties:\n      type:\n        const: TopCatalog\n        x-jsonld-id: '@type'\n      items:\n        type: array\n        items:\n          oneOf:\n          - type: string\n          - $ref: '#/$defs/CatalogEntry'\n        x-jsonld-id: http://purl.org/dc/terms/hasPart\n        x-jsonld-type: '@id'\n  Catalog:\n    allOf:\n    - $ref: '#/$defs/NamedResource'\n    properties:\n      type:\n        const: Catalog\n        x-jsonld-id: '@type'\n      items:\n        type: array\n        items:\n          oneOf:\n          - type: string\n          - $ref: '#/$defs/CatalogEntry'\n        x-jsonld-id: http://purl.org/dc/terms/hasPart\n        x-jsonld-type: '@id'\n  ConceptScheme:\n    allOf:\n    - $ref: '#/$defs/NamedResource'\n    properties:\n      type:\n        const: ConceptScheme\n        x-jsonld-id: '@type'\n      concepts:\n        type: array\n        items:\n          $ref: '#/$defs/Concept'\n        x-jsonld-reverse: skos:inScheme\n  Collection:\n    allOf:\n    - $ref: '#/$defs/NamedResource'\n    properties:\n      type:\n        const: Collection\n        x-jsonld-id: '@type'\n      members:\n        type: array\n        items:\n          $ref: '#/$defs/Concept'\n        x-jsonld-id: http://www.w3.org/2004/02/skos/core#member\n        x-jsonld-type: '@id'\n  Concept:\n    allOf:\n    - $ref: '#/$defs/NamedResource'\n    properties:\n      type:\n        const: Concept\n        x-jsonld-id: '@type'\n      broader:\n        type: array\n        items:\n          type: string\n        x-jsonld-id: http://www.w3.org/2004/02/skos/core#broader\n        x-jsonld-type: '@id'\n      narrower:\n        type: array\n        items:\n          oneOf:\n          - type: string\n          - $ref: '#/$defs/Concept'\n        x-jsonld-id: http://www.w3.org/2004/02/skos/core#narrower\n        x-jsonld-type: '@id'\n  CatalogEntry:\n    allOf:\n    - $ref: '#/$defs/NamedResource'\n    oneOf:\n    - $ref: '#/$defs/Catalog'\n    - $ref: '#/$defs/ConceptScheme'\n    - $ref: '#/$defs/Collection'\n    - properties:\n        type:\n          enum:\n          - Dataset\n          - Resource\n          - Ontology\n          x-jsonld-id: '@type'\nanyOf:\n- $ref: '#/$defs/TopCatalog'\n- type: array\n  items:\n    oneOf:\n    - $ref: '#/$defs/TopCatalog'\n    - $ref: https://ogcincubator.github.io/bblocks-prez/build/annotated/prez/prefix/schema.yaml\nx-jsonld-extra-terms:\n  id: '@id'\n  name:\n    x-jsonld-id: http://www.w3.org/2004/02/skos/core#prefLabel\n    x-jsonld-container: '@language'\n  definition:\n    x-jsonld-id: http://www.w3.org/2004/02/skos/core#definition\n    x-jsonld-container: '@language'\n  TopCatalog: http://www.w3.org/ns/dcat#TopCatalog\n  Catalog: http://www.w3.org/ns/dcat#Catalog\n  ConceptScheme: http://www.w3.org/2004/02/skos/core#ConceptScheme\n  Collection: http://www.w3.org/2004/02/skos/core#Collection\n  Concept: http://www.w3.org/2004/02/skos/core#Concept\n  Dataset: http://www.w3.org/ns/dcat#Dataset\n  Resource: http://www.w3.org/ns/dcat#Resource\n  Ontology: http://www.w3.org/2002/07/owl#Ontology\n  members:\n    x-jsonld-id: http://www.w3.org/2004/02/skos/core#member\n    x-jsonld-type: '@id'\n  broader:\n    x-jsonld-id: http://www.w3.org/2004/02/skos/core#broader\n    x-jsonld-type: '@id'\n  narrower:\n    x-jsonld-id: http://www.w3.org/2004/02/skos/core#narrower\n    x-jsonld-type: '@id'\n  concepts:\n    x-jsonld-reverse: skos:inScheme\nx-jsonld-prefixes:\n  dct: http://purl.org/dc/terms/\n  skos: http://www.w3.org/2004/02/skos/core#\n  dcat: http://www.w3.org/ns/dcat#\n  owl: http://www.w3.org/2002/07/owl#\n",
+  "semanticUplift": {
+    "additionalSteps": [
+      {
+        "description": "Entails the inverse of asserted skos:broader/skos:narrower relations.",
+        "type": "sparql-update",
+        "code": "PREFIX skos: <http://www.w3.org/2004/02/skos/core#>\nINSERT {\n  ?a skos:broader ?b .\n  ?b skos:narrower ?a .\n} WHERE {\n  ?a skos:broader|^skos:narrower ?b\n}\n",
+        "stage": "post"
+      },
+      {
+        "description": "Propagates skos:inScheme along skos:narrower chains, so that concepts nested only inline (not listed directly under a ConceptScheme's concepts) are still anchored to their scheme.\n",
+        "type": "sparql-update",
+        "code": "PREFIX skos: <http://www.w3.org/2004/02/skos/core#>\nINSERT {\n  ?y skos:inScheme ?cs .\n} WHERE {\n  ?x skos:inScheme ?cs .\n  ?x skos:narrower+ ?y .\n}\n",
+        "stage": "post"
+      },
+      {
+        "description": "Enrich inScheme concepts that have no skos:broader within their own scheme (i.e. the roots of the concept hierarchy) with skos:topConceptOf, so that Prez displays even prettier hierarchies.\n",
+        "type": "sparql-update",
+        "code": "PREFIX skos: <http://www.w3.org/2004/02/skos/core#>\nINSERT {\n  ?c skos:topConceptOf ?cs .\n  ?cs skos:hasTopConcept ?c .\n} WHERE {\n  ?c skos:inScheme ?cs .\n  FILTER NOT EXISTS { ?c skos:broader|^skos:narrower ?broader . ?broader skos:inScheme ?cs }\n}\n",
+        "stage": "post"
+      }
+    ]
+  },
+  "gitRepository": "https://github.com/ogcincubator/bblocks-prez",
+  "gitPath": "_sources/hierarchy/ogc"
+}

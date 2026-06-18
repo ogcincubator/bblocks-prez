@@ -1,0 +1,9 @@
+@prefix dcat: <http://www.w3.org/ns/dcat#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+
+<https://example.org/standalone-catalog> a dcat:Catalog ;
+    dcterms:hasPart <https://example.org/external/concept-scheme-a>,
+        <https://example.org/external/dataset-b> ;
+    skos:prefLabel "Standalone catalog" .
+

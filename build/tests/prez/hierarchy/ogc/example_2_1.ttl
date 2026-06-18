@@ -1,0 +1,19 @@
+@prefix dcat: <http://www.w3.org/ns/dcat#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+
+<https://example.org/cat/top> a dcat:TopCatalog ;
+    dcterms:hasPart <https://example.org/cat/climate> ;
+    skos:prefLabel "Earth observation definitions" .
+
+<https://example.org/cat/climate> a dcat:Catalog ;
+    dcterms:hasPart <https://example.org/cat/climate-indices> ;
+    skos:prefLabel "Climate" .
+
+<https://example.org/cat/climate-indices> a dcat:Catalog ;
+    dcterms:hasPart <https://example.org/dataset/temperature-anomaly> ;
+    skos:prefLabel "Climate indices" .
+
+<https://example.org/dataset/temperature-anomaly> a dcat:Dataset ;
+    skos:prefLabel "Global temperature anomaly dataset" .
+

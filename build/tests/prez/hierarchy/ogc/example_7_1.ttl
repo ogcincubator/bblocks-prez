@@ -1,0 +1,22 @@
+@prefix dcat: <http://www.w3.org/ns/dcat#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix vann: <http://purl.org/vocab/vann/> .
+
+<https://example.org/cat/registers> a dcat:TopCatalog ;
+    dcterms:hasPart <https://example.org/resource/codelist> ;
+    skos:prefLabel "OGC Registers" .
+
+<https://example.org/cat/standards> a dcat:TopCatalog ;
+    dcterms:hasPart <https://example.org/resource/abstract-spec> ;
+    skos:prefLabel "OGC Standards" .
+
+<https://example.org/resource/abstract-spec> a dcat:Resource ;
+    skos:prefLabel "Abstract Specification" .
+
+<https://example.org/resource/codelist> a dcat:Resource ;
+    skos:prefLabel "Codelist register" .
+
+[] vann:preferredNamespacePrefix "ex" ;
+    vann:preferredNamespaceUri "https://example.org/" .
+

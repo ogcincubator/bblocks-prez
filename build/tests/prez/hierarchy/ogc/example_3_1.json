@@ -1,0 +1,29 @@
+{
+  "id": "https://example.org/cat/top",
+  "name": "Vocabulary definitions",
+  "type": "TopCatalog",
+  "items": [
+    {
+      "id": "https://example.org/ont/units",
+      "name": "Units of measure ontology",
+      "type": "Ontology"
+    },
+    {
+      "id": "https://example.org/col/lengths",
+      "name": "Length-related concepts",
+      "type": "Collection",
+      "members": [
+        {
+          "id": "https://example.org/concept/metre",
+          "name": "Metre",
+          "type": "Concept"
+        },
+        {
+          "id": "https://example.org/concept/foot",
+          "name": "Foot",
+          "type": "Concept"
+        }
+      ]
+    }
+  ]
+}

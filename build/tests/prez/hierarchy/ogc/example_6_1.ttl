@@ -1,0 +1,10 @@
+@prefix dcat: <http://www.w3.org/ns/dcat#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+
+<https://example.org/cat/data-models> a dcat:TopCatalog ;
+    dcterms:hasPart <http://www.opengis.net/def/observationType/timeseriesML>,
+        <http://www.opengis.net/def/waterml>,
+        <http://www.opengis.net/ont/geosparql> ;
+    skos:prefLabel "OGC data models (partial)" .
+

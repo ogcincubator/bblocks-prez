@@ -1,7 +1,7 @@
 Validation report for ogc.prez.hierarchy.default - Prez default hierarchy
-Generated 2026-06-18T09:04:27.351458+00:00
+Generated 2026-06-18T10:44:03.778650+00:00
 === Files ===
-Using examples/catalog-with-prefixes.json from examples
+Using examples/implicit-narrower.json from examples
 JSON-LD context is present - uplifting
 Output JSON-LD example_6_1.jsonld created
 Output Turtle example_6_1.ttl created
@@ -17,24 +17,26 @@ Validation result for _sources/hierarchy/default/shapes.shacl:
   Conforms: True
   
 Focus nodes for _sources/hierarchy/default/shapes.shacl:
- - Shape prez:AtLeastOneCatalogShape: _:nbad2c01fdd3b4fe8a828b4ba6366eb59b1
- - Shape prez:HasPartSubjectShape: <https://example.org/my-catalog>
- - Shape prez:ConceptAnchorShape: <https://example.org/concept-a>
- - Shape prez:TopLevelItemShape: <https://example.org/my-scheme>
- - Shape prez:PrefLabelShape: <https://example.org/my-scheme>,<https://example.org/concept-a>
- - Shape prez:InSchemeShape: <https://example.org/concept-a>
+ - Shape prez:TopLevelItemShape: <https://example.org/simple-scheme>
+ - Shape prez:PrefLabelShape: <https://example.org/simple-scheme>,<https://example.org/concept/root>,<https://example.org/concept/child>
+ - Shape prez:InSchemeShape: <https://example.org/concept/root>,<https://example.org/concept/child>
+ - Shape prez:ConceptAnchorShape: <https://example.org/concept/root>,<https://example.org/concept/child>
+ - Shape prez:HasPartSubjectShape: <https://example.org/simple-catalog>
+ - Shape prez:AtLeastOneCatalogShape: _:nffef885f7529408092ea0e94aa4a1279b1
 
 Validation result for _sources/prefix/shapes.shacl:
   Validation Report
   Conforms: True
   
 Focus nodes for _sources/prefix/shapes.shacl:
- - Shape vann:PrefixDeclarationShape: _:N950559a512514c1c811f03e6a016a2c1,_:N5e646146d4b0423bb86c2dd0060975a0
+ - Shape vann:PrefixDeclarationShape: *none*
 
 === End SHACL ===
 
 === Semantic Uplift ===
 Running pre-uplift jq transform step from inline code
+Running post-uplift sparql-update transform step from inline code
+Running post-uplift sparql-update transform step from inline code
 Running post-uplift sparql-update transform step from inline code
 === End Semantic Uplift ===
 

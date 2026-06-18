@@ -194,7 +194,7 @@
   "name": "Building Blocks - Prez OGC Blocks",
   "abstract": "OGC Blocks for working with the [Prez](https://github.com/RDFLib/prez) application.\n",
   "description": "This collection provides OGC Building Blocks for working with [Prez](https://github.com/RDFLib/prez),\na read-only linked data API and browser built on SPARQL.\n\nBuilding blocks in this collection define JSON input formats and semantic uplift pipelines that\ntransform structured JSON documents into RDF graphs ready for publication via Prez. They rely on\nstandard vocabularies \u2014 primarily DCAT and SKOS \u2014 and follow OGC patterns for schema definition,\nvalidation (JSON Schema + SHACL), and semantic uplift (jq + SPARQL).\n",
-  "modified": "2026-06-18T09:04:26.184006",
+  "modified": "2026-06-18T10:44:01.999985",
   "tooling": {
     "bblocks-postprocess": {
       "commitId": "\"89c04825320d476cbe210a33c6f4a1b40078df17",
@@ -416,6 +416,100 @@
       "skos:topConceptOf": {
         "@id": "https://ogcincubator.github.io/bblocks-prez/"
       }
+    },
+    {
+      "itemIdentifier": "ogc.prez.hierarchy.ogc",
+      "name": "Prez OGC hierarchy",
+      "abstract": "Helps create the OGC knowledge graph hierarchy in Prez, with TopCatalogs, recursively nested Catalogs, and Ontologies.",
+      "status": "under-development",
+      "dateTimeAddition": "2026-06-18T00:00:00Z",
+      "itemClass": "schema",
+      "register": "ogc-building-block-register",
+      "version": "0.1",
+      "tags": [
+        "prez",
+        "hierarchy",
+        "ogc"
+      ],
+      "shaclShapes": [
+        {
+          "prof:hasArtifact": [
+            "https://ogcincubator.github.io/bblocks-prez/_sources/hierarchy/ogc/shapes.shacl"
+          ],
+          "rdfs:seeAlso": "bblocks://ogc.prez.hierarchy.ogc",
+          "prof:hasRole": "role:validation",
+          "dct:format": "text/turtle",
+          "dct:conformsTo": "shacl:"
+        },
+        {
+          "prof:hasArtifact": [
+            "https://ogcincubator.github.io/bblocks-prez/_sources/prefix/shapes.shacl"
+          ],
+          "rdfs:seeAlso": "bblocks://ogc.prez.prefix",
+          "prof:hasRole": "role:validation",
+          "dct:format": "text/turtle",
+          "dct:conformsTo": "shacl:"
+        }
+      ],
+      "dependsOn": [
+        "bblocks://ogc.prez.prefix"
+      ],
+      "ldContext": {
+        "prof:hasArtifact": "https://ogcincubator.github.io/bblocks-prez/build/annotated/prez/hierarchy/ogc/context.jsonld",
+        "prof:hasRole": "role:mapping",
+        "dct:format": "application/ld+json",
+        "dct:conformsTo": "https://www.w3.org/TR/json-ld11/"
+      },
+      "dateOfLastChange": "2026-06-18",
+      "schema": [
+        {
+          "prof:hasArtifact": "https://ogcincubator.github.io/bblocks-prez/build/annotated/prez/hierarchy/ogc/schema.yaml",
+          "prof:hasRole": "role:schema",
+          "dct:format": "application/yaml",
+          "dct:conformsTo": "https://json-schema.org/draft/2020-12/schema"
+        },
+        {
+          "prof:hasArtifact": "https://ogcincubator.github.io/bblocks-prez/build/annotated/prez/hierarchy/ogc/schema.json",
+          "prof:hasRole": "role:schema",
+          "dct:format": "application/json",
+          "dct:conformsTo": "https://json-schema.org/draft/2020-12/schema"
+        }
+      ],
+      "sourceSchema": "https://ogcincubator.github.io/bblocks-prez/_sources/hierarchy/ogc/schema.yaml",
+      "sourceLdContext": "https://ogcincubator.github.io/bblocks-prez/_sources/hierarchy/ogc/context.jsonld",
+      "resolvedSchemaProperties": "https://ogcincubator.github.io/bblocks-prez/build/annotated/prez/hierarchy/ogc/resolvedProperties.json",
+      "sourceFiles": "https://ogcincubator.github.io/bblocks-prez/_sources/hierarchy/ogc/",
+      "validationPassed": true,
+      "testOutputs": "https://github.com/ogcincubator/bblocks-prez/blob/master/build/tests/prez/hierarchy/ogc/",
+      "documentation": {
+        "markdown": {
+          "mediatype": "text/markdown",
+          "url": "https://ogcincubator.github.io/bblocks-prez/build/generateddocs/markdown/prez/hierarchy/ogc/index.md"
+        },
+        "json-full": {
+          "mediatype": "application/json",
+          "url": "https://ogcincubator.github.io/bblocks-prez/build/generateddocs/json-full/prez/hierarchy/ogc/index.json"
+        },
+        "bblocks-viewer": {
+          "mediatype": "text/html",
+          "url": "https://ogcincubator.github.io/bblocks-prez/bblock/ogc.prez.hierarchy.ogc"
+        }
+      },
+      "@id": "bblocks://ogc.prez.hierarchy.ogc",
+      "@type": [
+        "bblocks:Schema",
+        "skos:Concept",
+        "dcat:Dataset",
+        "bblocks:BBlock"
+      ],
+      "skos:prefLabel": "Prez OGC hierarchy",
+      "openAPIDocument": null,
+      "ontology": null,
+      "rdfData": [],
+      "isProfileOf": null,
+      "skos:topConceptOf": {
+        "@id": "https://ogcincubator.github.io/bblocks-prez/"
+      }
     }
   ],
   "skos:hasTopConcept": [
@@ -424,6 +518,9 @@
     },
     {
       "@id": "bblocks://ogc.prez.hierarchy.default"
+    },
+    {
+      "@id": "bblocks://ogc.prez.hierarchy.ogc"
     }
   ]
 }

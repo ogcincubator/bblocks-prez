@@ -1,0 +1,42 @@
+Validation report for ogc.prez.hierarchy.default - Prez default hierarchy
+Generated 2026-06-18T10:44:03.983822+00:00
+=== Files ===
+Using examples/catalog-with-prefixes.json from examples
+JSON-LD context is present - uplifting
+Output JSON-LD example_9_1.jsonld created
+Output Turtle example_9_1.ttl created
+=== End Files ===
+
+=== JSON Schema ===
+Validation passed
+=== End JSON Schema ===
+
+=== SHACL ===
+Validation result for _sources/hierarchy/default/shapes.shacl:
+  Validation Report
+  Conforms: True
+  
+Focus nodes for _sources/hierarchy/default/shapes.shacl:
+ - Shape prez:TopLevelItemShape: <https://example.org/my-scheme>
+ - Shape prez:PrefLabelShape: <https://example.org/my-scheme>,<https://example.org/concept-a>
+ - Shape prez:InSchemeShape: <https://example.org/concept-a>
+ - Shape prez:ConceptAnchorShape: <https://example.org/concept-a>
+ - Shape prez:HasPartSubjectShape: <https://example.org/my-catalog>
+ - Shape prez:AtLeastOneCatalogShape: _:nffef885f7529408092ea0e94aa4a1279b1
+
+Validation result for _sources/prefix/shapes.shacl:
+  Validation Report
+  Conforms: True
+  
+Focus nodes for _sources/prefix/shapes.shacl:
+ - Shape vann:PrefixDeclarationShape: _:N97a9d8c64aed4bc1854c750ae4adfa37,_:N916e70a345b143f8ad2bd824df5b26db
+
+=== End SHACL ===
+
+=== Semantic Uplift ===
+Running pre-uplift jq transform step from inline code
+Running post-uplift sparql-update transform step from inline code
+Running post-uplift sparql-update transform step from inline code
+Running post-uplift sparql-update transform step from inline code
+=== End Semantic Uplift ===
+

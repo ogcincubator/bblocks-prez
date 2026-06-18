@@ -1,0 +1,26 @@
+{
+  "id": "https://example.org/cat/top",
+  "name": "Earth observation definitions",
+  "type": "TopCatalog",
+  "items": [
+    {
+      "id": "https://example.org/cat/climate",
+      "name": "Climate",
+      "type": "Catalog",
+      "items": [
+        {
+          "id": "https://example.org/cat/climate-indices",
+          "name": "Climate indices",
+          "type": "Catalog",
+          "items": [
+            {
+              "id": "https://example.org/dataset/temperature-anomaly",
+              "name": "Global temperature anomaly dataset",
+              "type": "Dataset"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

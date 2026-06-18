@@ -26,3 +26,9 @@ Declares a preferred namespace prefix and the URI it expands to, for use in CURI
 
 Helps create a default Prez hierarchy
 
+### `ogc.prez.hierarchy.ogc` — Prez OGC hierarchy
+
+**Type:** schema
+
+Helps create the OGC knowledge graph hierarchy in Prez, with TopCatalogs, recursively nested Catalogs, and Ontologies.
+

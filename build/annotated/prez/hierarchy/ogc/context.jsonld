@@ -1,0 +1,49 @@
+{
+  "@context": {
+    "id": "@id",
+    "name": {
+      "@id": "skos:prefLabel",
+      "@container": "@language"
+    },
+    "definition": {
+      "@id": "skos:definition",
+      "@container": "@language"
+    },
+    "type": "@type",
+    "items": {
+      "@id": "dct:hasPart",
+      "@type": "@id"
+    },
+    "prefix": "vann:preferredNamespacePrefix",
+    "uri": "vann:preferredNamespaceUri",
+    "TopCatalog": "dcat:TopCatalog",
+    "Catalog": "dcat:Catalog",
+    "ConceptScheme": "skos:ConceptScheme",
+    "Collection": "skos:Collection",
+    "Concept": "skos:Concept",
+    "Dataset": "dcat:Dataset",
+    "Resource": "dcat:Resource",
+    "Ontology": "owl:Ontology",
+    "members": {
+      "@id": "skos:member",
+      "@type": "@id"
+    },
+    "broader": {
+      "@id": "skos:broader",
+      "@type": "@id"
+    },
+    "narrower": {
+      "@id": "skos:narrower",
+      "@type": "@id"
+    },
+    "concepts": {
+      "@reverse": "skos:inScheme"
+    },
+    "dct": "http://purl.org/dc/terms/",
+    "skos": "http://www.w3.org/2004/02/skos/core#",
+    "dcat": "http://www.w3.org/ns/dcat#",
+    "owl": "http://www.w3.org/2002/07/owl#",
+    "vann": "http://purl.org/vocab/vann/",
+    "@version": 1.1
+  }
+}

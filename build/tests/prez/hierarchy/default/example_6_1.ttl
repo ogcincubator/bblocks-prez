@@ -1,24 +1,23 @@
 @prefix dcat: <http://www.w3.org/ns/dcat#> .
 @prefix dcterms: <http://purl.org/dc/terms/> .
 @prefix skos: <http://www.w3.org/2004/02/skos/core#> .
-@prefix vann: <http://purl.org/vocab/vann/> .
 
-<https://example.org/my-catalog> a dcat:Catalog ;
-    dcterms:hasPart <https://example.org/my-scheme> ;
-    skos:prefLabel "My Catalog" .
+<https://example.org/simple-catalog> a dcat:Catalog ;
+    dcterms:hasPart <https://example.org/simple-scheme> ;
+    skos:prefLabel "Simple catalog" .
 
-<https://example.org/concept-a> a skos:Concept ;
-    skos:inScheme <https://example.org/my-scheme> ;
-    skos:prefLabel "Concept A" ;
-    skos:topConceptOf <https://example.org/my-scheme> .
+<https://example.org/concept/child> a skos:Concept ;
+    skos:broader <https://example.org/concept/root> ;
+    skos:inScheme <https://example.org/simple-scheme> ;
+    skos:prefLabel "Child concept" .
 
-<https://example.org/my-scheme> a skos:ConceptScheme ;
-    skos:hasTopConcept <https://example.org/concept-a> ;
-    skos:prefLabel "My Concept Scheme" .
+<https://example.org/concept/root> a skos:Concept ;
+    skos:inScheme <https://example.org/simple-scheme> ;
+    skos:narrower <https://example.org/concept/child> ;
+    skos:prefLabel "Root concept" ;
+    skos:topConceptOf <https://example.org/simple-scheme> .
 
-[] vann:preferredNamespacePrefix "ex" ;
-    vann:preferredNamespaceUri "https://example.org/" .
-
-[] vann:preferredNamespacePrefix "registers" ;
-    vann:preferredNamespaceUri "urn:ogc:defs/catalogs/register/collections/" .
+<https://example.org/simple-scheme> a skos:ConceptScheme ;
+    skos:hasTopConcept <https://example.org/concept/root> ;
+    skos:prefLabel "Simple scheme" .
 

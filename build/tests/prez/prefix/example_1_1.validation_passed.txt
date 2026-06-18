@@ -1,5 +1,5 @@
 Validation report for ogc.prez.prefix - Namespace prefix declaration
-Generated 2026-06-18T09:04:26.811870+00:00
+Generated 2026-06-18T10:44:02.997711+00:00
 === Files ===
 Using examples/registers.json from examples
 JSON-LD context is present - uplifting
@@ -17,7 +17,7 @@ Validation result for _sources/prefix/shapes.shacl:
   Conforms: True
   
 Focus nodes for _sources/prefix/shapes.shacl:
- - Shape vann:PrefixDeclarationShape: _:N5ec33271511946a1afeb3df23c9946e2
+ - Shape vann:PrefixDeclarationShape: _:N227bbf7b0f094b369958a9f02881a2a4
 
 === End SHACL ===
 

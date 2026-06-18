@@ -1,0 +1,51 @@
+@prefix dcat: <http://www.w3.org/ns/dcat#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+
+<https://example.org/cat/top> a dcat:TopCatalog ;
+    dcterms:hasPart <https://example.org/animal-scheme> ;
+    skos:prefLabel "Taxonomy definitions" .
+
+<https://example.org/concept/bird> a skos:Concept ;
+    skos:broader <https://example.org/concept/animal> ;
+    skos:inScheme <https://example.org/animal-scheme> ;
+    skos:prefLabel "Bird" .
+
+<https://example.org/concept/cat> a skos:Concept ;
+    skos:broader <https://example.org/concept/mammal>,
+        <https://example.org/concept/pet> ;
+    skos:inScheme <https://example.org/animal-scheme> ;
+    skos:prefLabel "Cat" .
+
+<https://example.org/concept/dog> a skos:Concept ;
+    skos:broader <https://example.org/concept/mammal>,
+        <https://example.org/concept/pet> ;
+    skos:inScheme <https://example.org/animal-scheme> ;
+    skos:prefLabel "Dog" .
+
+<https://example.org/concept/animal> a skos:Concept ;
+    skos:inScheme <https://example.org/animal-scheme> ;
+    skos:narrower <https://example.org/concept/bird>,
+        <https://example.org/concept/mammal> ;
+    skos:prefLabel "Animal" ;
+    skos:topConceptOf <https://example.org/animal-scheme> .
+
+<https://example.org/concept/mammal> a skos:Concept ;
+    skos:broader <https://example.org/concept/animal> ;
+    skos:inScheme <https://example.org/animal-scheme> ;
+    skos:narrower <https://example.org/concept/cat>,
+        <https://example.org/concept/dog> ;
+    skos:prefLabel "Mammal" .
+
+<https://example.org/concept/pet> a skos:Concept ;
+    skos:inScheme <https://example.org/animal-scheme> ;
+    skos:narrower <https://example.org/concept/cat>,
+        <https://example.org/concept/dog> ;
+    skos:prefLabel "Pet" ;
+    skos:topConceptOf <https://example.org/animal-scheme> .
+
+<https://example.org/animal-scheme> a skos:ConceptScheme ;
+    skos:hasTopConcept <https://example.org/concept/animal>,
+        <https://example.org/concept/pet> ;
+    skos:prefLabel "Animal taxonomy" .
+

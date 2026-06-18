@@ -27,6 +27,14 @@
       "@id": "skos:member",
       "@type": "@id"
     },
+    "broader": {
+      "@id": "skos:broader",
+      "@type": "@id"
+    },
+    "narrower": {
+      "@id": "skos:narrower",
+      "@type": "@id"
+    },
     "concepts": {
       "@reverse": "skos:inScheme"
     },

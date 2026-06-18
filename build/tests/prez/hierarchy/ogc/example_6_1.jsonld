@@ -1,0 +1,11 @@
+{
+  "@context": "https://ogcincubator.github.io/bblocks-prez/build/annotated/prez/hierarchy/ogc/context.jsonld",
+  "id": "https://example.org/cat/data-models",
+  "name": "OGC data models (partial)",
+  "type": "TopCatalog",
+  "items": [
+    "http://www.opengis.net/def/observationType/timeseriesML",
+    "http://www.opengis.net/def/waterml",
+    "http://www.opengis.net/ont/geosparql"
+  ]
+}

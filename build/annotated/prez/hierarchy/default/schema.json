@@ -54,7 +54,14 @@
         "items": {
           "type": "array",
           "items": {
-            "$ref": "#/$defs/SecondLevelEntry"
+            "oneOf": [
+              {
+                "type": "string"
+              },
+              {
+                "$ref": "#/$defs/SecondLevelEntry"
+              }
+            ]
           },
           "x-jsonld-id": "http://purl.org/dc/terms/hasPart",
           "x-jsonld-type": "@id"
@@ -115,6 +122,29 @@
         "type": {
           "const": "Concept",
           "x-jsonld-id": "@type"
+        },
+        "broader": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "x-jsonld-id": "http://www.w3.org/2004/02/skos/core#broader",
+          "x-jsonld-type": "@id"
+        },
+        "narrower": {
+          "type": "array",
+          "items": {
+            "oneOf": [
+              {
+                "type": "string"
+              },
+              {
+                "$ref": "#/$defs/Concept"
+              }
+            ]
+          },
+          "x-jsonld-id": "http://www.w3.org/2004/02/skos/core#narrower",
+          "x-jsonld-type": "@id"
         }
       }
     },
@@ -185,6 +215,14 @@
     "Resource": "http://www.w3.org/ns/dcat#Resource",
     "members": {
       "x-jsonld-id": "http://www.w3.org/2004/02/skos/core#member",
+      "x-jsonld-type": "@id"
+    },
+    "broader": {
+      "x-jsonld-id": "http://www.w3.org/2004/02/skos/core#broader",
+      "x-jsonld-type": "@id"
+    },
+    "narrower": {
+      "x-jsonld-id": "http://www.w3.org/2004/02/skos/core#narrower",
       "x-jsonld-type": "@id"
     },
     "concepts": {

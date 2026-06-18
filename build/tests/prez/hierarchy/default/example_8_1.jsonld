@@ -1,0 +1,10 @@
+{
+  "@context": "https://ogcincubator.github.io/bblocks-prez/build/annotated/prez/hierarchy/default/context.jsonld",
+  "id": "https://example.org/standalone-catalog",
+  "name": "Standalone catalog",
+  "items": [
+    "https://example.org/external/concept-scheme-a",
+    "https://example.org/external/dataset-b"
+  ],
+  "type": "Catalog"
+}

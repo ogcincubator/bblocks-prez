@@ -1,0 +1,26 @@
+{
+  "id": "https://example.org/cat/top",
+  "name": "Simple definitions",
+  "type": "TopCatalog",
+  "items": [
+    {
+      "id": "https://example.org/simple-scheme",
+      "name": "Simple scheme",
+      "type": "ConceptScheme",
+      "concepts": [
+        {
+          "id": "https://example.org/concept/root",
+          "name": "Root concept",
+          "type": "Concept",
+          "narrower": [
+            {
+              "id": "https://example.org/concept/child",
+              "name": "Child concept",
+              "type": "Concept"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

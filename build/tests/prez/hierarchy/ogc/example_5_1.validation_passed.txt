@@ -1,0 +1,41 @@
+Validation report for ogc.prez.hierarchy.ogc - Prez OGC hierarchy
+Generated 2026-06-18T10:44:04.374049+00:00
+=== Files ===
+Using examples/concept-hierarchy.json from examples
+JSON-LD context is present - uplifting
+Output JSON-LD example_5_1.jsonld created
+Output Turtle example_5_1.ttl created
+=== End Files ===
+
+=== JSON Schema ===
+Validation passed
+=== End JSON Schema ===
+
+=== SHACL ===
+Validation result for _sources/hierarchy/ogc/shapes.shacl:
+  Validation Report
+  Conforms: True
+  
+Focus nodes for _sources/hierarchy/ogc/shapes.shacl:
+ - Shape prez:PrefLabelShape: <https://example.org/concept/cat>,<https://example.org/animal-scheme>,<https://example.org/concept/dog>,<https://example.org/concept/pet>,<https://example.org/concept/animal>,<https://example.org/concept/bird>,<https://example.org/concept/mammal>,<https://example.org/cat/top>
+ - Shape prez:ConceptAnchorShape: <https://example.org/concept/cat>,<https://example.org/concept/bird>,<https://example.org/concept/dog>,<https://example.org/concept/mammal>,<https://example.org/concept/pet>,<https://example.org/concept/animal>
+ - Shape prez:HasPartSubjectShape: <https://example.org/cat/top>
+ - Shape prez:NestedItemShape: <https://example.org/animal-scheme>
+ - Shape prez:InSchemeShape: <https://example.org/concept/cat>,<https://example.org/concept/bird>,<https://example.org/concept/dog>,<https://example.org/concept/mammal>,<https://example.org/concept/pet>,<https://example.org/concept/animal>
+ - Shape prez:AtLeastOneTopCatalogShape: _:nf10cae45ad304d938304aef3bf58037db1
+
+Validation result for _sources/prefix/shapes.shacl:
+  Validation Report
+  Conforms: True
+  
+Focus nodes for _sources/prefix/shapes.shacl:
+ - Shape vann:PrefixDeclarationShape: *none*
+
+=== End SHACL ===
+
+=== Semantic Uplift ===
+Running post-uplift sparql-update transform step from inline code
+Running post-uplift sparql-update transform step from inline code
+Running post-uplift sparql-update transform step from inline code
+=== End Semantic Uplift ===
+

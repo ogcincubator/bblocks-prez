@@ -1,0 +1,44 @@
+{
+  "id": "https://example.org/taxonomy-catalog",
+  "name": "Taxonomy catalog",
+  "items": [
+    {
+      "id": "https://example.org/animal-scheme",
+      "name": "Animal taxonomy",
+      "concepts": [
+        {
+          "id": "https://example.org/concept/animal",
+          "name": "Animal",
+          "narrower": [
+            {
+              "id": "https://example.org/concept/mammal",
+              "name": "Mammal",
+              "narrower": [
+                {
+                  "id": "https://example.org/concept/dog",
+                  "name": "Dog"
+                },
+                {
+                  "id": "https://example.org/concept/cat",
+                  "name": "Cat"
+                }
+              ]
+            },
+            {
+              "id": "https://example.org/concept/bird",
+              "name": "Bird"
+            }
+          ]
+        },
+        {
+          "id": "https://example.org/concept/pet",
+          "name": "Pet",
+          "narrower": [
+            "https://example.org/concept/dog",
+            "https://example.org/concept/cat"
+          ]
+        }
+      ]
+    }
+  ]
+}

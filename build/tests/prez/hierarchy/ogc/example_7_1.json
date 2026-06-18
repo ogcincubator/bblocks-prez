@@ -1,0 +1,30 @@
+[
+  {
+    "prefix": "ex",
+    "uri": "https://example.org/"
+  },
+  {
+    "id": "https://example.org/cat/standards",
+    "name": "OGC Standards",
+    "type": "TopCatalog",
+    "items": [
+      {
+        "id": "https://example.org/resource/abstract-spec",
+        "name": "Abstract Specification",
+        "type": "Resource"
+      }
+    ]
+  },
+  {
+    "id": "https://example.org/cat/registers",
+    "name": "OGC Registers",
+    "type": "TopCatalog",
+    "items": [
+      {
+        "id": "https://example.org/resource/codelist",
+        "name": "Codelist register",
+        "type": "Resource"
+      }
+    ]
+  }
+]

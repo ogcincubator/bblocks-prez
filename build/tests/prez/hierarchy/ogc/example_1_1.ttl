@@ -1,0 +1,23 @@
+@prefix dcat: <http://www.w3.org/ns/dcat#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+
+<https://example.org/cat/top> a dcat:TopCatalog ;
+    dcterms:hasPart <https://example.org/cs/animals> ;
+    skos:prefLabel "Example domain" .
+
+<https://example.org/concept/bird> a skos:Concept ;
+    skos:inScheme <https://example.org/cs/animals> ;
+    skos:prefLabel "Bird" ;
+    skos:topConceptOf <https://example.org/cs/animals> .
+
+<https://example.org/concept/mammal> a skos:Concept ;
+    skos:inScheme <https://example.org/cs/animals> ;
+    skos:prefLabel "Mammal" ;
+    skos:topConceptOf <https://example.org/cs/animals> .
+
+<https://example.org/cs/animals> a skos:ConceptScheme ;
+    skos:hasTopConcept <https://example.org/concept/bird>,
+        <https://example.org/concept/mammal> ;
+    skos:prefLabel "Animal classification" .
+

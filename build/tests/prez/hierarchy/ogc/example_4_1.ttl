@@ -1,0 +1,23 @@
+@prefix dcat: <http://www.w3.org/ns/dcat#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+
+<https://example.org/cat/top> a dcat:TopCatalog ;
+    dcterms:hasPart <https://example.org/simple-scheme> ;
+    skos:prefLabel "Simple definitions" .
+
+<https://example.org/concept/child> a skos:Concept ;
+    skos:broader <https://example.org/concept/root> ;
+    skos:inScheme <https://example.org/simple-scheme> ;
+    skos:prefLabel "Child concept" .
+
+<https://example.org/concept/root> a skos:Concept ;
+    skos:inScheme <https://example.org/simple-scheme> ;
+    skos:narrower <https://example.org/concept/child> ;
+    skos:prefLabel "Root concept" ;
+    skos:topConceptOf <https://example.org/simple-scheme> .
+
+<https://example.org/simple-scheme> a skos:ConceptScheme ;
+    skos:hasTopConcept <https://example.org/concept/root> ;
+    skos:prefLabel "Simple scheme" .
+

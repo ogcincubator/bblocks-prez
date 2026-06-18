@@ -27,6 +27,25 @@ its global CURIE map. A catalog contains **second-level entries** — any mix of
 
 Concept Schemes and Collections in turn contain **concepts** (`skos:Concept`).
 
+A catalog's items can also be plain IRI strings instead of embedded objects, for resources that are
+already defined elsewhere — for example, in a different graph. A plain string becomes a `dct:hasPart`
+link to that IRI, without asserting any type or label locally; this allows declaring standalone
+catalogs whose concept schemes, datasets, etc. live elsewhere.
+
+Concepts can be arranged into a `skos:broader` / `skos:narrower` hierarchy:
+
+- `broader` is an array of concept ids (strings) referencing already-declared concepts.
+- `narrower` is an array mixing concept ids (strings) and/or **embedded Concept objects** — allowing a
+  whole sub-tree to be declared inline under its parent, instead of being listed flatly under the
+  Concept Scheme's `concepts`.
+
+Only one direction needs to be asserted per relation; the inverse is entailed during semantic uplift.
+A concept nested only inside another concept's `narrower` (and not also listed directly under
+`concepts`) is automatically anchored to the same Concept Scheme as its ancestor.
+
+Only concepts with no `skos:broader` (i.e. the roots of the hierarchy) are marked as
+`skos:topConceptOf` their scheme — concepts that are narrower of another concept are not top concepts.
+
 The `type` field is optional for Catalogs, Concept Schemes, and Concepts — it is inferred automatically during semantic uplift from the structural properties of each object.
 
 The `name` field (mapped to `skos:prefLabel`) supports both plain strings and language-tagged objects, e.g.:
@@ -37,10 +56,14 @@ The `name` field (mapped to `skos:prefLabel`) supports both plain strings and la
 
 ## Semantic uplift
 
-Two steps are applied after JSON-LD conversion:
+The following steps are applied after JSON-LD conversion:
 
 1. **jq transform** — infers missing `type` values based on object structure before JSON-LD expansion.
-2. **SPARQL UPDATE** — adds `skos:topConceptOf` / `skos:hasTopConcept` links between concepts and their concept schemes, enabling richer hierarchy display in Prez.
+2. **SPARQL UPDATE** — entails the inverse of any asserted `skos:broader` / `skos:narrower` relation.
+3. **SPARQL UPDATE** — propagates `skos:inScheme` along `skos:narrower` chains, so that concepts nested
+   only inline (not listed under a Concept Scheme's `concepts`) are still anchored to their scheme.
+4. **SPARQL UPDATE** — adds `skos:topConceptOf` / `skos:hasTopConcept` links between root concepts (those
+   without a `skos:broader`) and their concept schemes, enabling richer hierarchy display in Prez.
 
 ## Vocabularies
 
@@ -1072,6 +1095,309 @@ scheme. The second is a simpler species registry.
 ```
 
 
+### Concept with an implicit narrower hierarchy
+A single root concept declares one nested concept under `narrower`, with nothing else
+authored — no `type`, no `broader`, no `topConceptOf`. Semantic uplift infers both
+concepts' `type`, entails `skos:broader` on the child from the parent's `narrower`,
+anchors the child to the scheme via `skos:inScheme` propagation, and marks only the
+root (which has no `skos:broader`) as `skos:topConceptOf` the scheme.
+
+#### json
+```json
+{
+  "id": "https://example.org/simple-catalog",
+  "name": "Simple catalog",
+  "items": [
+    {
+      "id": "https://example.org/simple-scheme",
+      "name": "Simple scheme",
+      "concepts": [
+        {
+          "id": "https://example.org/concept/root",
+          "name": "Root concept",
+          "narrower": [
+            { "id": "https://example.org/concept/child", "name": "Child concept" }
+          ]
+        }
+      ]
+    }
+  ]
+}
+
+```
+
+#### jsonld
+```jsonld
+{
+  "@context": "https://ogcincubator.github.io/bblocks-prez/build/annotated/prez/hierarchy/default/context.jsonld",
+  "id": "https://example.org/simple-catalog",
+  "name": "Simple catalog",
+  "items": [
+    {
+      "id": "https://example.org/simple-scheme",
+      "name": "Simple scheme",
+      "concepts": [
+        {
+          "id": "https://example.org/concept/root",
+          "name": "Root concept",
+          "narrower": [
+            {
+              "id": "https://example.org/concept/child",
+              "name": "Child concept",
+              "type": "Concept"
+            }
+          ],
+          "type": "Concept"
+        }
+      ],
+      "type": "ConceptScheme"
+    }
+  ],
+  "type": "Catalog"
+}
+```
+
+#### ttl
+```ttl
+@prefix dcat: <http://www.w3.org/ns/dcat#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+
+<https://example.org/simple-catalog> a dcat:Catalog ;
+    dcterms:hasPart <https://example.org/simple-scheme> ;
+    skos:prefLabel "Simple catalog" .
+
+<https://example.org/concept/child> a skos:Concept ;
+    skos:broader <https://example.org/concept/root> ;
+    skos:inScheme <https://example.org/simple-scheme> ;
+    skos:prefLabel "Child concept" .
+
+<https://example.org/concept/root> a skos:Concept ;
+    skos:inScheme <https://example.org/simple-scheme> ;
+    skos:narrower <https://example.org/concept/child> ;
+    skos:prefLabel "Root concept" ;
+    skos:topConceptOf <https://example.org/simple-scheme> .
+
+<https://example.org/simple-scheme> a skos:ConceptScheme ;
+    skos:hasTopConcept <https://example.org/concept/root> ;
+    skos:prefLabel "Simple scheme" .
+
+
+```
+
+
+### Concept scheme with a broader/narrower hierarchy
+A concept scheme demonstrating `skos:broader` / `skos:narrower` relations: "Animal" has
+"Mammal" and "Bird" nested inline as narrower concepts, "Mammal" in turn nests "Dog" and
+"Cat". A separate top concept, "Pet", references "Dog" and "Cat" by id to add a second
+`skos:broader` parent to each — a poly-hierarchy. Only "Animal" and "Pet" (which have no
+`skos:broader`) end up as `skos:topConceptOf` the scheme.
+
+#### json
+```json
+{
+  "id": "https://example.org/taxonomy-catalog",
+  "name": "Taxonomy catalog",
+  "items": [
+    {
+      "id": "https://example.org/animal-scheme",
+      "name": "Animal taxonomy",
+      "concepts": [
+        {
+          "id": "https://example.org/concept/animal",
+          "name": "Animal",
+          "narrower": [
+            {
+              "id": "https://example.org/concept/mammal",
+              "name": "Mammal",
+              "narrower": [
+                { "id": "https://example.org/concept/dog", "name": "Dog" },
+                { "id": "https://example.org/concept/cat", "name": "Cat" }
+              ]
+            },
+            {
+              "id": "https://example.org/concept/bird",
+              "name": "Bird"
+            }
+          ]
+        },
+        {
+          "id": "https://example.org/concept/pet",
+          "name": "Pet",
+          "narrower": [
+            "https://example.org/concept/dog",
+            "https://example.org/concept/cat"
+          ]
+        }
+      ]
+    }
+  ]
+}
+
+```
+
+#### jsonld
+```jsonld
+{
+  "@context": "https://ogcincubator.github.io/bblocks-prez/build/annotated/prez/hierarchy/default/context.jsonld",
+  "id": "https://example.org/taxonomy-catalog",
+  "name": "Taxonomy catalog",
+  "items": [
+    {
+      "id": "https://example.org/animal-scheme",
+      "name": "Animal taxonomy",
+      "concepts": [
+        {
+          "id": "https://example.org/concept/animal",
+          "name": "Animal",
+          "narrower": [
+            {
+              "id": "https://example.org/concept/mammal",
+              "name": "Mammal",
+              "narrower": [
+                {
+                  "id": "https://example.org/concept/dog",
+                  "name": "Dog",
+                  "type": "Concept"
+                },
+                {
+                  "id": "https://example.org/concept/cat",
+                  "name": "Cat",
+                  "type": "Concept"
+                }
+              ],
+              "type": "Concept"
+            },
+            {
+              "id": "https://example.org/concept/bird",
+              "name": "Bird",
+              "type": "Concept"
+            }
+          ],
+          "type": "Concept"
+        },
+        {
+          "id": "https://example.org/concept/pet",
+          "name": "Pet",
+          "narrower": [
+            "https://example.org/concept/dog",
+            "https://example.org/concept/cat"
+          ],
+          "type": "Concept"
+        }
+      ],
+      "type": "ConceptScheme"
+    }
+  ],
+  "type": "Catalog"
+}
+```
+
+#### ttl
+```ttl
+@prefix dcat: <http://www.w3.org/ns/dcat#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+
+<https://example.org/taxonomy-catalog> a dcat:Catalog ;
+    dcterms:hasPart <https://example.org/animal-scheme> ;
+    skos:prefLabel "Taxonomy catalog" .
+
+<https://example.org/concept/bird> a skos:Concept ;
+    skos:broader <https://example.org/concept/animal> ;
+    skos:inScheme <https://example.org/animal-scheme> ;
+    skos:prefLabel "Bird" .
+
+<https://example.org/concept/cat> a skos:Concept ;
+    skos:broader <https://example.org/concept/mammal>,
+        <https://example.org/concept/pet> ;
+    skos:inScheme <https://example.org/animal-scheme> ;
+    skos:prefLabel "Cat" .
+
+<https://example.org/concept/dog> a skos:Concept ;
+    skos:broader <https://example.org/concept/mammal>,
+        <https://example.org/concept/pet> ;
+    skos:inScheme <https://example.org/animal-scheme> ;
+    skos:prefLabel "Dog" .
+
+<https://example.org/concept/animal> a skos:Concept ;
+    skos:inScheme <https://example.org/animal-scheme> ;
+    skos:narrower <https://example.org/concept/bird>,
+        <https://example.org/concept/mammal> ;
+    skos:prefLabel "Animal" ;
+    skos:topConceptOf <https://example.org/animal-scheme> .
+
+<https://example.org/concept/mammal> a skos:Concept ;
+    skos:broader <https://example.org/concept/animal> ;
+    skos:inScheme <https://example.org/animal-scheme> ;
+    skos:narrower <https://example.org/concept/cat>,
+        <https://example.org/concept/dog> ;
+    skos:prefLabel "Mammal" .
+
+<https://example.org/concept/pet> a skos:Concept ;
+    skos:inScheme <https://example.org/animal-scheme> ;
+    skos:narrower <https://example.org/concept/cat>,
+        <https://example.org/concept/dog> ;
+    skos:prefLabel "Pet" ;
+    skos:topConceptOf <https://example.org/animal-scheme> .
+
+<https://example.org/animal-scheme> a skos:ConceptScheme ;
+    skos:hasTopConcept <https://example.org/concept/animal>,
+        <https://example.org/concept/pet> ;
+    skos:prefLabel "Animal taxonomy" .
+
+
+```
+
+
+### Catalog with externally-defined items
+A catalog whose items are plain IRI strings rather than embedded objects, for items
+(e.g. concept schemes, datasets) that are already defined elsewhere — possibly in a
+different graph. Each string becomes a `dct:hasPart` link to that IRI, without
+asserting any type or label locally.
+
+#### json
+```json
+{
+  "id": "https://example.org/standalone-catalog",
+  "name": "Standalone catalog",
+  "items": [
+    "https://example.org/external/concept-scheme-a",
+    "https://example.org/external/dataset-b"
+  ]
+}
+
+```
+
+#### jsonld
+```jsonld
+{
+  "@context": "https://ogcincubator.github.io/bblocks-prez/build/annotated/prez/hierarchy/default/context.jsonld",
+  "id": "https://example.org/standalone-catalog",
+  "name": "Standalone catalog",
+  "items": [
+    "https://example.org/external/concept-scheme-a",
+    "https://example.org/external/dataset-b"
+  ],
+  "type": "Catalog"
+}
+```
+
+#### ttl
+```ttl
+@prefix dcat: <http://www.w3.org/ns/dcat#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+
+<https://example.org/standalone-catalog> a dcat:Catalog ;
+    dcterms:hasPart <https://example.org/external/concept-scheme-a>,
+        <https://example.org/external/dataset-b> ;
+    skos:prefLabel "Standalone catalog" .
+
+
+```
+
+
 ### Catalog with namespace prefix declarations
 An array mixing namespace prefix declarations with a catalog. Prefix declarations
 have no `id` and are uplifted as standalone blank nodes, unrelated to the catalog
@@ -1163,11 +1489,11 @@ or to each other — they are not part of the hierarchy, just global CURIE hints
     skos:hasTopConcept <https://example.org/concept-a> ;
     skos:prefLabel "My Concept Scheme" .
 
-[] vann:preferredNamespacePrefix "ex" ;
-    vann:preferredNamespaceUri "https://example.org/" .
-
 [] vann:preferredNamespacePrefix "registers" ;
     vann:preferredNamespaceUri "urn:ogc:defs/catalogs/register/collections/" .
+
+[] vann:preferredNamespacePrefix "ex" ;
+    vann:preferredNamespaceUri "https://example.org/" .
 
 
 ```
@@ -1215,7 +1541,9 @@ $defs:
       items:
         type: array
         items:
-          $ref: '#/$defs/SecondLevelEntry'
+          oneOf:
+          - type: string
+          - $ref: '#/$defs/SecondLevelEntry'
         x-jsonld-id: http://purl.org/dc/terms/hasPart
         x-jsonld-type: '@id'
   ConceptScheme:
@@ -1252,6 +1580,20 @@ $defs:
       type:
         const: Concept
         x-jsonld-id: '@type'
+      broader:
+        type: array
+        items:
+          type: string
+        x-jsonld-id: http://www.w3.org/2004/02/skos/core#broader
+        x-jsonld-type: '@id'
+      narrower:
+        type: array
+        items:
+          oneOf:
+          - type: string
+          - $ref: '#/$defs/Concept'
+        x-jsonld-id: http://www.w3.org/2004/02/skos/core#narrower
+        x-jsonld-type: '@id'
   SecondLevelEntry:
     allOf:
     - $ref: '#/$defs/NamedResource'
@@ -1290,6 +1632,12 @@ x-jsonld-extra-terms:
   Resource: http://www.w3.org/ns/dcat#Resource
   members:
     x-jsonld-id: http://www.w3.org/2004/02/skos/core#member
+    x-jsonld-type: '@id'
+  broader:
+    x-jsonld-id: http://www.w3.org/2004/02/skos/core#broader
+    x-jsonld-type: '@id'
+  narrower:
+    x-jsonld-id: http://www.w3.org/2004/02/skos/core#narrower
     x-jsonld-type: '@id'
   concepts:
     x-jsonld-reverse: skos:inScheme
@@ -1336,6 +1684,14 @@ Links to the schema:
     "Resource": "dcat:Resource",
     "members": {
       "@id": "skos:member",
+      "@type": "@id"
+    },
+    "broader": {
+      "@id": "skos:broader",
+      "@type": "@id"
+    },
+    "narrower": {
+      "@id": "skos:narrower",
       "@type": "@id"
     },
     "concepts": {

@@ -1,0 +1,266 @@
+{
+  "$defs": {
+    "Text": {
+      "description": "Either a plain string or a languageCode -> value mapping for multi-language strings.\n",
+      "oneOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "object",
+          "propertyNames": {
+            "pattern": "^[a-zA-Z][a-zA-Z0-9]*(-[a-zA-Z0-9]+)*$"
+          },
+          "additionalProperties": {
+            "type": "string"
+          }
+        }
+      ]
+    },
+    "NamedResource": {
+      "type": "object",
+      "required": [
+        "id",
+        "name",
+        "type"
+      ],
+      "properties": {
+        "id": {
+          "type": "string",
+          "x-jsonld-id": "@id"
+        },
+        "name": {
+          "$ref": "#/$defs/Text",
+          "x-jsonld-id": "http://www.w3.org/2004/02/skos/core#prefLabel",
+          "x-jsonld-container": "@language"
+        },
+        "definition": {
+          "$ref": "#/$defs/Text",
+          "x-jsonld-id": "http://www.w3.org/2004/02/skos/core#definition",
+          "x-jsonld-container": "@language"
+        }
+      }
+    },
+    "TopCatalog": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/NamedResource"
+        }
+      ],
+      "properties": {
+        "type": {
+          "const": "TopCatalog",
+          "x-jsonld-id": "@type"
+        },
+        "items": {
+          "type": "array",
+          "items": {
+            "oneOf": [
+              {
+                "type": "string"
+              },
+              {
+                "$ref": "#/$defs/CatalogEntry"
+              }
+            ]
+          },
+          "x-jsonld-id": "http://purl.org/dc/terms/hasPart",
+          "x-jsonld-type": "@id"
+        }
+      }
+    },
+    "Catalog": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/NamedResource"
+        }
+      ],
+      "properties": {
+        "type": {
+          "const": "Catalog",
+          "x-jsonld-id": "@type"
+        },
+        "items": {
+          "type": "array",
+          "items": {
+            "oneOf": [
+              {
+                "type": "string"
+              },
+              {
+                "$ref": "#/$defs/CatalogEntry"
+              }
+            ]
+          },
+          "x-jsonld-id": "http://purl.org/dc/terms/hasPart",
+          "x-jsonld-type": "@id"
+        }
+      }
+    },
+    "ConceptScheme": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/NamedResource"
+        }
+      ],
+      "properties": {
+        "type": {
+          "const": "ConceptScheme",
+          "x-jsonld-id": "@type"
+        },
+        "concepts": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/Concept"
+          },
+          "x-jsonld-reverse": "skos:inScheme"
+        }
+      }
+    },
+    "Collection": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/NamedResource"
+        }
+      ],
+      "properties": {
+        "type": {
+          "const": "Collection",
+          "x-jsonld-id": "@type"
+        },
+        "members": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/Concept"
+          },
+          "x-jsonld-id": "http://www.w3.org/2004/02/skos/core#member",
+          "x-jsonld-type": "@id"
+        }
+      }
+    },
+    "Concept": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/NamedResource"
+        }
+      ],
+      "properties": {
+        "type": {
+          "const": "Concept",
+          "x-jsonld-id": "@type"
+        },
+        "broader": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "x-jsonld-id": "http://www.w3.org/2004/02/skos/core#broader",
+          "x-jsonld-type": "@id"
+        },
+        "narrower": {
+          "type": "array",
+          "items": {
+            "oneOf": [
+              {
+                "type": "string"
+              },
+              {
+                "$ref": "#/$defs/Concept"
+              }
+            ]
+          },
+          "x-jsonld-id": "http://www.w3.org/2004/02/skos/core#narrower",
+          "x-jsonld-type": "@id"
+        }
+      }
+    },
+    "CatalogEntry": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/NamedResource"
+        }
+      ],
+      "oneOf": [
+        {
+          "$ref": "#/$defs/Catalog"
+        },
+        {
+          "$ref": "#/$defs/ConceptScheme"
+        },
+        {
+          "$ref": "#/$defs/Collection"
+        },
+        {
+          "properties": {
+            "type": {
+              "enum": [
+                "Dataset",
+                "Resource",
+                "Ontology"
+              ],
+              "x-jsonld-id": "@type"
+            }
+          }
+        }
+      ]
+    }
+  },
+  "anyOf": [
+    {
+      "$ref": "#/$defs/TopCatalog"
+    },
+    {
+      "type": "array",
+      "items": {
+        "oneOf": [
+          {
+            "$ref": "#/$defs/TopCatalog"
+          },
+          {
+            "$ref": "https://ogcincubator.github.io/bblocks-prez/build/annotated/prez/prefix/schema.json"
+          }
+        ]
+      }
+    }
+  ],
+  "x-jsonld-extra-terms": {
+    "id": "@id",
+    "name": {
+      "x-jsonld-id": "http://www.w3.org/2004/02/skos/core#prefLabel",
+      "x-jsonld-container": "@language"
+    },
+    "definition": {
+      "x-jsonld-id": "http://www.w3.org/2004/02/skos/core#definition",
+      "x-jsonld-container": "@language"
+    },
+    "TopCatalog": "http://www.w3.org/ns/dcat#TopCatalog",
+    "Catalog": "http://www.w3.org/ns/dcat#Catalog",
+    "ConceptScheme": "http://www.w3.org/2004/02/skos/core#ConceptScheme",
+    "Collection": "http://www.w3.org/2004/02/skos/core#Collection",
+    "Concept": "http://www.w3.org/2004/02/skos/core#Concept",
+    "Dataset": "http://www.w3.org/ns/dcat#Dataset",
+    "Resource": "http://www.w3.org/ns/dcat#Resource",
+    "Ontology": "http://www.w3.org/2002/07/owl#Ontology",
+    "members": {
+      "x-jsonld-id": "http://www.w3.org/2004/02/skos/core#member",
+      "x-jsonld-type": "@id"
+    },
+    "broader": {
+      "x-jsonld-id": "http://www.w3.org/2004/02/skos/core#broader",
+      "x-jsonld-type": "@id"
+    },
+    "narrower": {
+      "x-jsonld-id": "http://www.w3.org/2004/02/skos/core#narrower",
+      "x-jsonld-type": "@id"
+    },
+    "concepts": {
+      "x-jsonld-reverse": "skos:inScheme"
+    }
+  },
+  "x-jsonld-prefixes": {
+    "dct": "http://purl.org/dc/terms/",
+    "skos": "http://www.w3.org/2004/02/skos/core#",
+    "dcat": "http://www.w3.org/ns/dcat#",
+    "owl": "http://www.w3.org/2002/07/owl#"
+  }
+}
