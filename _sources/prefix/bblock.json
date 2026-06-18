@@ -1,0 +1,10 @@
+{
+  "name": "Namespace prefix declaration",
+  "abstract": "Declares a preferred namespace prefix and the URI it expands to, for use in CURIE generation.",
+  "status": "under-development",
+  "dateTimeAddition": "2026-06-18T00:00:00Z",
+  "itemClass": "schema",
+  "register": "ogc-building-block-register",
+  "version": "0.1",
+  "tags": ["prez", "prefix", "namespace", "vann"]
+}

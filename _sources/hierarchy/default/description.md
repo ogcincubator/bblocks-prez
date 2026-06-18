@@ -2,7 +2,10 @@ This building block defines a JSON input format for describing the default [Prez
 
 ## Structure
 
-The top-level input is either a single catalog object or a wrapper object with a `base` URL and a `catalogs` array. A catalog contains **second-level entries** — any mix of:
+The top-level input is either a single catalog object, or an array mixing catalog objects with
+[namespace prefix declarations](bblocks://ogc.prez.prefix). Prefix declarations have no `id` — they
+uplift to standalone blank nodes, unrelated to the catalogs or to each other, used by Prez to build
+its global CURIE map. A catalog contains **second-level entries** — any mix of:
 
 | Type | JSON discriminator | RDF type |
 |---|---|---|
@@ -35,3 +38,4 @@ Two steps are applied after JSON-LD conversion:
 | `dcat` | `http://www.w3.org/ns/dcat#` |
 | `dct` | `http://purl.org/dc/terms/` |
 | `skos` | `http://www.w3.org/2004/02/skos/core#` |
+| `vann` | `http://purl.org/vocab/vann/` |

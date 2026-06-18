@@ -45,3 +45,13 @@ examples:
       - language: json
         ref: examples/multi-catalog.json
         base-uri: https://example.org/
+
+  - title: Catalog with namespace prefix declarations
+    content: |
+      An array mixing namespace prefix declarations with a catalog. Prefix declarations
+      have no `id` and are uplifted as standalone blank nodes, unrelated to the catalog
+      or to each other — they are not part of the hierarchy, just global CURIE hints for Prez.
+    snippets:
+      - language: json
+        ref: examples/catalog-with-prefixes.json
+        base-uri: https://example.org/

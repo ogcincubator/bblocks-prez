@@ -1,0 +1,22 @@
+@prefix sh:   <http://www.w3.org/ns/shacl#> .
+@prefix vann: <http://purl.org/vocab/vann/> .
+@prefix xsd:  <http://www.w3.org/2001/XMLSchema#> .
+
+vann:PrefixDeclarationShape
+  a sh:NodeShape ;
+  sh:targetSubjectsOf vann:preferredNamespacePrefix, vann:preferredNamespaceUri ;
+  sh:property [
+    sh:path vann:preferredNamespacePrefix ;
+    sh:datatype xsd:string ;
+    sh:pattern "^[a-zA-Z][a-zA-Z0-9_-]*$" ;
+    sh:minCount 1 ;
+    sh:maxCount 1 ;
+    sh:message "A namespace prefix declaration must have exactly one preferredNamespacePrefix matching an NCName-like pattern." ;
+  ] ;
+  sh:property [
+    sh:path vann:preferredNamespaceUri ;
+    sh:datatype xsd:string ;
+    sh:minCount 1 ;
+    sh:maxCount 1 ;
+    sh:message "A namespace prefix declaration must have exactly one preferredNamespaceUri." ;
+  ] .

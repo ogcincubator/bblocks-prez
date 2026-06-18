@@ -1,0 +1,7 @@
+examples:
+  - title: Registers collection prefix
+    content: |
+      Declares the `registers` prefix for the OGC catalog register collections namespace.
+    snippets:
+      - language: json
+        ref: examples/registers.json

@@ -1,0 +1,7 @@
+{
+  "@context": {
+    "vann": "http://purl.org/vocab/vann/",
+    "prefix": "vann:preferredNamespacePrefix",
+    "uri": "vann:preferredNamespaceUri"
+  }
+}
