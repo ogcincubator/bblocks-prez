@@ -6,5 +6,6 @@
   "itemClass": "schema",
   "register": "ogc-building-block-register",
   "version": "0.1",
-  "tags": ["prez", "hierarchy", "ogc"]
+  "tags": ["prez", "hierarchy", "ogc"],
+  "highlighted": true
 }
