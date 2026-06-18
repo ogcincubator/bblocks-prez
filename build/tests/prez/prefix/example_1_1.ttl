@@ -1,0 +1,5 @@
+@prefix vann: <http://purl.org/vocab/vann/> .
+
+[] vann:preferredNamespacePrefix "registers" ;
+    vann:preferredNamespaceUri "urn:ogc:defs/catalogs/register/collections/" .
+

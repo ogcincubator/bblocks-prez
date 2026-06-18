@@ -1,0 +1,3 @@
+path	@id	schema
+/prefix	http://purl.org/vocab/vann/preferredNamespacePrefix	/github/workspace/build/annotated/prez/prefix/schema.yaml
+/uri	http://purl.org/vocab/vann/preferredNamespaceUri	/github/workspace/build/annotated/prez/prefix/schema.yaml

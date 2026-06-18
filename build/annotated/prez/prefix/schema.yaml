@@ -1,0 +1,24 @@
+$schema: https://json-schema.org/draft/2020-12/schema
+title: Namespace prefix declaration
+description: 'Declares a preferred namespace prefix and the URI it expands to, following
+  the VANN vocabulary
+
+  (`vann:preferredNamespacePrefix` / `vann:preferredNamespaceUri`).
+
+  '
+type: object
+required:
+- prefix
+- uri
+properties:
+  prefix:
+    type: string
+    pattern: ^[a-zA-Z][a-zA-Z0-9_-]*$
+    x-jsonld-id: http://purl.org/vocab/vann/preferredNamespacePrefix
+  uri:
+    type: string
+    format: uri
+    x-jsonld-id: http://purl.org/vocab/vann/preferredNamespaceUri
+additionalProperties: false
+x-jsonld-prefixes:
+  vann: http://purl.org/vocab/vann/

@@ -1,0 +1,24 @@
+@prefix dcat: <http://www.w3.org/ns/dcat#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix vann: <http://purl.org/vocab/vann/> .
+
+<https://example.org/my-catalog> a dcat:Catalog ;
+    dcterms:hasPart <https://example.org/my-scheme> ;
+    skos:prefLabel "My Catalog" .
+
+<https://example.org/concept-a> a skos:Concept ;
+    skos:inScheme <https://example.org/my-scheme> ;
+    skos:prefLabel "Concept A" ;
+    skos:topConceptOf <https://example.org/my-scheme> .
+
+<https://example.org/my-scheme> a skos:ConceptScheme ;
+    skos:hasTopConcept <https://example.org/concept-a> ;
+    skos:prefLabel "My Concept Scheme" .
+
+[] vann:preferredNamespacePrefix "ex" ;
+    vann:preferredNamespaceUri "https://example.org/" .
+
+[] vann:preferredNamespacePrefix "registers" ;
+    vann:preferredNamespaceUri "urn:ogc:defs/catalogs/register/collections/" .
+

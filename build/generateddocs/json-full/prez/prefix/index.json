@@ -1,0 +1,63 @@
+
+
+{
+  "itemIdentifier": "ogc.prez.prefix",
+  "name": "Namespace prefix declaration",
+  "abstract": "Declares a preferred namespace prefix and the URI it expands to, for use in CURIE generation.",
+  "status": "under-development",
+  "dateTimeAddition": "2026-06-18T00:00:00Z",
+  "itemClass": "schema",
+  "register": "ogc-building-block-register",
+  "version": "0.1",
+  "tags": [
+    "prez",
+    "prefix",
+    "namespace",
+    "vann"
+  ],
+  "shaclShapes": {
+    "ogc.prez.prefix": [
+      "https://ogcincubator.github.io/bblocks-prez/_sources/prefix/shapes.shacl"
+    ]
+  },
+  "ldContext": "https://ogcincubator.github.io/bblocks-prez/build/annotated/prez/prefix/context.jsonld",
+  "dateOfLastChange": "2026-06-18",
+  "schema": {
+    "application/yaml": "https://ogcincubator.github.io/bblocks-prez/build/annotated/prez/prefix/schema.yaml",
+    "application/json": "https://ogcincubator.github.io/bblocks-prez/build/annotated/prez/prefix/schema.json"
+  },
+  "sourceSchema": "https://ogcincubator.github.io/bblocks-prez/_sources/prefix/schema.yaml",
+  "sourceLdContext": "https://ogcincubator.github.io/bblocks-prez/_sources/prefix/context.jsonld",
+  "resolvedSchemaProperties": "https://ogcincubator.github.io/bblocks-prez/build/annotated/prez/prefix/resolvedProperties.json",
+  "sourceFiles": "https://ogcincubator.github.io/bblocks-prez/_sources/prefix/",
+  "validationPassed": true,
+  "testOutputs": "https://github.com/ogcincubator/bblocks-prez/blob/master/build/tests/prez/prefix/",
+  "description": "This building block defines a JSON input format for declaring a preferred namespace prefix and the\nURI it expands to, following the [VANN](http://vocab.org/vann/) vocabulary\n(`vann:preferredNamespacePrefix` / `vann:preferredNamespaceUri`).\n\nA prefix declaration has no `id`: it uplifts to a standalone RDF node (a blank node), not linked to\nany other resource. [Prez](https://github.com/RDFLib/prez) scans the dataset graph for these\ndeclarations to build its global CURIE map, so they are typically mixed alongside catalogs rather\nthan nested under them \u2014 see the [default hierarchy](bblocks://ogc.prez.hierarchy.default) block.",
+  "examples": [
+    {
+      "title": "Registers collection prefix",
+      "content": "Declares the `registers` prefix for the OGC catalog register collections namespace.\n",
+      "snippets": [
+        {
+          "language": "json",
+          "ref": "https://ogcincubator.github.io/bblocks-prez/_sources/prefix/examples/registers.json",
+          "url": "https://ogcincubator.github.io/bblocks-prez/build/tests/prez/prefix/example_1_1.json",
+          "code": "{\n  \"prefix\": \"registers\",\n  \"uri\": \"urn:ogc:defs/catalogs/register/collections/\"\n}"
+        },
+        {
+          "language": "jsonld",
+          "url": "https://ogcincubator.github.io/bblocks-prez/build/tests/prez/prefix/example_1_1.jsonld",
+          "code": "{\n  \"@context\": \"https://ogcincubator.github.io/bblocks-prez/build/annotated/prez/prefix/context.jsonld\",\n  \"prefix\": \"registers\",\n  \"uri\": \"urn:ogc:defs/catalogs/register/collections/\"\n}"
+        },
+        {
+          "language": "ttl",
+          "url": "https://ogcincubator.github.io/bblocks-prez/build/tests/prez/prefix/example_1_1.ttl",
+          "code": "@prefix vann: <http://purl.org/vocab/vann/> .\n\n[] vann:preferredNamespacePrefix \"registers\" ;\n    vann:preferredNamespaceUri \"urn:ogc:defs/catalogs/register/collections/\" .\n\n"
+        }
+      ]
+    }
+  ],
+  "annotatedSchema": "$schema: https://json-schema.org/draft/2020-12/schema\ntitle: Namespace prefix declaration\ndescription: 'Declares a preferred namespace prefix and the URI it expands to, following\n  the VANN vocabulary\n\n  (`vann:preferredNamespacePrefix` / `vann:preferredNamespaceUri`).\n\n  '\ntype: object\nrequired:\n- prefix\n- uri\nproperties:\n  prefix:\n    type: string\n    pattern: ^[a-zA-Z][a-zA-Z0-9_-]*$\n    x-jsonld-id: http://purl.org/vocab/vann/preferredNamespacePrefix\n  uri:\n    type: string\n    format: uri\n    x-jsonld-id: http://purl.org/vocab/vann/preferredNamespaceUri\nadditionalProperties: false\nx-jsonld-prefixes:\n  vann: http://purl.org/vocab/vann/\n",
+  "gitRepository": "https://github.com/ogcincubator/bblocks-prez",
+  "gitPath": "_sources/prefix"
+}

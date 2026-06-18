@@ -155,7 +155,14 @@
     {
       "type": "array",
       "items": {
-        "$ref": "#/$defs/Catalog"
+        "oneOf": [
+          {
+            "$ref": "#/$defs/Catalog"
+          },
+          {
+            "$ref": "https://ogcincubator.github.io/bblocks-prez/build/annotated/prez/prefix/schema.json"
+          }
+        ]
       }
     }
   ],

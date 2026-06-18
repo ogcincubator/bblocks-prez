@@ -13,7 +13,10 @@ This building block defines a JSON input format for describing the default [Prez
 
 ## Structure
 
-The top-level input is either a single catalog object or a wrapper object with a `base` URL and a `catalogs` array. A catalog contains **second-level entries** — any mix of:
+The top-level input is either a single catalog object, or an array mixing catalog objects with
+[namespace prefix declarations](bblocks://ogc.prez.prefix). Prefix declarations have no `id` — they
+uplift to standalone blank nodes, unrelated to the catalogs or to each other, used by Prez to build
+its global CURIE map. A catalog contains **second-level entries** — any mix of:
 
 | Type | JSON discriminator | RDF type |
 |---|---|---|
@@ -46,6 +49,7 @@ Two steps are applied after JSON-LD conversion:
 | `dcat` | `http://www.w3.org/ns/dcat#` |
 | `dct` | `http://purl.org/dc/terms/` |
 | `skos` | `http://www.w3.org/2004/02/skos/core#` |
+| `vann` | `http://purl.org/vocab/vann/` |
 
 ## Examples
 
@@ -1067,6 +1071,107 @@ scheme. The second is a simpler species registry.
 
 ```
 
+
+### Catalog with namespace prefix declarations
+An array mixing namespace prefix declarations with a catalog. Prefix declarations
+have no `id` and are uplifted as standalone blank nodes, unrelated to the catalog
+or to each other — they are not part of the hierarchy, just global CURIE hints for Prez.
+
+#### json
+```json
+[
+  {
+    "prefix": "registers",
+    "uri": "urn:ogc:defs/catalogs/register/collections/"
+  },
+  {
+    "prefix": "ex",
+    "uri": "https://example.org/"
+  },
+  {
+    "id": "https://example.org/my-catalog",
+    "name": "My Catalog",
+    "items": [
+      {
+        "id": "https://example.org/my-scheme",
+        "name": "My Concept Scheme",
+        "concepts": [
+          {
+            "id": "https://example.org/concept-a",
+            "name": "Concept A"
+          }
+        ]
+      }
+    ]
+  }
+]
+```
+
+#### jsonld
+```jsonld
+{
+  "@context": "https://ogcincubator.github.io/bblocks-prez/build/annotated/prez/hierarchy/default/context.jsonld",
+  "@graph": [
+    {
+      "prefix": "registers",
+      "uri": "urn:ogc:defs/catalogs/register/collections/"
+    },
+    {
+      "prefix": "ex",
+      "uri": "https://example.org/"
+    },
+    {
+      "id": "https://example.org/my-catalog",
+      "name": "My Catalog",
+      "items": [
+        {
+          "id": "https://example.org/my-scheme",
+          "name": "My Concept Scheme",
+          "concepts": [
+            {
+              "id": "https://example.org/concept-a",
+              "name": "Concept A",
+              "type": "Concept"
+            }
+          ],
+          "type": "ConceptScheme"
+        }
+      ],
+      "type": "Catalog"
+    }
+  ]
+}
+```
+
+#### ttl
+```ttl
+@prefix dcat: <http://www.w3.org/ns/dcat#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix vann: <http://purl.org/vocab/vann/> .
+
+<https://example.org/my-catalog> a dcat:Catalog ;
+    dcterms:hasPart <https://example.org/my-scheme> ;
+    skos:prefLabel "My Catalog" .
+
+<https://example.org/concept-a> a skos:Concept ;
+    skos:inScheme <https://example.org/my-scheme> ;
+    skos:prefLabel "Concept A" ;
+    skos:topConceptOf <https://example.org/my-scheme> .
+
+<https://example.org/my-scheme> a skos:ConceptScheme ;
+    skos:hasTopConcept <https://example.org/concept-a> ;
+    skos:prefLabel "My Concept Scheme" .
+
+[] vann:preferredNamespacePrefix "ex" ;
+    vann:preferredNamespaceUri "https://example.org/" .
+
+[] vann:preferredNamespacePrefix "registers" ;
+    vann:preferredNamespaceUri "urn:ogc:defs/catalogs/register/collections/" .
+
+
+```
+
 ## Schema
 
 ```yaml
@@ -1165,7 +1270,9 @@ anyOf:
 - $ref: '#/$defs/Catalog'
 - type: array
   items:
-    $ref: '#/$defs/Catalog'
+    oneOf:
+    - $ref: '#/$defs/Catalog'
+    - $ref: https://ogcincubator.github.io/bblocks-prez/build/annotated/prez/prefix/schema.yaml
 x-jsonld-extra-terms:
   id: '@id'
   catalogs: '@nest'
@@ -1218,6 +1325,8 @@ Links to the schema:
       "@id": "dct:hasPart",
       "@type": "@id"
     },
+    "prefix": "vann:preferredNamespacePrefix",
+    "uri": "vann:preferredNamespaceUri",
     "catalogs": "@nest",
     "Catalog": "dcat:Catalog",
     "ConceptScheme": "skos:ConceptScheme",
@@ -1235,6 +1344,7 @@ Links to the schema:
     "skos": "http://www.w3.org/2004/02/skos/core#",
     "dcat": "http://www.w3.org/ns/dcat#",
     "dct": "http://purl.org/dc/terms/",
+    "vann": "http://purl.org/vocab/vann/",
     "@version": 1.1
   }
 }

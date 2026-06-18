@@ -1,5 +1,5 @@
 Validation report for ogc.prez.hierarchy.default - Prez default hierarchy
-Generated 2026-04-17T13:08:22.098741+00:00
+Generated 2026-06-18T09:04:27.082109+00:00
 === Files ===
 Using examples/mixed-catalog.json from examples
 JSON-LD context is present - uplifting
@@ -17,12 +17,19 @@ Validation result for _sources/hierarchy/default/shapes.shacl:
   Conforms: True
   
 Focus nodes for _sources/hierarchy/default/shapes.shacl:
- - Shape prez:TopLevelItemShape: <https://example.org/land-cover/global-2020>,<https://example.org/land-cover/lccs-spec>,<https://example.org/land-cover/urban-types>,<https://example.org/land-cover/types>
- - Shape prez:ConceptAnchorShape: <https://example.org/land-cover/types/forest>,<https://example.org/land-cover/types/water>,<https://example.org/land-cover/types/urban>,<https://example.org/land-cover/types/cropland>
+ - Shape prez:AtLeastOneCatalogShape: _:nbad2c01fdd3b4fe8a828b4ba6366eb59b1
  - Shape prez:HasPartSubjectShape: <https://example.org/land-cover>
- - Shape prez:InSchemeShape: <https://example.org/land-cover/types/forest>,<https://example.org/land-cover/types/water>,<https://example.org/land-cover/types/urban>,<https://example.org/land-cover/types/cropland>
- - Shape prez:AtLeastOneCatalogShape: _:nff58e0d0ae6949bc9ce6d7614d40a417b1
- - Shape prez:PrefLabelShape: <https://example.org/land-cover/types/forest>,<https://example.org/land-cover/types/urban>,<https://example.org/land-cover/urban-types>,<https://example.org/land-cover/types/cropland>,<https://example.org/land-cover/global-2020>,<https://example.org/land-cover/types>,<https://example.org/land-cover/lccs-spec>,<https://example.org/land-cover/types/water>
+ - Shape prez:ConceptAnchorShape: <https://example.org/land-cover/types/forest>,<https://example.org/land-cover/types/urban>,<https://example.org/land-cover/types/cropland>,<https://example.org/land-cover/types/water>
+ - Shape prez:TopLevelItemShape: <https://example.org/land-cover/urban-types>,<https://example.org/land-cover/types>,<https://example.org/land-cover/global-2020>,<https://example.org/land-cover/lccs-spec>
+ - Shape prez:PrefLabelShape: <https://example.org/land-cover/global-2020>,<https://example.org/land-cover/types/water>,<https://example.org/land-cover/types/forest>,<https://example.org/land-cover/types/urban>,<https://example.org/land-cover/types>,<https://example.org/land-cover/lccs-spec>,<https://example.org/land-cover/urban-types>,<https://example.org/land-cover/types/cropland>
+ - Shape prez:InSchemeShape: <https://example.org/land-cover/types/forest>,<https://example.org/land-cover/types/urban>,<https://example.org/land-cover/types/cropland>,<https://example.org/land-cover/types/water>
+
+Validation result for _sources/prefix/shapes.shacl:
+  Validation Report
+  Conforms: True
+  
+Focus nodes for _sources/prefix/shapes.shacl:
+ - Shape vann:PrefixDeclarationShape: *none*
 
 === End SHACL ===
 

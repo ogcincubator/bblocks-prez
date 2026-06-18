@@ -1,0 +1,23 @@
+Validation report for ogc.prez.prefix - Namespace prefix declaration
+Generated 2026-06-18T09:04:26.811870+00:00
+=== Files ===
+Using examples/registers.json from examples
+JSON-LD context is present - uplifting
+Output JSON-LD example_1_1.jsonld created
+Output Turtle example_1_1.ttl created
+=== End Files ===
+
+=== JSON Schema ===
+Validation passed
+=== End JSON Schema ===
+
+=== SHACL ===
+Validation result for _sources/prefix/shapes.shacl:
+  Validation Report
+  Conforms: True
+  
+Focus nodes for _sources/prefix/shapes.shacl:
+ - Shape vann:PrefixDeclarationShape: _:N5ec33271511946a1afeb3df23c9946e2
+
+=== End SHACL ===
+

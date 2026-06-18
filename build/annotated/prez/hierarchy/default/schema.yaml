@@ -93,7 +93,9 @@ anyOf:
 - $ref: '#/$defs/Catalog'
 - type: array
   items:
-    $ref: '#/$defs/Catalog'
+    oneOf:
+    - $ref: '#/$defs/Catalog'
+    - $ref: https://ogcincubator.github.io/bblocks-prez/build/annotated/prez/prefix/schema.yaml
 x-jsonld-extra-terms:
   id: '@id'
   catalogs: '@nest'

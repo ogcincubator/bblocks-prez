@@ -1,0 +1,5 @@
+{
+  "@context": "https://ogcincubator.github.io/bblocks-prez/build/annotated/prez/prefix/context.jsonld",
+  "prefix": "registers",
+  "uri": "urn:ogc:defs/catalogs/register/collections/"
+}
