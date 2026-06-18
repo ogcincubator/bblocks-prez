@@ -2,37 +2,39 @@
 @prefix skos: <http://www.w3.org/2004/02/skos/core#> .
 @prefix dcat: <http://www.w3.org/ns/dcat#> .
 @prefix dct:  <http://purl.org/dc/terms/> .
+@prefix owl:  <http://www.w3.org/2002/07/owl#> .
 @prefix rdf:  <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix xsd:  <http://www.w3.org/2001/XMLSchema#> .
-@prefix prez: <https://ogcincubator.io/prez/hierarchy/shapes#> .
+@prefix prez: <https://ogcincubator.io/prez/hierarchy-ogc/shapes#> .
 
-# 1. The graph must contain at least one dcat:Catalog.
-prez:AtLeastOneCatalogShape
+# 1. The graph must contain at least one dcat:TopCatalog.
+prez:AtLeastOneTopCatalogShape
   a sh:NodeShape ;
   sh:targetNode [] ; # Dummy
   sh:sparql [
-    sh:message "The graph must contain at least one dcat:Catalog." ;
+    sh:message "The graph must contain at least one dcat:TopCatalog." ;
     sh:select """
       PREFIX dcat: <http://www.w3.org/ns/dcat#>
       SELECT $this WHERE {
-        FILTER NOT EXISTS { ?c a dcat:Catalog }
+        FILTER NOT EXISTS { ?c a dcat:TopCatalog }
       }
     """ ;
   ] .
 
-# 2. ConceptSchemes, Collections, Datasets, and Resources must be dct:hasPart of a dcat:Catalog.
-prez:TopLevelItemShape
+# 2. Catalogs, ConceptSchemes, Collections, Datasets, Resources, and Ontologies must be dct:hasPart
+#    of a dcat:Catalog or dcat:TopCatalog (Catalogs can be nested to any depth).
+prez:NestedItemShape
   a sh:NodeShape ;
-  sh:targetClass skos:ConceptScheme, skos:Collection, dcat:Dataset, dcat:Resource;
+  sh:targetClass dcat:Catalog, skos:ConceptScheme, skos:Collection, dcat:Dataset, dcat:Resource, owl:Ontology ;
   sh:sparql [
-    sh:message "ConceptSchemes, Collections, Datasets, and Resources must be linked to a dcat:Catalog via dct:hasPart." ;
+    sh:message "Catalogs, ConceptSchemes, Collections, Datasets, Resources, and Ontologies must be linked from a dcat:Catalog or dcat:TopCatalog via dct:hasPart." ;
     sh:select """
       PREFIX dcat: <http://www.w3.org/ns/dcat#>
       PREFIX dct:  <http://purl.org/dc/terms/>
       SELECT $this WHERE {
         FILTER NOT EXISTS {
-          ?catalog a dcat:Catalog ;
-                   dct:hasPart $this .
+          ?catalog dct:hasPart $this .
+          { ?catalog a dcat:Catalog } UNION { ?catalog a dcat:TopCatalog }
         }
       }
     """ ;
@@ -83,7 +85,7 @@ prez:InSchemeShape
 # 5. All resources of the known types must have at least one skos:prefLabel.
 prez:PrefLabelShape
   a sh:NodeShape ;
-  sh:targetClass skos:ConceptScheme, skos:Collection, dcat:Dataset, dcat:Resource, skos:Concept;
+  sh:targetClass dcat:TopCatalog, dcat:Catalog, skos:ConceptScheme, skos:Collection, dcat:Dataset, dcat:Resource, owl:Ontology, skos:Concept ;
   sh:property [
     sh:path skos:prefLabel ;
     sh:minCount 1 ;

@@ -1,0 +1,73 @@
+examples:
+  - title: Minimal TopCatalog
+    content: |
+      A single TopCatalog containing one concept scheme with two concepts.
+    snippets:
+      - language: json
+        ref: examples/minimal.json
+        base-uri: https://example.org/
+
+  - title: Recursively nested catalogs
+    content: |
+      A TopCatalog containing a Catalog, which in turn contains another Catalog holding
+      a Dataset. Catalogs can be nested to any depth under a TopCatalog.
+    snippets:
+      - language: json
+        ref: examples/nested-catalogs.json
+        base-uri: https://example.org/
+
+  - title: TopCatalog with an Ontology and a Collection
+    content: |
+      A TopCatalog combining an Ontology entry with a Collection grouping a subset
+      of concepts.
+    snippets:
+      - language: json
+        ref: examples/with-ontology.json
+        base-uri: https://example.org/
+
+  - title: Concept with an implicit narrower hierarchy
+    content: |
+      A single root concept declares one nested concept under `narrower`, with no `broader` and
+      no `topConceptOf` authored anywhere (`type` is still required on every entry in this
+      hierarchy, unlike the default one). Semantic uplift entails `skos:broader` on the child
+      from the parent's `narrower`, anchors the child to the scheme via `skos:inScheme`
+      propagation, and marks only the root (which has no `skos:broader`) as `skos:topConceptOf`
+      the scheme.
+    snippets:
+      - language: json
+        ref: examples/implicit-narrower.json
+        base-uri: https://example.org/
+
+  - title: Concept scheme with a broader/narrower hierarchy
+    content: |
+      A concept scheme demonstrating `skos:broader` / `skos:narrower` relations: "Animal" has
+      "Mammal" and "Bird" nested inline as narrower concepts, "Mammal" in turn nests "Dog" and
+      "Cat". A separate top concept, "Pet", references "Dog" and "Cat" by id to add a second
+      `skos:broader` parent to each — a poly-hierarchy. Only "Animal" and "Pet" (which have no
+      `skos:broader`) end up as `skos:topConceptOf` the scheme.
+    snippets:
+      - language: json
+        ref: examples/concept-hierarchy.json
+        base-uri: https://example.org/
+
+  - title: TopCatalog with externally-defined items
+    content: |
+      A standalone TopCatalog whose items are plain IRI strings rather than embedded objects,
+      for resources that are already defined elsewhere — possibly in a different graph. Each
+      string becomes a `dct:hasPart` link to that IRI, without asserting any type or label
+      locally.
+    snippets:
+      - language: json
+        ref: examples/external-references.json
+        base-uri: https://example.org/
+
+  - title: Multiple TopCatalogs with namespace prefix declarations
+    content: |
+      An array mixing namespace prefix declarations with two independent TopCatalogs.
+      Prefix declarations have no `id` and are uplifted as standalone blank nodes,
+      unrelated to the catalogs or to each other — they are not part of the hierarchy,
+      just global CURIE hints for Prez.
+    snippets:
+      - language: json
+        ref: examples/multi-topcatalog-with-prefixes.json
+        base-uri: https://example.org/

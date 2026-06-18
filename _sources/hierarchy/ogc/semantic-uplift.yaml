@@ -1,24 +1,4 @@
 additionalSteps:
-  - description: Entails missing types
-    type: jq
-    code: |
-      def addMissingType:
-      if .type then .
-      elif .items then . + {type: "Catalog"}
-      elif .concepts then . + {type: "ConceptScheme"}
-      elif .id then . + {type: "Concept"}
-      else .
-      end;
-
-      def walkEntities:
-      addMissingType |
-      if .items then .items |= map(if type == "object" then walkEntities else . end) else . end |
-      if .concepts then .concepts |= map(walkEntities) else . end |
-      if .members then .members |= map(walkEntities) else . end |
-      if .narrower then .narrower |= map(if type == "object" then walkEntities else . end) else . end;
-
-      if type == "array" then map(walkEntities) else walkEntities end
-
   - description: Entails the inverse of asserted skos:broader/skos:narrower relations.
     type: sparql-update
     code: |

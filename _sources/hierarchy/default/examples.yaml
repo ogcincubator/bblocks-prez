@@ -46,6 +46,41 @@ examples:
         ref: examples/multi-catalog.json
         base-uri: https://example.org/
 
+  - title: Concept with an implicit narrower hierarchy
+    content: |
+      A single root concept declares one nested concept under `narrower`, with nothing else
+      authored — no `type`, no `broader`, no `topConceptOf`. Semantic uplift infers both
+      concepts' `type`, entails `skos:broader` on the child from the parent's `narrower`,
+      anchors the child to the scheme via `skos:inScheme` propagation, and marks only the
+      root (which has no `skos:broader`) as `skos:topConceptOf` the scheme.
+    snippets:
+      - language: json
+        ref: examples/implicit-narrower.json
+        base-uri: https://example.org/
+
+  - title: Concept scheme with a broader/narrower hierarchy
+    content: |
+      A concept scheme demonstrating `skos:broader` / `skos:narrower` relations: "Animal" has
+      "Mammal" and "Bird" nested inline as narrower concepts, "Mammal" in turn nests "Dog" and
+      "Cat". A separate top concept, "Pet", references "Dog" and "Cat" by id to add a second
+      `skos:broader` parent to each — a poly-hierarchy. Only "Animal" and "Pet" (which have no
+      `skos:broader`) end up as `skos:topConceptOf` the scheme.
+    snippets:
+      - language: json
+        ref: examples/concept-hierarchy.json
+        base-uri: https://example.org/
+
+  - title: Catalog with externally-defined items
+    content: |
+      A catalog whose items are plain IRI strings rather than embedded objects, for items
+      (e.g. concept schemes, datasets) that are already defined elsewhere — possibly in a
+      different graph. Each string becomes a `dct:hasPart` link to that IRI, without
+      asserting any type or label locally.
+    snippets:
+      - language: json
+        ref: examples/external-references.json
+        base-uri: https://example.org/
+
   - title: Catalog with namespace prefix declarations
     content: |
       An array mixing namespace prefix declarations with a catalog. Prefix declarations

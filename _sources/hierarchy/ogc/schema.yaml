@@ -12,7 +12,7 @@ $defs:
 
   NamedResource:
     type: object
-    required: [id, name]
+    required: [id, name, type]
     properties:
       id:
         type: string
@@ -20,6 +20,19 @@ $defs:
         $ref: '#/$defs/Text'
       definition:
         $ref: '#/$defs/Text'
+
+  TopCatalog:
+    allOf:
+      - $ref: '#/$defs/NamedResource'
+    properties:
+      type:
+        const: TopCatalog
+      items:
+        type: array
+        items:
+          oneOf:
+            - type: string
+            - $ref: '#/$defs/CatalogEntry'
 
   Catalog:
     allOf:
@@ -32,7 +45,7 @@ $defs:
         items:
           oneOf:
             - type: string
-            - $ref: '#/$defs/SecondLevelEntry'
+            - $ref: '#/$defs/CatalogEntry'
 
   ConceptScheme:
     allOf:
@@ -48,7 +61,6 @@ $defs:
   Collection:
     allOf:
       - $ref: '#/$defs/NamedResource'
-    required: [type]
     properties:
       type:
         const: Collection
@@ -74,22 +86,21 @@ $defs:
             - type: string
             - $ref: '#/$defs/Concept'
 
-  SecondLevelEntry:
+  CatalogEntry:
     allOf:
       - $ref: '#/$defs/NamedResource'
     oneOf:
+      - $ref: '#/$defs/Catalog'
       - $ref: '#/$defs/ConceptScheme'
       - $ref: '#/$defs/Collection'
-      - required: [type]
-        properties:
+      - properties:
           type:
-            enum: [Dataset, Resource]
+            enum: [Dataset, Resource, Ontology]
 
 anyOf:
-  - $ref: '#/$defs/Catalog'
+  - $ref: '#/$defs/TopCatalog'
   - type: array
     items:
       oneOf:
-        - $ref: '#/$defs/Catalog'
+        - $ref: '#/$defs/TopCatalog'
         - $ref: 'bblocks://ogc.prez.prefix'
-

@@ -1,0 +1,10 @@
+{
+  "name": "Prez OGC hierarchy",
+  "abstract": "Helps create the OGC knowledge graph hierarchy in Prez, with TopCatalogs, recursively nested Catalogs, and Ontologies.",
+  "status": "under-development",
+  "dateTimeAddition": "2026-06-18T00:00:00Z",
+  "itemClass": "schema",
+  "register": "ogc-building-block-register",
+  "version": "0.1",
+  "tags": ["prez", "hierarchy", "ogc"]
+}
