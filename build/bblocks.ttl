@@ -16,18 +16,18 @@
 
 <https://ogcincubator.github.io/bblocks-prez/build/bblocks.ttl> a prov:Entity ;
     dct:format "text/turtle" ;
-    prov:wasAttributedTo _:N2935832728294a84abe703a3a549d665 ;
+    prov:wasAttributedTo _:N912e5525946547a88aff3c58d9f86ae3 ;
     prov:wasGeneratedBy [ a prov:Activity ;
-            prov:endedAtTime "2026-06-18T10:44:04.597515"^^xsd:dateTime ;
-            prov:startedAtTime "2026-06-18T10:44:04.474134"^^xsd:dateTime ;
+            prov:endedAtTime "2026-06-18T10:48:28.814976"^^xsd:dateTime ;
+            prov:startedAtTime "2026-06-18T10:48:28.709708"^^xsd:dateTime ;
             prov:used [ a prov:Entity ;
-                    dct:format "application/yaml" ;
-                    rdfs:seeAlso <file:///src/ogc/bblocks/register-context.yaml> ],
-                [ a prov:Entity ;
                     dct:format "application/json" ;
-                    dct:hasVersion "git:b1dc440c5355e577369b69e20887757f9b075a00" ;
-                    rdfs:seeAlso <https://ogcincubator.github.io/bblocks-prez/build/register.json> ] ;
-            prov:wasAssociatedWith _:N2935832728294a84abe703a3a549d665 ] .
+                    dct:hasVersion "git:097f66b8504ff4a6b4a9c930d1f7b1c517e36c09" ;
+                    rdfs:seeAlso <https://ogcincubator.github.io/bblocks-prez/build/register.json> ],
+                [ a prov:Entity ;
+                    dct:format "application/yaml" ;
+                    rdfs:seeAlso <file:///src/ogc/bblocks/register-context.yaml> ] ;
+            prov:wasAssociatedWith _:N912e5525946547a88aff3c58d9f86ae3 ] .
 
 <bblocks://ogc.prez.hierarchy.default> a skos:Concept,
         dcat:Dataset,
@@ -36,10 +36,10 @@
     rdfs:label "Prez default hierarchy" ;
     dct:abstract "Helps create a default Prez hierarchy"^^<https://www.w3.org/ns/iana/media-types/text/markdown> ;
     dct:created "2026-04-17T00:00:00+00:00"^^xsd:dateTime ;
-    dct:description [ dct:format "text/html" ;
-            rdfs:isDefinedBy <https://ogcincubator.github.io/bblocks-prez/bblock/ogc.prez.hierarchy.default> ],
-        [ dct:format "text/markdown" ;
+    dct:description [ dct:format "text/markdown" ;
             rdfs:isDefinedBy <https://ogcincubator.github.io/bblocks-prez/build/generateddocs/markdown/prez/hierarchy/default/index.md> ],
+        [ dct:format "text/html" ;
+            rdfs:isDefinedBy <https://ogcincubator.github.io/bblocks-prez/bblock/ogc.prez.hierarchy.default> ],
         [ dct:format "application/json" ;
             rdfs:isDefinedBy <https://ogcincubator.github.io/bblocks-prez/build/generateddocs/json-full/prez/hierarchy/default/index.json> ] ;
     dct:hasVersion "0.1" ;
@@ -54,23 +54,23 @@
             rdfs:seeAlso <bblocks://ogc.prez.hierarchy.default> ;
             prof:hasArtifact <https://ogcincubator.github.io/bblocks-prez/_sources/hierarchy/default/shapes.shacl> ;
             prof:hasRole role:validation ],
-        [ dct:conformsTo shacl: ;
-            dct:format "text/turtle" ;
-            rdfs:seeAlso <bblocks://ogc.prez.prefix> ;
-            prof:hasArtifact <https://ogcincubator.github.io/bblocks-prez/_sources/prefix/shapes.shacl> ;
-            prof:hasRole role:validation ],
-        [ dct:conformsTo <https://json-schema.org/draft/2020-12/schema> ;
-            dct:format "application/json" ;
-            prof:hasArtifact <https://ogcincubator.github.io/bblocks-prez/build/annotated/prez/hierarchy/default/schema.json> ;
-            prof:hasRole role:schema ],
         [ dct:conformsTo <https://json-schema.org/draft/2020-12/schema> ;
             dct:format "application/yaml" ;
             prof:hasArtifact <https://ogcincubator.github.io/bblocks-prez/build/annotated/prez/hierarchy/default/schema.yaml> ;
             prof:hasRole role:schema ],
+        [ dct:conformsTo <https://json-schema.org/draft/2020-12/schema> ;
+            dct:format "application/json" ;
+            prof:hasArtifact <https://ogcincubator.github.io/bblocks-prez/build/annotated/prez/hierarchy/default/schema.json> ;
+            prof:hasRole role:schema ],
         [ dct:conformsTo <https://www.w3.org/TR/json-ld11/> ;
             dct:format "application/ld+json" ;
             prof:hasArtifact <https://ogcincubator.github.io/bblocks-prez/build/annotated/prez/hierarchy/default/context.jsonld> ;
-            prof:hasRole role:mapping ] ;
+            prof:hasRole role:mapping ],
+        [ dct:conformsTo shacl: ;
+            dct:format "text/turtle" ;
+            rdfs:seeAlso <bblocks://ogc.prez.prefix> ;
+            prof:hasArtifact <https://ogcincubator.github.io/bblocks-prez/_sources/prefix/shapes.shacl> ;
+            prof:hasRole role:validation ] ;
     bblocks:dependsOn <bblocks://ogc.prez.prefix> ;
     bblocks:hasSourceJsonLdContext <https://ogcincubator.github.io/bblocks-prez/_sources/hierarchy/default/context.jsonld> ;
     bblocks:status <http://www.opengis.net/def/status/under-development> ;
@@ -107,10 +107,6 @@
             prof:hasArtifact <https://ogcincubator.github.io/bblocks-prez/_sources/hierarchy/ogc/shapes.shacl> ;
             prof:hasRole role:validation ],
         [ dct:conformsTo <https://json-schema.org/draft/2020-12/schema> ;
-            dct:format "application/yaml" ;
-            prof:hasArtifact <https://ogcincubator.github.io/bblocks-prez/build/annotated/prez/hierarchy/ogc/schema.yaml> ;
-            prof:hasRole role:schema ],
-        [ dct:conformsTo <https://json-schema.org/draft/2020-12/schema> ;
             dct:format "application/json" ;
             prof:hasArtifact <https://ogcincubator.github.io/bblocks-prez/build/annotated/prez/hierarchy/ogc/schema.json> ;
             prof:hasRole role:schema ],
@@ -118,7 +114,11 @@
             dct:format "text/turtle" ;
             rdfs:seeAlso <bblocks://ogc.prez.prefix> ;
             prof:hasArtifact <https://ogcincubator.github.io/bblocks-prez/_sources/prefix/shapes.shacl> ;
-            prof:hasRole role:validation ] ;
+            prof:hasRole role:validation ],
+        [ dct:conformsTo <https://json-schema.org/draft/2020-12/schema> ;
+            dct:format "application/yaml" ;
+            prof:hasArtifact <https://ogcincubator.github.io/bblocks-prez/build/annotated/prez/hierarchy/ogc/schema.yaml> ;
+            prof:hasRole role:schema ] ;
     bblocks:dependsOn <bblocks://ogc.prez.prefix> ;
     bblocks:hasSourceJsonLdContext <https://ogcincubator.github.io/bblocks-prez/_sources/hierarchy/ogc/context.jsonld> ;
     bblocks:status <http://www.opengis.net/def/status/under-development> ;
@@ -131,12 +131,12 @@
     rdfs:label "Namespace prefix declaration" ;
     dct:abstract "Declares a preferred namespace prefix and the URI it expands to, for use in CURIE generation."^^<https://www.w3.org/ns/iana/media-types/text/markdown> ;
     dct:created "2026-06-18T00:00:00+00:00"^^xsd:dateTime ;
-    dct:description [ dct:format "text/html" ;
+    dct:description [ dct:format "application/json" ;
+            rdfs:isDefinedBy <https://ogcincubator.github.io/bblocks-prez/build/generateddocs/json-full/prez/prefix/index.json> ],
+        [ dct:format "text/html" ;
             rdfs:isDefinedBy <https://ogcincubator.github.io/bblocks-prez/bblock/ogc.prez.prefix> ],
         [ dct:format "text/markdown" ;
-            rdfs:isDefinedBy <https://ogcincubator.github.io/bblocks-prez/build/generateddocs/markdown/prez/prefix/index.md> ],
-        [ dct:format "application/json" ;
-            rdfs:isDefinedBy <https://ogcincubator.github.io/bblocks-prez/build/generateddocs/json-full/prez/prefix/index.json> ] ;
+            rdfs:isDefinedBy <https://ogcincubator.github.io/bblocks-prez/build/generateddocs/markdown/prez/prefix/index.md> ] ;
     dct:hasVersion "0.1" ;
     dct:modified "2026-06-18"^^xsd:date ;
     skos:inScheme <https://ogcincubator.github.io/bblocks-prez/> ;
@@ -151,6 +151,10 @@
             prof:hasArtifact <https://ogcincubator.github.io/bblocks-prez/build/annotated/prez/prefix/context.jsonld> ;
             prof:hasRole role:mapping ],
         [ dct:conformsTo <https://json-schema.org/draft/2020-12/schema> ;
+            dct:format "application/yaml" ;
+            prof:hasArtifact <https://ogcincubator.github.io/bblocks-prez/build/annotated/prez/prefix/schema.yaml> ;
+            prof:hasRole role:schema ],
+        [ dct:conformsTo <https://json-schema.org/draft/2020-12/schema> ;
             dct:format "application/json" ;
             prof:hasArtifact <https://ogcincubator.github.io/bblocks-prez/build/annotated/prez/prefix/schema.json> ;
             prof:hasRole role:schema ],
@@ -158,11 +162,7 @@
             dct:format "text/turtle" ;
             rdfs:seeAlso <bblocks://ogc.prez.prefix> ;
             prof:hasArtifact <https://ogcincubator.github.io/bblocks-prez/_sources/prefix/shapes.shacl> ;
-            prof:hasRole role:validation ],
-        [ dct:conformsTo <https://json-schema.org/draft/2020-12/schema> ;
-            dct:format "application/yaml" ;
-            prof:hasArtifact <https://ogcincubator.github.io/bblocks-prez/build/annotated/prez/prefix/schema.yaml> ;
-            prof:hasRole role:schema ] ;
+            prof:hasRole role:validation ] ;
     bblocks:hasSourceJsonLdContext <https://ogcincubator.github.io/bblocks-prez/_sources/prefix/context.jsonld> ;
     bblocks:status <http://www.opengis.net/def/status/under-development> ;
     bblocks:validationPassed true .
@@ -181,28 +181,28 @@ transform structured JSON documents into RDF graphs ready for publication via Pr
 standard vocabularies — primarily DCAT and SKOS — and follow OGC patterns for schema definition,
 validation (JSON Schema + SHACL), and semantic uplift (jq + SPARQL).
 """^^<https://www.w3.org/ns/iana/media-types/text/markdown> ;
-    dct:modified "2026-06-18T10:44:01.999985"^^xsd:dateTime ;
+    dct:modified "2026-06-18T10:48:26.394900"^^xsd:dateTime ;
     owl:imports <https://opengeospatial.github.io/bblocks/register.json> ;
     skos:hasTopConcept <bblocks://ogc.prez.hierarchy.default>,
         <bblocks://ogc.prez.hierarchy.ogc>,
         <bblocks://ogc.prez.prefix> ;
     skos:prefLabel "Building Blocks - Prez OGC Blocks" ;
-    prof:hasResource [ rdfs:label "This Building Blocks Register in JSON-LD format" ;
-            dct:type "application/ld+json" ;
-            ns2:relation <http://www.iana.org/assignments/relation/self> ;
-            ns1:hasTarget <https://ogcincubator.github.io/bblocks-prez/build/bblocks.jsonld> ],
-        [ rdfs:label "This Building Blocks Register in JSON format" ;
+    prof:hasResource [ rdfs:label "This Building Blocks Register in JSON format" ;
             dct:type "application/json" ;
             ns2:relation <http://www.iana.org/assignments/relation/self> ;
             ns1:hasTarget <https://ogcincubator.github.io/bblocks-prez/build/register.json> ],
         [ rdfs:label "This Building Blocks Register in RDF Turtle format" ;
             dct:type "text/turtle" ;
             ns2:relation <http://www.iana.org/assignments/relation/self> ;
-            ns1:hasTarget <https://ogcincubator.github.io/bblocks-prez/build/bblocks.ttl> ] ;
+            ns1:hasTarget <https://ogcincubator.github.io/bblocks-prez/build/bblocks.ttl> ],
+        [ rdfs:label "This Building Blocks Register in JSON-LD format" ;
+            dct:type "application/ld+json" ;
+            ns2:relation <http://www.iana.org/assignments/relation/self> ;
+            ns1:hasTarget <https://ogcincubator.github.io/bblocks-prez/build/bblocks.jsonld> ] ;
     foaf:homepage <https://ogcincubator.github.io/bblocks-prez/> ;
     bblocks:hasValidationReport <https://ogcincubator.github.io/bblocks-prez/build/tests/report.html> .
 
-_:N2935832728294a84abe703a3a549d665 a prov:Agent,
+_:N912e5525946547a88aff3c58d9f86ae3 a prov:Agent,
         schema:SoftwareApplication ;
     rdfs:label "OGC-NA tools" ;
     dct:hasVersion "0.5.31" ;

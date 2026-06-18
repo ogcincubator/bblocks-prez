@@ -1,5 +1,5 @@
 Validation report for ogc.prez.hierarchy.ogc - Prez OGC hierarchy
-Generated 2026-06-18T10:44:04.182754+00:00
+Generated 2026-06-18T10:48:28.446176+00:00
 === Files ===
 Using examples/with-ontology.json from examples
 JSON-LD context is present - uplifting
@@ -17,12 +17,12 @@ Validation result for _sources/hierarchy/ogc/shapes.shacl:
   Conforms: True
   
 Focus nodes for _sources/hierarchy/ogc/shapes.shacl:
- - Shape prez:PrefLabelShape: <https://example.org/col/lengths>,<https://example.org/ont/units>,<https://example.org/concept/metre>,<https://example.org/cat/top>,<https://example.org/concept/foot>
- - Shape prez:ConceptAnchorShape: <https://example.org/concept/foot>,<https://example.org/concept/metre>
- - Shape prez:HasPartSubjectShape: <https://example.org/cat/top>
- - Shape prez:NestedItemShape: <https://example.org/col/lengths>,<https://example.org/ont/units>
  - Shape prez:InSchemeShape: *none*
- - Shape prez:AtLeastOneTopCatalogShape: _:nf10cae45ad304d938304aef3bf58037db1
+ - Shape prez:HasPartSubjectShape: <https://example.org/cat/top>
+ - Shape prez:NestedItemShape: <https://example.org/ont/units>,<https://example.org/col/lengths>
+ - Shape prez:ConceptAnchorShape: <https://example.org/concept/foot>,<https://example.org/concept/metre>
+ - Shape prez:PrefLabelShape: <https://example.org/concept/metre>,<https://example.org/ont/units>,<https://example.org/concept/foot>,<https://example.org/cat/top>,<https://example.org/col/lengths>
+ - Shape prez:AtLeastOneTopCatalogShape: _:n4d45feb6e5234fe29b117bd5270ee0bfb1
 
 Validation result for _sources/prefix/shapes.shacl:
   Validation Report

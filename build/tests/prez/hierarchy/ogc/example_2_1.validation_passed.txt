@@ -1,5 +1,5 @@
 Validation report for ogc.prez.hierarchy.ogc - Prez OGC hierarchy
-Generated 2026-06-18T10:44:04.130115+00:00
+Generated 2026-06-18T10:48:28.401300+00:00
 === Files ===
 Using examples/nested-catalogs.json from examples
 JSON-LD context is present - uplifting
@@ -17,12 +17,12 @@ Validation result for _sources/hierarchy/ogc/shapes.shacl:
   Conforms: True
   
 Focus nodes for _sources/hierarchy/ogc/shapes.shacl:
- - Shape prez:PrefLabelShape: <https://example.org/cat/top>,<https://example.org/dataset/temperature-anomaly>,<https://example.org/cat/climate>,<https://example.org/cat/climate-indices>
- - Shape prez:ConceptAnchorShape: *none*
- - Shape prez:HasPartSubjectShape: <https://example.org/cat/top>,<https://example.org/cat/climate>,<https://example.org/cat/climate-indices>
- - Shape prez:NestedItemShape: <https://example.org/dataset/temperature-anomaly>,<https://example.org/cat/climate>,<https://example.org/cat/climate-indices>
  - Shape prez:InSchemeShape: *none*
- - Shape prez:AtLeastOneTopCatalogShape: _:nf10cae45ad304d938304aef3bf58037db1
+ - Shape prez:HasPartSubjectShape: <https://example.org/cat/climate-indices>,<https://example.org/cat/top>,<https://example.org/cat/climate>
+ - Shape prez:NestedItemShape: <https://example.org/cat/climate-indices>,<https://example.org/dataset/temperature-anomaly>,<https://example.org/cat/climate>
+ - Shape prez:ConceptAnchorShape: *none*
+ - Shape prez:PrefLabelShape: <https://example.org/cat/climate-indices>,<https://example.org/dataset/temperature-anomaly>,<https://example.org/cat/top>,<https://example.org/cat/climate>
+ - Shape prez:AtLeastOneTopCatalogShape: _:n4d45feb6e5234fe29b117bd5270ee0bfb1
 
 Validation result for _sources/prefix/shapes.shacl:
   Validation Report

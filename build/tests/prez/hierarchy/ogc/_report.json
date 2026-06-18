@@ -2,7 +2,7 @@
   "title": "Validation report for ogc.prez.hierarchy.ogc - Prez OGC hierarchy",
   "bblockName": "Prez OGC hierarchy",
   "bblockId": "ogc.prez.hierarchy.ogc",
-  "generated": "2026-06-18T10:44:04.439978+00:00",
+  "generated": "2026-06-18T10:48:28.677576+00:00",
   "result": true,
   "items": [
     {
@@ -72,15 +72,7 @@
             {
               "shaclFile": "_sources/hierarchy/ogc/shapes.shacl",
               "focusNodes": {
-                "prez:PrefLabelShape": {
-                  "nodes": [
-                    "<https://example.org/concept/bird>",
-                    "<https://example.org/cs/animals>",
-                    "<https://example.org/cat/top>",
-                    "<https://example.org/concept/mammal>"
-                  ]
-                },
-                "prez:ConceptAnchorShape": {
+                "prez:InSchemeShape": {
                   "nodes": [
                     "<https://example.org/concept/bird>",
                     "<https://example.org/concept/mammal>"
@@ -96,20 +88,28 @@
                     "<https://example.org/cs/animals>"
                   ]
                 },
-                "prez:InSchemeShape": {
+                "prez:ConceptAnchorShape": {
                   "nodes": [
                     "<https://example.org/concept/bird>",
                     "<https://example.org/concept/mammal>"
                   ]
                 },
+                "prez:PrefLabelShape": {
+                  "nodes": [
+                    "<https://example.org/cs/animals>",
+                    "<https://example.org/concept/bird>",
+                    "<https://example.org/cat/top>",
+                    "<https://example.org/concept/mammal>"
+                  ]
+                },
                 "prez:AtLeastOneTopCatalogShape": {
                   "nodes": [
-                    "_:nf10cae45ad304d938304aef3bf58037db1"
+                    "_:n4d45feb6e5234fe29b117bd5270ee0bfb1"
                   ]
                 }
               },
               "isError": false,
-              "message": "Focus nodes for _sources/hierarchy/ogc/shapes.shacl:\n - Shape prez:PrefLabelShape: <https://example.org/concept/bird>,<https://example.org/cs/animals>,<https://example.org/cat/top>,<https://example.org/concept/mammal>\n - Shape prez:ConceptAnchorShape: <https://example.org/concept/bird>,<https://example.org/concept/mammal>\n - Shape prez:HasPartSubjectShape: <https://example.org/cat/top>\n - Shape prez:NestedItemShape: <https://example.org/cs/animals>\n - Shape prez:InSchemeShape: <https://example.org/concept/bird>,<https://example.org/concept/mammal>\n - Shape prez:AtLeastOneTopCatalogShape: _:nf10cae45ad304d938304aef3bf58037db1\n"
+              "message": "Focus nodes for _sources/hierarchy/ogc/shapes.shacl:\n - Shape prez:InSchemeShape: <https://example.org/concept/bird>,<https://example.org/concept/mammal>\n - Shape prez:HasPartSubjectShape: <https://example.org/cat/top>\n - Shape prez:NestedItemShape: <https://example.org/cs/animals>\n - Shape prez:ConceptAnchorShape: <https://example.org/concept/bird>,<https://example.org/concept/mammal>\n - Shape prez:PrefLabelShape: <https://example.org/cs/animals>,<https://example.org/concept/bird>,<https://example.org/cat/top>,<https://example.org/concept/mammal>\n - Shape prez:AtLeastOneTopCatalogShape: _:n4d45feb6e5234fe29b117bd5270ee0bfb1\n"
             },
             {
               "op": "shacl-report",
@@ -217,42 +217,42 @@
             {
               "shaclFile": "_sources/hierarchy/ogc/shapes.shacl",
               "focusNodes": {
-                "prez:PrefLabelShape": {
+                "prez:InSchemeShape": {
+                  "nodes": []
+                },
+                "prez:HasPartSubjectShape": {
                   "nodes": [
+                    "<https://example.org/cat/climate-indices>",
                     "<https://example.org/cat/top>",
+                    "<https://example.org/cat/climate>"
+                  ]
+                },
+                "prez:NestedItemShape": {
+                  "nodes": [
+                    "<https://example.org/cat/climate-indices>",
                     "<https://example.org/dataset/temperature-anomaly>",
-                    "<https://example.org/cat/climate>",
-                    "<https://example.org/cat/climate-indices>"
+                    "<https://example.org/cat/climate>"
                   ]
                 },
                 "prez:ConceptAnchorShape": {
                   "nodes": []
                 },
-                "prez:HasPartSubjectShape": {
+                "prez:PrefLabelShape": {
                   "nodes": [
-                    "<https://example.org/cat/top>",
-                    "<https://example.org/cat/climate>",
-                    "<https://example.org/cat/climate-indices>"
-                  ]
-                },
-                "prez:NestedItemShape": {
-                  "nodes": [
+                    "<https://example.org/cat/climate-indices>",
                     "<https://example.org/dataset/temperature-anomaly>",
-                    "<https://example.org/cat/climate>",
-                    "<https://example.org/cat/climate-indices>"
+                    "<https://example.org/cat/top>",
+                    "<https://example.org/cat/climate>"
                   ]
-                },
-                "prez:InSchemeShape": {
-                  "nodes": []
                 },
                 "prez:AtLeastOneTopCatalogShape": {
                   "nodes": [
-                    "_:nf10cae45ad304d938304aef3bf58037db1"
+                    "_:n4d45feb6e5234fe29b117bd5270ee0bfb1"
                   ]
                 }
               },
               "isError": false,
-              "message": "Focus nodes for _sources/hierarchy/ogc/shapes.shacl:\n - Shape prez:PrefLabelShape: <https://example.org/cat/top>,<https://example.org/dataset/temperature-anomaly>,<https://example.org/cat/climate>,<https://example.org/cat/climate-indices>\n - Shape prez:ConceptAnchorShape: *none*\n - Shape prez:HasPartSubjectShape: <https://example.org/cat/top>,<https://example.org/cat/climate>,<https://example.org/cat/climate-indices>\n - Shape prez:NestedItemShape: <https://example.org/dataset/temperature-anomaly>,<https://example.org/cat/climate>,<https://example.org/cat/climate-indices>\n - Shape prez:InSchemeShape: *none*\n - Shape prez:AtLeastOneTopCatalogShape: _:nf10cae45ad304d938304aef3bf58037db1\n"
+              "message": "Focus nodes for _sources/hierarchy/ogc/shapes.shacl:\n - Shape prez:InSchemeShape: *none*\n - Shape prez:HasPartSubjectShape: <https://example.org/cat/climate-indices>,<https://example.org/cat/top>,<https://example.org/cat/climate>\n - Shape prez:NestedItemShape: <https://example.org/cat/climate-indices>,<https://example.org/dataset/temperature-anomaly>,<https://example.org/cat/climate>\n - Shape prez:ConceptAnchorShape: *none*\n - Shape prez:PrefLabelShape: <https://example.org/cat/climate-indices>,<https://example.org/dataset/temperature-anomaly>,<https://example.org/cat/top>,<https://example.org/cat/climate>\n - Shape prez:AtLeastOneTopCatalogShape: _:n4d45feb6e5234fe29b117bd5270ee0bfb1\n"
             },
             {
               "op": "shacl-report",
@@ -360,20 +360,8 @@
             {
               "shaclFile": "_sources/hierarchy/ogc/shapes.shacl",
               "focusNodes": {
-                "prez:PrefLabelShape": {
-                  "nodes": [
-                    "<https://example.org/col/lengths>",
-                    "<https://example.org/ont/units>",
-                    "<https://example.org/concept/metre>",
-                    "<https://example.org/cat/top>",
-                    "<https://example.org/concept/foot>"
-                  ]
-                },
-                "prez:ConceptAnchorShape": {
-                  "nodes": [
-                    "<https://example.org/concept/foot>",
-                    "<https://example.org/concept/metre>"
-                  ]
+                "prez:InSchemeShape": {
+                  "nodes": []
                 },
                 "prez:HasPartSubjectShape": {
                   "nodes": [
@@ -382,21 +370,33 @@
                 },
                 "prez:NestedItemShape": {
                   "nodes": [
-                    "<https://example.org/col/lengths>",
-                    "<https://example.org/ont/units>"
+                    "<https://example.org/ont/units>",
+                    "<https://example.org/col/lengths>"
                   ]
                 },
-                "prez:InSchemeShape": {
-                  "nodes": []
+                "prez:ConceptAnchorShape": {
+                  "nodes": [
+                    "<https://example.org/concept/foot>",
+                    "<https://example.org/concept/metre>"
+                  ]
+                },
+                "prez:PrefLabelShape": {
+                  "nodes": [
+                    "<https://example.org/concept/metre>",
+                    "<https://example.org/ont/units>",
+                    "<https://example.org/concept/foot>",
+                    "<https://example.org/cat/top>",
+                    "<https://example.org/col/lengths>"
+                  ]
                 },
                 "prez:AtLeastOneTopCatalogShape": {
                   "nodes": [
-                    "_:nf10cae45ad304d938304aef3bf58037db1"
+                    "_:n4d45feb6e5234fe29b117bd5270ee0bfb1"
                   ]
                 }
               },
               "isError": false,
-              "message": "Focus nodes for _sources/hierarchy/ogc/shapes.shacl:\n - Shape prez:PrefLabelShape: <https://example.org/col/lengths>,<https://example.org/ont/units>,<https://example.org/concept/metre>,<https://example.org/cat/top>,<https://example.org/concept/foot>\n - Shape prez:ConceptAnchorShape: <https://example.org/concept/foot>,<https://example.org/concept/metre>\n - Shape prez:HasPartSubjectShape: <https://example.org/cat/top>\n - Shape prez:NestedItemShape: <https://example.org/col/lengths>,<https://example.org/ont/units>\n - Shape prez:InSchemeShape: *none*\n - Shape prez:AtLeastOneTopCatalogShape: _:nf10cae45ad304d938304aef3bf58037db1\n"
+              "message": "Focus nodes for _sources/hierarchy/ogc/shapes.shacl:\n - Shape prez:InSchemeShape: *none*\n - Shape prez:HasPartSubjectShape: <https://example.org/cat/top>\n - Shape prez:NestedItemShape: <https://example.org/ont/units>,<https://example.org/col/lengths>\n - Shape prez:ConceptAnchorShape: <https://example.org/concept/foot>,<https://example.org/concept/metre>\n - Shape prez:PrefLabelShape: <https://example.org/concept/metre>,<https://example.org/ont/units>,<https://example.org/concept/foot>,<https://example.org/cat/top>,<https://example.org/col/lengths>\n - Shape prez:AtLeastOneTopCatalogShape: _:n4d45feb6e5234fe29b117bd5270ee0bfb1\n"
             },
             {
               "op": "shacl-report",
@@ -504,18 +504,10 @@
             {
               "shaclFile": "_sources/hierarchy/ogc/shapes.shacl",
               "focusNodes": {
-                "prez:PrefLabelShape": {
+                "prez:InSchemeShape": {
                   "nodes": [
-                    "<https://example.org/simple-scheme>",
-                    "<https://example.org/cat/top>",
-                    "<https://example.org/concept/root>",
-                    "<https://example.org/concept/child>"
-                  ]
-                },
-                "prez:ConceptAnchorShape": {
-                  "nodes": [
-                    "<https://example.org/concept/root>",
-                    "<https://example.org/concept/child>"
+                    "<https://example.org/concept/child>",
+                    "<https://example.org/concept/root>"
                   ]
                 },
                 "prez:HasPartSubjectShape": {
@@ -528,20 +520,28 @@
                     "<https://example.org/simple-scheme>"
                   ]
                 },
-                "prez:InSchemeShape": {
+                "prez:ConceptAnchorShape": {
                   "nodes": [
+                    "<https://example.org/concept/child>",
+                    "<https://example.org/concept/root>"
+                  ]
+                },
+                "prez:PrefLabelShape": {
+                  "nodes": [
+                    "<https://example.org/concept/child>",
                     "<https://example.org/concept/root>",
-                    "<https://example.org/concept/child>"
+                    "<https://example.org/simple-scheme>",
+                    "<https://example.org/cat/top>"
                   ]
                 },
                 "prez:AtLeastOneTopCatalogShape": {
                   "nodes": [
-                    "_:nf10cae45ad304d938304aef3bf58037db1"
+                    "_:n4d45feb6e5234fe29b117bd5270ee0bfb1"
                   ]
                 }
               },
               "isError": false,
-              "message": "Focus nodes for _sources/hierarchy/ogc/shapes.shacl:\n - Shape prez:PrefLabelShape: <https://example.org/simple-scheme>,<https://example.org/cat/top>,<https://example.org/concept/root>,<https://example.org/concept/child>\n - Shape prez:ConceptAnchorShape: <https://example.org/concept/root>,<https://example.org/concept/child>\n - Shape prez:HasPartSubjectShape: <https://example.org/cat/top>\n - Shape prez:NestedItemShape: <https://example.org/simple-scheme>\n - Shape prez:InSchemeShape: <https://example.org/concept/root>,<https://example.org/concept/child>\n - Shape prez:AtLeastOneTopCatalogShape: _:nf10cae45ad304d938304aef3bf58037db1\n"
+              "message": "Focus nodes for _sources/hierarchy/ogc/shapes.shacl:\n - Shape prez:InSchemeShape: <https://example.org/concept/child>,<https://example.org/concept/root>\n - Shape prez:HasPartSubjectShape: <https://example.org/cat/top>\n - Shape prez:NestedItemShape: <https://example.org/simple-scheme>\n - Shape prez:ConceptAnchorShape: <https://example.org/concept/child>,<https://example.org/concept/root>\n - Shape prez:PrefLabelShape: <https://example.org/concept/child>,<https://example.org/concept/root>,<https://example.org/simple-scheme>,<https://example.org/cat/top>\n - Shape prez:AtLeastOneTopCatalogShape: _:n4d45feb6e5234fe29b117bd5270ee0bfb1\n"
             },
             {
               "op": "shacl-report",
@@ -649,26 +649,14 @@
             {
               "shaclFile": "_sources/hierarchy/ogc/shapes.shacl",
               "focusNodes": {
-                "prez:PrefLabelShape": {
+                "prez:InSchemeShape": {
                   "nodes": [
                     "<https://example.org/concept/cat>",
-                    "<https://example.org/animal-scheme>",
-                    "<https://example.org/concept/dog>",
-                    "<https://example.org/concept/pet>",
                     "<https://example.org/concept/animal>",
-                    "<https://example.org/concept/bird>",
-                    "<https://example.org/concept/mammal>",
-                    "<https://example.org/cat/top>"
-                  ]
-                },
-                "prez:ConceptAnchorShape": {
-                  "nodes": [
-                    "<https://example.org/concept/cat>",
-                    "<https://example.org/concept/bird>",
-                    "<https://example.org/concept/dog>",
-                    "<https://example.org/concept/mammal>",
                     "<https://example.org/concept/pet>",
-                    "<https://example.org/concept/animal>"
+                    "<https://example.org/concept/dog>",
+                    "<https://example.org/concept/bird>",
+                    "<https://example.org/concept/mammal>"
                   ]
                 },
                 "prez:HasPartSubjectShape": {
@@ -681,24 +669,36 @@
                     "<https://example.org/animal-scheme>"
                   ]
                 },
-                "prez:InSchemeShape": {
+                "prez:ConceptAnchorShape": {
                   "nodes": [
                     "<https://example.org/concept/cat>",
-                    "<https://example.org/concept/bird>",
-                    "<https://example.org/concept/dog>",
-                    "<https://example.org/concept/mammal>",
+                    "<https://example.org/concept/animal>",
                     "<https://example.org/concept/pet>",
-                    "<https://example.org/concept/animal>"
+                    "<https://example.org/concept/dog>",
+                    "<https://example.org/concept/bird>",
+                    "<https://example.org/concept/mammal>"
+                  ]
+                },
+                "prez:PrefLabelShape": {
+                  "nodes": [
+                    "<https://example.org/concept/cat>",
+                    "<https://example.org/concept/pet>",
+                    "<https://example.org/concept/mammal>",
+                    "<https://example.org/concept/animal>",
+                    "<https://example.org/concept/dog>",
+                    "<https://example.org/concept/bird>",
+                    "<https://example.org/animal-scheme>",
+                    "<https://example.org/cat/top>"
                   ]
                 },
                 "prez:AtLeastOneTopCatalogShape": {
                   "nodes": [
-                    "_:nf10cae45ad304d938304aef3bf58037db1"
+                    "_:n4d45feb6e5234fe29b117bd5270ee0bfb1"
                   ]
                 }
               },
               "isError": false,
-              "message": "Focus nodes for _sources/hierarchy/ogc/shapes.shacl:\n - Shape prez:PrefLabelShape: <https://example.org/concept/cat>,<https://example.org/animal-scheme>,<https://example.org/concept/dog>,<https://example.org/concept/pet>,<https://example.org/concept/animal>,<https://example.org/concept/bird>,<https://example.org/concept/mammal>,<https://example.org/cat/top>\n - Shape prez:ConceptAnchorShape: <https://example.org/concept/cat>,<https://example.org/concept/bird>,<https://example.org/concept/dog>,<https://example.org/concept/mammal>,<https://example.org/concept/pet>,<https://example.org/concept/animal>\n - Shape prez:HasPartSubjectShape: <https://example.org/cat/top>\n - Shape prez:NestedItemShape: <https://example.org/animal-scheme>\n - Shape prez:InSchemeShape: <https://example.org/concept/cat>,<https://example.org/concept/bird>,<https://example.org/concept/dog>,<https://example.org/concept/mammal>,<https://example.org/concept/pet>,<https://example.org/concept/animal>\n - Shape prez:AtLeastOneTopCatalogShape: _:nf10cae45ad304d938304aef3bf58037db1\n"
+              "message": "Focus nodes for _sources/hierarchy/ogc/shapes.shacl:\n - Shape prez:InSchemeShape: <https://example.org/concept/cat>,<https://example.org/concept/animal>,<https://example.org/concept/pet>,<https://example.org/concept/dog>,<https://example.org/concept/bird>,<https://example.org/concept/mammal>\n - Shape prez:HasPartSubjectShape: <https://example.org/cat/top>\n - Shape prez:NestedItemShape: <https://example.org/animal-scheme>\n - Shape prez:ConceptAnchorShape: <https://example.org/concept/cat>,<https://example.org/concept/animal>,<https://example.org/concept/pet>,<https://example.org/concept/dog>,<https://example.org/concept/bird>,<https://example.org/concept/mammal>\n - Shape prez:PrefLabelShape: <https://example.org/concept/cat>,<https://example.org/concept/pet>,<https://example.org/concept/mammal>,<https://example.org/concept/animal>,<https://example.org/concept/dog>,<https://example.org/concept/bird>,<https://example.org/animal-scheme>,<https://example.org/cat/top>\n - Shape prez:AtLeastOneTopCatalogShape: _:n4d45feb6e5234fe29b117bd5270ee0bfb1\n"
             },
             {
               "op": "shacl-report",
@@ -806,12 +806,7 @@
             {
               "shaclFile": "_sources/hierarchy/ogc/shapes.shacl",
               "focusNodes": {
-                "prez:PrefLabelShape": {
-                  "nodes": [
-                    "<https://example.org/cat/data-models>"
-                  ]
-                },
-                "prez:ConceptAnchorShape": {
+                "prez:InSchemeShape": {
                   "nodes": []
                 },
                 "prez:HasPartSubjectShape": {
@@ -822,17 +817,22 @@
                 "prez:NestedItemShape": {
                   "nodes": []
                 },
-                "prez:InSchemeShape": {
+                "prez:ConceptAnchorShape": {
                   "nodes": []
+                },
+                "prez:PrefLabelShape": {
+                  "nodes": [
+                    "<https://example.org/cat/data-models>"
+                  ]
                 },
                 "prez:AtLeastOneTopCatalogShape": {
                   "nodes": [
-                    "_:nf10cae45ad304d938304aef3bf58037db1"
+                    "_:n4d45feb6e5234fe29b117bd5270ee0bfb1"
                   ]
                 }
               },
               "isError": false,
-              "message": "Focus nodes for _sources/hierarchy/ogc/shapes.shacl:\n - Shape prez:PrefLabelShape: <https://example.org/cat/data-models>\n - Shape prez:ConceptAnchorShape: *none*\n - Shape prez:HasPartSubjectShape: <https://example.org/cat/data-models>\n - Shape prez:NestedItemShape: *none*\n - Shape prez:InSchemeShape: *none*\n - Shape prez:AtLeastOneTopCatalogShape: _:nf10cae45ad304d938304aef3bf58037db1\n"
+              "message": "Focus nodes for _sources/hierarchy/ogc/shapes.shacl:\n - Shape prez:InSchemeShape: *none*\n - Shape prez:HasPartSubjectShape: <https://example.org/cat/data-models>\n - Shape prez:NestedItemShape: *none*\n - Shape prez:ConceptAnchorShape: *none*\n - Shape prez:PrefLabelShape: <https://example.org/cat/data-models>\n - Shape prez:AtLeastOneTopCatalogShape: _:n4d45feb6e5234fe29b117bd5270ee0bfb1\n"
             },
             {
               "op": "shacl-report",
@@ -940,40 +940,40 @@
             {
               "shaclFile": "_sources/hierarchy/ogc/shapes.shacl",
               "focusNodes": {
-                "prez:PrefLabelShape": {
+                "prez:InSchemeShape": {
+                  "nodes": []
+                },
+                "prez:HasPartSubjectShape": {
                   "nodes": [
-                    "<https://example.org/resource/codelist>",
-                    "<https://example.org/cat/registers>",
                     "<https://example.org/cat/standards>",
-                    "<https://example.org/resource/abstract-spec>"
+                    "<https://example.org/cat/registers>"
+                  ]
+                },
+                "prez:NestedItemShape": {
+                  "nodes": [
+                    "<https://example.org/resource/abstract-spec>",
+                    "<https://example.org/resource/codelist>"
                   ]
                 },
                 "prez:ConceptAnchorShape": {
                   "nodes": []
                 },
-                "prez:HasPartSubjectShape": {
+                "prez:PrefLabelShape": {
                   "nodes": [
+                    "<https://example.org/cat/standards>",
+                    "<https://example.org/resource/abstract-spec>",
                     "<https://example.org/cat/registers>",
-                    "<https://example.org/cat/standards>"
+                    "<https://example.org/resource/codelist>"
                   ]
-                },
-                "prez:NestedItemShape": {
-                  "nodes": [
-                    "<https://example.org/resource/codelist>",
-                    "<https://example.org/resource/abstract-spec>"
-                  ]
-                },
-                "prez:InSchemeShape": {
-                  "nodes": []
                 },
                 "prez:AtLeastOneTopCatalogShape": {
                   "nodes": [
-                    "_:nf10cae45ad304d938304aef3bf58037db1"
+                    "_:n4d45feb6e5234fe29b117bd5270ee0bfb1"
                   ]
                 }
               },
               "isError": false,
-              "message": "Focus nodes for _sources/hierarchy/ogc/shapes.shacl:\n - Shape prez:PrefLabelShape: <https://example.org/resource/codelist>,<https://example.org/cat/registers>,<https://example.org/cat/standards>,<https://example.org/resource/abstract-spec>\n - Shape prez:ConceptAnchorShape: *none*\n - Shape prez:HasPartSubjectShape: <https://example.org/cat/registers>,<https://example.org/cat/standards>\n - Shape prez:NestedItemShape: <https://example.org/resource/codelist>,<https://example.org/resource/abstract-spec>\n - Shape prez:InSchemeShape: *none*\n - Shape prez:AtLeastOneTopCatalogShape: _:nf10cae45ad304d938304aef3bf58037db1\n"
+              "message": "Focus nodes for _sources/hierarchy/ogc/shapes.shacl:\n - Shape prez:InSchemeShape: *none*\n - Shape prez:HasPartSubjectShape: <https://example.org/cat/standards>,<https://example.org/cat/registers>\n - Shape prez:NestedItemShape: <https://example.org/resource/abstract-spec>,<https://example.org/resource/codelist>\n - Shape prez:ConceptAnchorShape: *none*\n - Shape prez:PrefLabelShape: <https://example.org/cat/standards>,<https://example.org/resource/abstract-spec>,<https://example.org/cat/registers>,<https://example.org/resource/codelist>\n - Shape prez:AtLeastOneTopCatalogShape: _:n4d45feb6e5234fe29b117bd5270ee0bfb1\n"
             },
             {
               "op": "shacl-report",
@@ -987,12 +987,12 @@
               "focusNodes": {
                 "vann:PrefixDeclarationShape": {
                   "nodes": [
-                    "_:N3bfa4b9963c44d658376e4c4db6b33a1"
+                    "_:N7ea861476e144045bf727473a7014194"
                   ]
                 }
               },
               "isError": false,
-              "message": "Focus nodes for _sources/prefix/shapes.shacl:\n - Shape vann:PrefixDeclarationShape: _:N3bfa4b9963c44d658376e4c4db6b33a1\n"
+              "message": "Focus nodes for _sources/prefix/shapes.shacl:\n - Shape vann:PrefixDeclarationShape: _:N7ea861476e144045bf727473a7014194\n"
             }
           ]
         },

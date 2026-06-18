@@ -1,5 +1,5 @@
 Validation report for ogc.prez.hierarchy.default - Prez default hierarchy
-Generated 2026-06-18T10:44:03.906152+00:00
+Generated 2026-06-18T10:48:28.212993+00:00
 === Files ===
 Using examples/concept-hierarchy.json from examples
 JSON-LD context is present - uplifting
@@ -17,12 +17,12 @@ Validation result for _sources/hierarchy/default/shapes.shacl:
   Conforms: True
   
 Focus nodes for _sources/hierarchy/default/shapes.shacl:
- - Shape prez:TopLevelItemShape: <https://example.org/animal-scheme>
- - Shape prez:PrefLabelShape: <https://example.org/concept/cat>,<https://example.org/animal-scheme>,<https://example.org/concept/bird>,<https://example.org/concept/dog>,<https://example.org/concept/mammal>,<https://example.org/concept/pet>,<https://example.org/concept/animal>
- - Shape prez:InSchemeShape: <https://example.org/concept/cat>,<https://example.org/concept/bird>,<https://example.org/concept/dog>,<https://example.org/concept/mammal>,<https://example.org/concept/pet>,<https://example.org/concept/animal>
- - Shape prez:ConceptAnchorShape: <https://example.org/concept/cat>,<https://example.org/concept/bird>,<https://example.org/concept/dog>,<https://example.org/concept/mammal>,<https://example.org/concept/pet>,<https://example.org/concept/animal>
+ - Shape prez:AtLeastOneCatalogShape: _:n875fa2675d3b4fb4be09ff9c7fc35189b1
  - Shape prez:HasPartSubjectShape: <https://example.org/taxonomy-catalog>
- - Shape prez:AtLeastOneCatalogShape: _:nffef885f7529408092ea0e94aa4a1279b1
+ - Shape prez:PrefLabelShape: <https://example.org/concept/cat>,<https://example.org/concept/animal>,<https://example.org/concept/pet>,<https://example.org/concept/dog>,<https://example.org/concept/bird>,<https://example.org/animal-scheme>,<https://example.org/concept/mammal>
+ - Shape prez:TopLevelItemShape: <https://example.org/animal-scheme>
+ - Shape prez:ConceptAnchorShape: <https://example.org/concept/cat>,<https://example.org/concept/animal>,<https://example.org/concept/pet>,<https://example.org/concept/dog>,<https://example.org/concept/bird>,<https://example.org/concept/mammal>
+ - Shape prez:InSchemeShape: <https://example.org/concept/cat>,<https://example.org/concept/animal>,<https://example.org/concept/pet>,<https://example.org/concept/dog>,<https://example.org/concept/bird>,<https://example.org/concept/mammal>
 
 Validation result for _sources/prefix/shapes.shacl:
   Validation Report

@@ -1,5 +1,5 @@
 Validation report for ogc.prez.hierarchy.ogc - Prez OGC hierarchy
-Generated 2026-06-18T10:44:04.083618+00:00
+Generated 2026-06-18T10:48:28.362893+00:00
 === Files ===
 Using examples/minimal.json from examples
 JSON-LD context is present - uplifting
@@ -17,12 +17,12 @@ Validation result for _sources/hierarchy/ogc/shapes.shacl:
   Conforms: True
   
 Focus nodes for _sources/hierarchy/ogc/shapes.shacl:
- - Shape prez:PrefLabelShape: <https://example.org/concept/bird>,<https://example.org/cs/animals>,<https://example.org/cat/top>,<https://example.org/concept/mammal>
- - Shape prez:ConceptAnchorShape: <https://example.org/concept/bird>,<https://example.org/concept/mammal>
+ - Shape prez:InSchemeShape: <https://example.org/concept/bird>,<https://example.org/concept/mammal>
  - Shape prez:HasPartSubjectShape: <https://example.org/cat/top>
  - Shape prez:NestedItemShape: <https://example.org/cs/animals>
- - Shape prez:InSchemeShape: <https://example.org/concept/bird>,<https://example.org/concept/mammal>
- - Shape prez:AtLeastOneTopCatalogShape: _:nf10cae45ad304d938304aef3bf58037db1
+ - Shape prez:ConceptAnchorShape: <https://example.org/concept/bird>,<https://example.org/concept/mammal>
+ - Shape prez:PrefLabelShape: <https://example.org/cs/animals>,<https://example.org/concept/bird>,<https://example.org/cat/top>,<https://example.org/concept/mammal>
+ - Shape prez:AtLeastOneTopCatalogShape: _:n4d45feb6e5234fe29b117bd5270ee0bfb1
 
 Validation result for _sources/prefix/shapes.shacl:
   Validation Report

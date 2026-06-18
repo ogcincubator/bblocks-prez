@@ -1,5 +1,5 @@
 Validation report for ogc.prez.hierarchy.default - Prez default hierarchy
-Generated 2026-06-18T10:44:03.591453+00:00
+Generated 2026-06-18T10:48:27.939983+00:00
 === Files ===
 Using examples/mixed-multi-catalog.json from examples
 JSON-LD context is present - uplifting
@@ -17,12 +17,12 @@ Validation result for _sources/hierarchy/default/shapes.shacl:
   Conforms: True
   
 Focus nodes for _sources/hierarchy/default/shapes.shacl:
- - Shape prez:TopLevelItemShape: <https://example.org/climate/era5>,<https://example.org/hydrology/gsim>,<https://example.org/hydrology/wmo-guide>,<https://example.org/climate/variables>,<https://example.org/hydrology/hydrosheds>,<https://example.org/hydrology/surface-water>,<https://example.org/climate/surface-vars>,<https://example.org/hydrology/features>,<https://example.org/climate/gcos-spec>
- - Shape prez:PrefLabelShape: <https://example.org/climate/era5>,<https://example.org/hydrology/gsim>,<https://example.org/climate/variables/precipitation>,<https://example.org/hydrology/wmo-guide>,<https://example.org/climate/variables/temperature>,<https://example.org/hydrology/features/aquifer>,<https://example.org/hydrology/features/lake>,<https://example.org/climate/variables>,<https://example.org/hydrology/hydrosheds>,<https://example.org/hydrology/surface-water>,<https://example.org/climate/surface-vars>,<https://example.org/climate/variables/humidity>,<https://example.org/hydrology/features>,<https://example.org/hydrology/features/river>,<https://example.org/climate/gcos-spec>
- - Shape prez:InSchemeShape: <https://example.org/hydrology/features/lake>,<https://example.org/climate/variables/precipitation>,<https://example.org/climate/variables/humidity>,<https://example.org/climate/variables/temperature>,<https://example.org/hydrology/features/aquifer>,<https://example.org/hydrology/features/river>
- - Shape prez:ConceptAnchorShape: <https://example.org/hydrology/features/lake>,<https://example.org/climate/variables/precipitation>,<https://example.org/climate/variables/humidity>,<https://example.org/climate/variables/temperature>,<https://example.org/hydrology/features/aquifer>,<https://example.org/hydrology/features/river>
- - Shape prez:HasPartSubjectShape: <https://example.org/climate>,<https://example.org/hydrology>
- - Shape prez:AtLeastOneCatalogShape: _:nffef885f7529408092ea0e94aa4a1279b1
+ - Shape prez:AtLeastOneCatalogShape: _:n875fa2675d3b4fb4be09ff9c7fc35189b1
+ - Shape prez:HasPartSubjectShape: <https://example.org/hydrology>,<https://example.org/climate>
+ - Shape prez:PrefLabelShape: <https://example.org/hydrology/features/lake>,<https://example.org/climate/variables/precipitation>,<https://example.org/climate/surface-vars>,<https://example.org/climate/variables/humidity>,<https://example.org/climate/gcos-spec>,<https://example.org/climate/era5>,<https://example.org/hydrology/hydrosheds>,<https://example.org/climate/variables>,<https://example.org/hydrology/features/river>,<https://example.org/hydrology/features/aquifer>,<https://example.org/hydrology/gsim>,<https://example.org/hydrology/wmo-guide>,<https://example.org/climate/variables/temperature>,<https://example.org/hydrology/features>,<https://example.org/hydrology/surface-water>
+ - Shape prez:TopLevelItemShape: <https://example.org/climate/surface-vars>,<https://example.org/climate/gcos-spec>,<https://example.org/climate/variables>,<https://example.org/hydrology/hydrosheds>,<https://example.org/climate/era5>,<https://example.org/hydrology/gsim>,<https://example.org/hydrology/wmo-guide>,<https://example.org/hydrology/features>,<https://example.org/hydrology/surface-water>
+ - Shape prez:ConceptAnchorShape: <https://example.org/hydrology/features/aquifer>,<https://example.org/hydrology/features/lake>,<https://example.org/climate/variables/precipitation>,<https://example.org/climate/variables/humidity>,<https://example.org/climate/variables/temperature>,<https://example.org/hydrology/features/river>
+ - Shape prez:InSchemeShape: <https://example.org/hydrology/features/aquifer>,<https://example.org/hydrology/features/lake>,<https://example.org/climate/variables/precipitation>,<https://example.org/climate/variables/humidity>,<https://example.org/climate/variables/temperature>,<https://example.org/hydrology/features/river>
 
 Validation result for _sources/prefix/shapes.shacl:
   Validation Report

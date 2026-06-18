@@ -1,5 +1,5 @@
 Validation report for ogc.prez.hierarchy.default - Prez default hierarchy
-Generated 2026-06-18T10:44:03.170684+00:00
+Generated 2026-06-18T10:48:27.573340+00:00
 === Files ===
 Using examples/minimal.json from examples
 JSON-LD context is present - uplifting
@@ -17,12 +17,12 @@ Validation result for _sources/hierarchy/default/shapes.shacl:
   Conforms: True
   
 Focus nodes for _sources/hierarchy/default/shapes.shacl:
- - Shape prez:TopLevelItemShape: <https://example.org/my-scheme>
- - Shape prez:PrefLabelShape: <https://example.org/my-scheme>,<https://example.org/concept-b>,<https://example.org/concept-a>
- - Shape prez:InSchemeShape: <https://example.org/concept-b>,<https://example.org/concept-a>
- - Shape prez:ConceptAnchorShape: <https://example.org/concept-b>,<https://example.org/concept-a>
+ - Shape prez:AtLeastOneCatalogShape: _:n875fa2675d3b4fb4be09ff9c7fc35189b1
  - Shape prez:HasPartSubjectShape: <https://example.org/my-catalog>
- - Shape prez:AtLeastOneCatalogShape: _:nffef885f7529408092ea0e94aa4a1279b1
+ - Shape prez:PrefLabelShape: <https://example.org/concept-b>,<https://example.org/concept-a>,<https://example.org/my-scheme>
+ - Shape prez:TopLevelItemShape: <https://example.org/my-scheme>
+ - Shape prez:ConceptAnchorShape: <https://example.org/concept-b>,<https://example.org/concept-a>
+ - Shape prez:InSchemeShape: <https://example.org/concept-b>,<https://example.org/concept-a>
 
 Validation result for _sources/prefix/shapes.shacl:
   Validation Report

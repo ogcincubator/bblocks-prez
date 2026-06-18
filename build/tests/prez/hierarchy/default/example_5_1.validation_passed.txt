@@ -1,5 +1,5 @@
 Validation report for ogc.prez.hierarchy.default - Prez default hierarchy
-Generated 2026-06-18T10:44:03.713740+00:00
+Generated 2026-06-18T10:48:28.048223+00:00
 === Files ===
 Using examples/multi-catalog.json from examples
 JSON-LD context is present - uplifting
@@ -17,12 +17,12 @@ Validation result for _sources/hierarchy/default/shapes.shacl:
   Conforms: True
   
 Focus nodes for _sources/hierarchy/default/shapes.shacl:
- - Shape prez:TopLevelItemShape: <https://example.org/species/mammals>,<https://example.org/env/habitats>,<https://example.org/env/protected>
- - Shape prez:PrefLabelShape: <https://example.org/species/mammals>,<https://example.org/env/habitats/forest>,<https://example.org/env/habitats/marine>,<https://example.org/env/habitats>,<https://example.org/species/mammals/bear>,<https://example.org/species/mammals/wolf>,<https://example.org/env/habitats/wetland>,<https://example.org/env/protected>
- - Shape prez:InSchemeShape: <https://example.org/env/habitats/wetland>,<https://example.org/env/habitats/forest>,<https://example.org/env/habitats/marine>,<https://example.org/species/mammals/bear>,<https://example.org/species/mammals/wolf>
- - Shape prez:ConceptAnchorShape: <https://example.org/env/habitats/wetland>,<https://example.org/env/habitats/forest>,<https://example.org/env/habitats/marine>,<https://example.org/species/mammals/bear>,<https://example.org/species/mammals/wolf>
+ - Shape prez:AtLeastOneCatalogShape: _:n875fa2675d3b4fb4be09ff9c7fc35189b1
  - Shape prez:HasPartSubjectShape: <https://example.org/species>,<https://example.org/env>
- - Shape prez:AtLeastOneCatalogShape: _:nffef885f7529408092ea0e94aa4a1279b1
+ - Shape prez:PrefLabelShape: <https://example.org/env/habitats/marine>,<https://example.org/env/habitats/forest>,<https://example.org/env/habitats>,<https://example.org/species/mammals/bear>,<https://example.org/env/habitats/wetland>,<https://example.org/species/mammals/wolf>,<https://example.org/env/protected>,<https://example.org/species/mammals>
+ - Shape prez:TopLevelItemShape: <https://example.org/env/protected>,<https://example.org/species/mammals>,<https://example.org/env/habitats>
+ - Shape prez:ConceptAnchorShape: <https://example.org/species/mammals/bear>,<https://example.org/env/habitats/marine>,<https://example.org/env/habitats/wetland>,<https://example.org/env/habitats/forest>,<https://example.org/species/mammals/wolf>
+ - Shape prez:InSchemeShape: <https://example.org/species/mammals/bear>,<https://example.org/env/habitats/marine>,<https://example.org/env/habitats/wetland>,<https://example.org/env/habitats/forest>,<https://example.org/species/mammals/wolf>
 
 Validation result for _sources/prefix/shapes.shacl:
   Validation Report

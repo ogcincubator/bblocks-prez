@@ -2,7 +2,7 @@
   "title": "Validation report for ogc.prez.prefix - Namespace prefix declaration",
   "bblockName": "Namespace prefix declaration",
   "bblockId": "ogc.prez.prefix",
-  "generated": "2026-06-18T10:44:02.997801+00:00",
+  "generated": "2026-06-18T10:48:27.416169+00:00",
   "result": true,
   "items": [
     {
@@ -74,12 +74,12 @@
               "focusNodes": {
                 "vann:PrefixDeclarationShape": {
                   "nodes": [
-                    "_:N227bbf7b0f094b369958a9f02881a2a4"
+                    "_:Na5715a25bba8435c918e33edd843409a"
                   ]
                 }
               },
               "isError": false,
-              "message": "Focus nodes for _sources/prefix/shapes.shacl:\n - Shape vann:PrefixDeclarationShape: _:N227bbf7b0f094b369958a9f02881a2a4\n"
+              "message": "Focus nodes for _sources/prefix/shapes.shacl:\n - Shape vann:PrefixDeclarationShape: _:Na5715a25bba8435c918e33edd843409a\n"
             }
           ]
         }

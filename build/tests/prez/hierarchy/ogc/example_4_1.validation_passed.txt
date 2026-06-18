@@ -1,5 +1,5 @@
 Validation report for ogc.prez.hierarchy.ogc - Prez OGC hierarchy
-Generated 2026-06-18T10:44:04.245306+00:00
+Generated 2026-06-18T10:48:28.501853+00:00
 === Files ===
 Using examples/implicit-narrower.json from examples
 JSON-LD context is present - uplifting
@@ -17,12 +17,12 @@ Validation result for _sources/hierarchy/ogc/shapes.shacl:
   Conforms: True
   
 Focus nodes for _sources/hierarchy/ogc/shapes.shacl:
- - Shape prez:PrefLabelShape: <https://example.org/simple-scheme>,<https://example.org/cat/top>,<https://example.org/concept/root>,<https://example.org/concept/child>
- - Shape prez:ConceptAnchorShape: <https://example.org/concept/root>,<https://example.org/concept/child>
+ - Shape prez:InSchemeShape: <https://example.org/concept/child>,<https://example.org/concept/root>
  - Shape prez:HasPartSubjectShape: <https://example.org/cat/top>
  - Shape prez:NestedItemShape: <https://example.org/simple-scheme>
- - Shape prez:InSchemeShape: <https://example.org/concept/root>,<https://example.org/concept/child>
- - Shape prez:AtLeastOneTopCatalogShape: _:nf10cae45ad304d938304aef3bf58037db1
+ - Shape prez:ConceptAnchorShape: <https://example.org/concept/child>,<https://example.org/concept/root>
+ - Shape prez:PrefLabelShape: <https://example.org/concept/child>,<https://example.org/concept/root>,<https://example.org/simple-scheme>,<https://example.org/cat/top>
+ - Shape prez:AtLeastOneTopCatalogShape: _:n4d45feb6e5234fe29b117bd5270ee0bfb1
 
 Validation result for _sources/prefix/shapes.shacl:
   Validation Report

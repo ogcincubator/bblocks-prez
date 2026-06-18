@@ -1,5 +1,5 @@
 Validation report for ogc.prez.hierarchy.default - Prez default hierarchy
-Generated 2026-06-18T10:44:03.932263+00:00
+Generated 2026-06-18T10:48:28.235351+00:00
 === Files ===
 Using examples/external-references.json from examples
 JSON-LD context is present - uplifting
@@ -17,12 +17,12 @@ Validation result for _sources/hierarchy/default/shapes.shacl:
   Conforms: True
   
 Focus nodes for _sources/hierarchy/default/shapes.shacl:
- - Shape prez:TopLevelItemShape: *none*
- - Shape prez:PrefLabelShape: *none*
- - Shape prez:InSchemeShape: *none*
- - Shape prez:ConceptAnchorShape: *none*
+ - Shape prez:AtLeastOneCatalogShape: _:n875fa2675d3b4fb4be09ff9c7fc35189b1
  - Shape prez:HasPartSubjectShape: <https://example.org/standalone-catalog>
- - Shape prez:AtLeastOneCatalogShape: _:nffef885f7529408092ea0e94aa4a1279b1
+ - Shape prez:PrefLabelShape: *none*
+ - Shape prez:TopLevelItemShape: *none*
+ - Shape prez:ConceptAnchorShape: *none*
+ - Shape prez:InSchemeShape: *none*
 
 Validation result for _sources/prefix/shapes.shacl:
   Validation Report
